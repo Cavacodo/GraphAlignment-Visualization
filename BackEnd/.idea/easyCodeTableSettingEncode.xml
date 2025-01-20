@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EasyCodeTableSetting">
+    <option name="tableInfoMap">
+      <map>
+        <entry key="xjtu.test_user" value="eyJuYW1lIjoiVGVzdFVzZXIiLCJwcmVOYW1lIjoiIiwidGVtcGxhdGVHcm91cE5hbWUiOiJEZWZhdWx0IiwiZnVsbENvbHVtbiI6W3sibmFtZSI6InVzZXJuYW1lIiwidHlwZSI6ImphdmEubGFuZy5TdHJpbmciLCJjdXN0b20iOmZhbHNlLCJleHQiOiJ7fSJ9LHsibmFtZSI6InBhc3N3b3JkIiwidHlwZSI6ImphdmEubGFuZy5JbnRlZ2VyIiwiY3VzdG9tIjpmYWxzZSwiZXh0Ijoie30ifV0sInNhdmVQYWNrYWdlTmFtZSI6IiIsInNhdmVQYXRoIjoiLi9zcmMvbWFpbi9qYXZhIiwic2F2ZU1vZGVsTmFtZSI6IkJhY2tFbmQifQ==" />
+      </map>
+    </option>
+  </component>
+</project>

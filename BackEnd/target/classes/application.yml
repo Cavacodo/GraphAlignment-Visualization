@@ -2,13 +2,17 @@ server:
   port: 8080
 spring:
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    password: 0403
     username: root
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT
-    driver-class-name: com.mysql.jdbc.Driver
+    password: "0403"
+    url: jdbc:mysql://localhost:3306/xjtu
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
   type-aliases-package: xjtu.pojo
   mapper-locations: classpath:mapper/*.xml
-
+logging:
+  file:
+    name: log/backend.log
+  level:
+    root: info
+    xjtu: debug
