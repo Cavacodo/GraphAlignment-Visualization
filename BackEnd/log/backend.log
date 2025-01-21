@@ -1108,3 +1108,317 @@ org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property o
 2025-01-21T12:17:28.445+08:00  INFO 22868 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
 2025-01-21T12:17:28.448+08:00  INFO 22868 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-01-21T12:17:28.454+08:00  INFO 22868 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-21T18:36:22.433+08:00  INFO 10376 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 10376 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by 张先生 in D:\GraphAlignment-Visualization\BackEnd)
+2025-01-21T18:36:22.434+08:00 DEBUG 10376 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-01-21T18:36:22.434+08:00  INFO 10376 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-01-21T18:36:23.050+08:00  INFO 10376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-21T18:36:23.058+08:00  INFO 10376 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-21T18:36:23.058+08:00  INFO 10376 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-21T18:36:23.102+08:00  INFO 10376 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-21T18:36:23.103+08:00  INFO 10376 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 639 ms
+2025-01-21T18:36:23.301+08:00  INFO 10376 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-01-21T18:36:23.497+08:00  INFO 10376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-21T18:36:23.504+08:00  INFO 10376 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 1.377 seconds (process running for 1.909)
+2025-01-21T18:37:00.886+08:00  INFO 10376 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-21T18:37:00.886+08:00  INFO 10376 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-21T18:37:00.887+08:00  INFO 10376 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-01-21T18:37:00.933+08:00  INFO 10376 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-21T18:37:01.236+08:00  INFO 10376 --- [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@181a5dce
+2025-01-21T18:37:01.237+08:00  INFO 10376 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-21T18:37:01.244+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:37:01.261+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:37:01.303+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:37:33.197+08:00 DEBUG 10376 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:37:33.197+08:00 DEBUG 10376 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:37:33.200+08:00 DEBUG 10376 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:38:20.228+08:00 DEBUG 10376 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:38:20.228+08:00 DEBUG 10376 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:38:20.230+08:00 DEBUG 10376 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:38:28.133+08:00 DEBUG 10376 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:38:28.134+08:00 DEBUG 10376 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:38:28.135+08:00 DEBUG 10376 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:38:30.361+08:00 DEBUG 10376 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:38:30.362+08:00 DEBUG 10376 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:38:30.364+08:00 DEBUG 10376 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:38:31.208+08:00 DEBUG 10376 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:38:31.208+08:00 DEBUG 10376 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:38:31.210+08:00 DEBUG 10376 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:39:01.554+08:00 DEBUG 10376 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:39:01.554+08:00 DEBUG 10376 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:39:01.555+08:00 DEBUG 10376 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:42:51.661+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:42:51.662+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:42:51.663+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:44:17.970+08:00 DEBUG 10376 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:44:17.970+08:00 DEBUG 10376 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:44:17.973+08:00 DEBUG 10376 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:44:24.134+08:00 DEBUG 10376 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:44:24.134+08:00 DEBUG 10376 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:44:24.136+08:00 DEBUG 10376 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:44:29.765+08:00 DEBUG 10376 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:44:29.765+08:00 DEBUG 10376 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:44:29.767+08:00 DEBUG 10376 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:44:30.661+08:00 DEBUG 10376 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:44:30.662+08:00 DEBUG 10376 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:44:30.663+08:00 DEBUG 10376 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:45:27.664+08:00 DEBUG 10376 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:45:27.665+08:00 DEBUG 10376 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:45:27.666+08:00 DEBUG 10376 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:45:30.014+08:00 DEBUG 10376 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:45:30.015+08:00 DEBUG 10376 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:45:30.017+08:00 DEBUG 10376 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:45:31.332+08:00 DEBUG 10376 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:45:31.332+08:00 DEBUG 10376 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:45:31.333+08:00 DEBUG 10376 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:46:01.520+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:46:01.520+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:46:01.522+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:46:03.089+08:00 DEBUG 10376 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:46:03.089+08:00 DEBUG 10376 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:46:03.091+08:00 DEBUG 10376 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:46:03.610+08:00 DEBUG 10376 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:46:03.610+08:00 DEBUG 10376 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:46:03.611+08:00 DEBUG 10376 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:46:04.417+08:00 DEBUG 10376 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:46:04.417+08:00 DEBUG 10376 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:46:04.418+08:00 DEBUG 10376 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:46:05.505+08:00 DEBUG 10376 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:46:05.505+08:00 DEBUG 10376 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:46:05.507+08:00 DEBUG 10376 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:49:35.673+08:00 DEBUG 10376 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:49:35.674+08:00 DEBUG 10376 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:49:35.675+08:00 DEBUG 10376 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:49:37.463+08:00 DEBUG 10376 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:49:37.463+08:00 DEBUG 10376 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:49:37.465+08:00 DEBUG 10376 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:49:37.878+08:00 DEBUG 10376 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:49:37.879+08:00 DEBUG 10376 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:49:37.880+08:00 DEBUG 10376 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:49:38.231+08:00 DEBUG 10376 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:49:38.231+08:00 DEBUG 10376 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:49:38.232+08:00 DEBUG 10376 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:49:38.505+08:00 DEBUG 10376 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:49:38.505+08:00 DEBUG 10376 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:49:38.506+08:00 DEBUG 10376 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:49:38.827+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from test_user;
+2025-01-21T18:49:38.828+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T18:49:38.829+08:00 DEBUG 10376 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : <==      Total: 202
+2025-01-21T18:54:40.044+08:00 DEBUG 10376 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.listUserByName          : ==>  Preparing: select * from test_user
+2025-01-21T18:54:40.044+08:00 DEBUG 10376 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.listUserByName          : ==> Parameters: 
+2025-01-21T18:54:40.046+08:00 DEBUG 10376 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.listUserByName          : <==      Total: 202
+2025-01-21T18:54:40.196+08:00 ERROR 10376 --- [http-nio-8080-exec-2] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8080-exec-2] Exception processing template "index": Exception evaluating SpringEL expression: "user.id" (template: "index" - line 29, col 12)
+
+org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "user.id" (template: "index" - line 29, col 12)
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:292) ~[thymeleaf-spring6-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.resolveParameters(LinkExpression.java:339) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.executeLinkExpression(LinkExpression.java:285) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:85) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:282) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:290) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.processIterationModel(IteratedGatheringModelProcessable.java:368) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.process(IteratedGatheringModelProcessable.java:222) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleCloseElement(ProcessorTemplateHandler.java:1640) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.CloseElementTag.beHandled(CloseElementTag.java:139) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.TemplateModel.process(TemplateModel.java:136) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:661) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1435) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1105) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'id' cannot be found on object of type 'xjtu.pojo.User' - maybe not public or not valid?
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:229) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:112) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorValueRef.getValue(PropertyOrFieldReference.java:376) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:116) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	... 69 common frames omitted
+
+2025-01-21T18:54:40.198+08:00 ERROR 10376 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "user.id" (template: "index" - line 29, col 12)] with root cause
+
+org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'id' cannot be found on object of type 'xjtu.pojo.User' - maybe not public or not valid?
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:229) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:112) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorValueRef.getValue(PropertyOrFieldReference.java:376) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:116) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.2.1.jar:6.2.1]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.resolveParameters(LinkExpression.java:339) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.executeLinkExpression(LinkExpression.java:285) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:85) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:282) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:290) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.processIterationModel(IteratedGatheringModelProcessable.java:368) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.process(IteratedGatheringModelProcessable.java:222) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleCloseElement(ProcessorTemplateHandler.java:1640) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.CloseElementTag.beHandled(CloseElementTag.java:139) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.TemplateModel.process(TemplateModel.java:136) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:661) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.3.RELEASE.jar:3.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1435) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1105) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-01-21T18:54:40.209+08:00  WARN 10376 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.LinkedHashMap] with preset Content-Type 'text/html;charset=UTF-8']
+2025-01-21T19:05:14.113+08:00  INFO 10376 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-21T19:05:14.151+08:00  INFO 10376 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-21T19:05:14.155+08:00  INFO 10376 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-21T19:05:14.162+08:00  INFO 10376 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-21T19:06:46.675+08:00  INFO 22248 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 22248 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by 张先生 in D:\GraphAlignment-Visualization\BackEnd)
+2025-01-21T19:06:46.675+08:00 DEBUG 22248 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-01-21T19:06:46.677+08:00  INFO 22248 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-01-21T19:06:47.210+08:00  INFO 22248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-21T19:06:47.217+08:00  INFO 22248 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-21T19:06:47.217+08:00  INFO 22248 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-21T19:06:47.259+08:00  INFO 22248 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-21T19:06:47.259+08:00  INFO 22248 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 560 ms
+2025-01-21T19:06:47.430+08:00  INFO 22248 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-01-21T19:06:47.603+08:00  INFO 22248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-21T19:06:47.610+08:00  INFO 22248 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 1.189 seconds (process running for 1.523)
+2025-01-21T19:06:56.349+08:00  INFO 22248 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-21T19:06:56.349+08:00  INFO 22248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-21T19:06:56.349+08:00  INFO 22248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-01-21T19:06:56.375+08:00  INFO 22248 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-21T19:06:56.572+08:00  INFO 22248 --- [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@501ed0e0
+2025-01-21T19:06:56.573+08:00  INFO 22248 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-21T19:06:56.577+08:00 DEBUG 22248 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from user;
+2025-01-21T19:06:56.594+08:00 DEBUG 22248 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T19:06:56.628+08:00 DEBUG 22248 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : <==      Total: 1000
+2025-01-21T22:54:01.525+08:00  INFO 22248 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-21T22:54:01.566+08:00  INFO 22248 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-21T22:54:01.571+08:00  INFO 22248 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-21T22:54:01.575+08:00  INFO 22248 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-21T22:54:04.454+08:00  INFO 30672 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 30672 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by 张先生 in D:\GraphAlignment-Visualization\BackEnd)
+2025-01-21T22:54:04.456+08:00 DEBUG 30672 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-01-21T22:54:04.456+08:00  INFO 30672 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-01-21T22:54:04.990+08:00  INFO 30672 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-21T22:54:04.998+08:00  INFO 30672 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-21T22:54:04.998+08:00  INFO 30672 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-21T22:54:05.040+08:00  INFO 30672 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-21T22:54:05.040+08:00  INFO 30672 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 560 ms
+2025-01-21T22:54:05.208+08:00  INFO 30672 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-01-21T22:54:05.377+08:00  INFO 30672 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-21T22:54:05.383+08:00  INFO 30672 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 1.195 seconds (process running for 1.557)
+2025-01-21T22:54:08.909+08:00  INFO 30672 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-21T22:54:08.909+08:00  INFO 30672 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-21T22:54:08.910+08:00  INFO 30672 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-01-21T22:54:08.938+08:00  INFO 30672 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-21T22:54:09.149+08:00  INFO 30672 --- [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@501ed0e0
+2025-01-21T22:54:09.151+08:00  INFO 30672 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-21T22:54:09.155+08:00 DEBUG 30672 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from user;
+2025-01-21T22:54:09.172+08:00 DEBUG 30672 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : ==> Parameters: 
+2025-01-21T22:54:09.203+08:00 DEBUG 30672 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.listUser                : <==      Total: 1000
+2025-01-21T23:00:37.701+08:00  INFO 30672 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-21T23:00:37.743+08:00  INFO 30672 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-21T23:00:37.745+08:00  INFO 30672 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-21T23:00:37.751+08:00  INFO 30672 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

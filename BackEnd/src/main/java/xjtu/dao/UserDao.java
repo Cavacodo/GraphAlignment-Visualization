@@ -11,5 +11,4 @@ import java.util.List;
 @Repository
 public interface UserDao {
     public List<User> listUser();
-    public List<User> listUserByName(UserQuery userQuery);
 }

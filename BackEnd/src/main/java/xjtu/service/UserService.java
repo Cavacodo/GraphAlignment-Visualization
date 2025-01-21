@@ -10,5 +10,4 @@ import java.util.List;
 
 public interface UserService {
     List<User> listUser();
-    PageInfo<User> listUserByName(UserQuery userQuery);
 }

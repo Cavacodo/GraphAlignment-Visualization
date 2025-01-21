@@ -24,14 +24,5 @@ public class UserController {
     {
         return userService.listUser();
     }
-    @GetMapping("/table")
-    public String listUserByName(Model model, UserQuery userQuery){
-        PageInfo<User> userPageInfo = userService.listUserByName(userQuery);
-        model.addAttribute("page",userPageInfo);
-        return "index";
-    }
-//    @GetMapping("/table2")
-//    public String index2(){
-//        return "index";
-//    }
+
 }
