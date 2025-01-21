@@ -5,4 +5,13 @@
         select *
         from test_user;
     </select>
+    <select id="listUserByName" parameterType="xjtu.pojo.query.UserQuery" resultType="xjtu.pojo.User">
+        select *
+        from test_user
+        <where>
+            <if test="name != null and name !=''" >
+                and username like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
 </mapper>

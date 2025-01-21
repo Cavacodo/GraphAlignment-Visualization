@@ -1,4 +1,4 @@
-package xjtu.pojo.Query;
+package xjtu.pojo.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
