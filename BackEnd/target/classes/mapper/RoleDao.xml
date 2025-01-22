@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xjtu.dao.RoleDao">
+    <select id="listRole" resultType="xjtu.pojo.Role">
+        select *
+        from role;
+    </select>
+    <select id="findRoleByAccount" parameterType="java.lang.String" resultType="xjtu.pojo.Role">
+        select * from role where account = #{account};
+    </select>
+    <insert id="addRole">
+        insert into role(account) values(#{account});
+    </insert>
+    <update id="changeUserPrivilege">
+        update role set role = #{role} where account = #{account};
+    </update>
+</mapper>
