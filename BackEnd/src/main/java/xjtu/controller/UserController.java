@@ -4,12 +4,9 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import xjtu.pojo.User;
-import xjtu.pojo.query.UserQuery;
+import xjtu.pojo.utils.UserWithRole;
 import xjtu.service.UserService;
 
 import java.util.List;
@@ -25,4 +22,22 @@ public class UserController {
         return userService.listUser();
     }
 
+    @GetMapping("/findUserByAccount")
+    @ResponseBody
+    public User findUserByAccount(String account)
+    {
+        return userService.findUserByAccount(account);
+    }
+    @PostMapping("/addUser")
+    @ResponseBody
+    public int addUser(User user)
+    {
+        return userService.addUser(user);
+    }
+    @GetMapping("/listUserWithPrivilege")
+    @ResponseBody
+    public List<UserWithRole> listUserWithPrivilege()
+    {
+        return userService.listUserWithPrivilege();
+    }
 }
