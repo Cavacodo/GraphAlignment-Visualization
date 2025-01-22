@@ -22,6 +22,11 @@
         ON
             user.id = role.id;
     </select>
+    <select id="login" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS count
+        FROM user
+        WHERE account = #{account} AND pwd = #{pwd};
+    </select>
     <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="xjtu.pojo.User">
         INSERT INTO user(account,pwd,email) VALUES (#{account},#{pwd},#{email});
     </insert>

@@ -1,13 +1,13 @@
 package xjtu.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import xjtu.annotation.Auth;
 import xjtu.dao.UserDao;
 import xjtu.pojo.Role;
 import xjtu.pojo.User;
 import xjtu.pojo.utils.UserWithRole;
+import xjtu.service.TokenService;
 import xjtu.service.UserService;
 
 import java.util.List;
@@ -17,6 +17,8 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
     @Autowired
     RoleServiceImpl roleServiceImpl;
+    @Autowired
+    TokenServiceImpl tokenServiceImpl;
     @Override
     public List<User> listUser() {
         return userDao.listUser();
@@ -34,6 +36,7 @@ public class UserServiceImpl implements UserService {
             if(roleServiceImpl.findRoleByAccount(user.getAccount()) != null) return 2;
             userDao.addUser(user);
             roleServiceImpl.addRole(new Role(0,user.getAccount(), 0));
+            // todo 添加user到token表中
             return 1;
         }
         else if(checkEmailDuplicate(user.getEmail()) == 0) return 0;
@@ -59,4 +62,9 @@ public class UserServiceImpl implements UserService {
         return userDao.listUserWithPrivilege();
     }
 
+    @Override
+    public int login(String account, String pwd) {
+        if(findUserByAccount(account) == null) return -1;
+        return userDao.login(account,pwd);
+    }
 }

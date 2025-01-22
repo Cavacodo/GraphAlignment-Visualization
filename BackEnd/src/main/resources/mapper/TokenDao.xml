@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xjtu.dao.TokenDao">
+    <select id="getTokenByAccount" parameterType="java.lang.String" resultType="java.lang.String">
+        select token
+        from token where account = #{account};
+    </select>
+    <update id="setToken">
+        update token set token = #{token} where account = #{account};
+    </update>
+    <update id="deleteToken">
+        update token set token = null where account = #{account};
+    </update>
+</mapper>

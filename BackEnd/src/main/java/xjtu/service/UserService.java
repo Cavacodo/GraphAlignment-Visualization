@@ -1,6 +1,6 @@
 package xjtu.service;
 
-import com.github.pagehelper.PageInfo;
+
 import org.springframework.stereotype.Service;
 import xjtu.pojo.User;
 import xjtu.pojo.utils.UserWithRole;
@@ -16,4 +16,5 @@ public interface UserService {
     int checkAccountExistence(String account);
     int checkEmailDuplicate(String email);
     List<UserWithRole> listUserWithPrivilege();
+    int login(String account, String pwd);
 }

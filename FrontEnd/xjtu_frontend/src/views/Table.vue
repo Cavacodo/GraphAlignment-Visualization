@@ -5,8 +5,9 @@
       </div>
   
       <el-table :data="tableData" border style="width: 100%" v-loading="loading">
-        <el-table-column prop="username" label="用户名" width="180" />
-        <el-table-column prop="password" label="密码" />
+        <el-table-column prop="account" label="用户名" width="180" />
+        <el-table-column prop="pwd" label="密码" width="180" />
+        <el-table-column prop="email" label="邮箱" />
       </el-table>
       
       <div class="pagination">
@@ -37,8 +38,9 @@
   const getTableData = async () => {
     loading.value = true
     try {
-      const response = await axios.get('/api/listUser')  // 使用代理地址
+      const response = await axios.get('http://localhost:8080/listUser')  // 添加 await
       const allData = response.data
+      console.log(allData)
       total.value = allData.length
       
       const startIndex = (currentPage.value - 1) * pageSize.value
