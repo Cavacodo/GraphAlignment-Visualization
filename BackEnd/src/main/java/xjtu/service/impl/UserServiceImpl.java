@@ -2,7 +2,10 @@ package xjtu.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import xjtu.annotation.Auth;
+import xjtu.dao.RoleDao;
+import xjtu.dao.TokenDao;
 import xjtu.dao.UserDao;
 import xjtu.pojo.Role;
 import xjtu.pojo.User;
@@ -16,9 +19,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
     @Autowired
-    RoleServiceImpl roleServiceImpl;
+    RoleDao roleDao;
     @Autowired
-    TokenServiceImpl tokenServiceImpl;
+    TokenDao tokenDao;
     @Override
     public List<User> listUser() {
         return userDao.listUser();
@@ -29,19 +32,6 @@ public class UserServiceImpl implements UserService {
         return userDao.findUserByAccount(account);
     }
 
-    @Override
-    public int addUser(User user) {
-        System.out.println(checkEmailDuplicate(user.getEmail()) == 0);
-        if(checkAccountExistence(user.getAccount()) == 1 && checkEmailDuplicate(user.getEmail()) == 1){
-            if(roleServiceImpl.findRoleByAccount(user.getAccount()) != null) return 2;
-            userDao.addUser(user);
-            roleServiceImpl.addRole(new Role(0,user.getAccount(), 0));
-            // todo 添加user到token表中
-            return 1;
-        }
-        else if(checkEmailDuplicate(user.getEmail()) == 0) return 0;
-        return -1;
-    }
 
     @Override
     public int checkAccountExistence(String account) {
@@ -66,5 +56,14 @@ public class UserServiceImpl implements UserService {
     public int login(String account, String pwd) {
         if(findUserByAccount(account) == null) return -1;
         return userDao.login(account,pwd);
+    }
+
+    @Transactional
+    @Override
+    public int addUserTransaction(User user) {
+        int userAdd = userDao.addUser(user);
+        int roleAdd = roleDao.addRole(new Role(0,user.getAccount(), 1));
+        int tokenAdd = tokenDao.addToken(user.getAccount(), "");
+        return userAdd + roleAdd + tokenAdd;
     }
 }

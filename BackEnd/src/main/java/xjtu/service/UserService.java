@@ -12,9 +12,9 @@ import java.util.List;
 public interface UserService {
     List<User> listUser();
     User findUserByAccount(String account);
-    int addUser(User user);
     int checkAccountExistence(String account);
     int checkEmailDuplicate(String email);
     List<UserWithRole> listUserWithPrivilege();
     int login(String account, String pwd);
+    int addUserTransaction(User user);
 }

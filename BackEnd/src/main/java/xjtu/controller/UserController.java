@@ -42,7 +42,7 @@ public class UserController {
     @ResponseBody
     public int addUser(User user)
     {
-        return userService.addUser(user);
+        return userService.addUserTransaction(user);
     }
     @GetMapping("/listUserWithPrivilege")
     @ResponseBody

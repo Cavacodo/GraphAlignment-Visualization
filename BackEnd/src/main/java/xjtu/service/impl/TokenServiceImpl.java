@@ -25,4 +25,9 @@ public class TokenServiceImpl implements TokenService {
     public int deleteToken(String account) {
         return tokenDao.deleteToken(account);
     }
+
+    @Override
+    public int addToken(String account, String token) {
+        return tokenDao.addToken(account,token);
+    }
 }

@@ -5,6 +5,10 @@
         select token
         from token where account = #{account};
     </select>
+    <insert id="addToken">
+        insert into token (account, token)
+        values (#{account}, #{token});
+    </insert>
     <update id="setToken">
         update token set token = #{token} where account = #{account};
     </update>
