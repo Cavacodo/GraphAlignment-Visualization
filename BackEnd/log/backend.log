@@ -423,3 +423,386 @@
 2025-02-04T12:51:32.875+08:00  INFO 26328 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
 2025-02-04T12:51:32.877+08:00  INFO 26328 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-02-04T12:51:32.880+08:00  INFO 26328 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-04T13:21:04.020+08:00  INFO 12744 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 12744 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by 张先生 in D:\GraphAlignment-Visualization\BackEnd)
+2025-02-04T13:21:04.021+08:00 DEBUG 12744 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-02-04T13:21:04.022+08:00  INFO 12744 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-02-04T13:21:04.424+08:00  INFO 12744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-02-04T13:21:04.427+08:00  INFO 12744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-02-04T13:21:04.449+08:00  INFO 12744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2025-02-04T13:21:04.817+08:00  INFO 12744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-02-04T13:21:04.825+08:00  INFO 12744 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-04T13:21:04.825+08:00  INFO 12744 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-04T13:21:04.873+08:00  INFO 12744 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-04T13:21:04.874+08:00  INFO 12744 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 825 ms
+2025-02-04T13:21:05.520+08:00  INFO 12744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-02-04T13:21:05.526+08:00  INFO 12744 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 1.818 seconds (process running for 2.269)
+2025-02-04T13:21:06.891+08:00  INFO 12744 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-04T13:21:06.891+08:00  INFO 12744 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-04T13:21:06.892+08:00  INFO 12744 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-04T13:21:06.958+08:00  INFO 12744 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-04T13:21:07.199+08:00  INFO 12744 --- [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7f24644a
+2025-02-04T13:21:07.200+08:00  INFO 12744 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-04T13:21:07.206+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:21:07.225+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:21:07.242+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:21:07.248+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:21:07.248+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1232(String)
+2025-02-04T13:21:07.250+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:21:07.250+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:21:07.251+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:21:07.252+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:21:07.252+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:21:07.252+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1232(String)
+2025-02-04T13:21:07.253+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:21:54.010+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:21:54.011+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:21:54.012+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:21:54.012+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:21:54.013+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1232(String)
+2025-02-04T13:21:54.013+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:21:54.013+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:21:54.013+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:21:54.014+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:21:54.014+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:21:54.014+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1232(String)
+2025-02-04T13:21:54.015+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:22:09.545+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:22:09.546+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:22:09.548+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:22:09.548+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:22:09.548+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123q(String)
+2025-02-04T13:22:09.549+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:22:09.549+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:22:09.550+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:22:09.550+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:22:09.551+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:22:09.551+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123q(String)
+2025-02-04T13:22:09.551+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:22:33.272+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:22:33.273+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:22:33.274+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:22:33.275+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:22:33.275+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1231(String)
+2025-02-04T13:22:33.276+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:22:33.276+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:22:33.276+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:22:33.277+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:22:33.277+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:22:33.278+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1231(String)
+2025-02-04T13:22:33.280+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:22:37.141+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:22:37.142+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:22:37.143+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:22:37.143+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:22:37.143+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1231(String)
+2025-02-04T13:22:37.144+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:22:37.144+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:22:37.144+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:22:37.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:22:37.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:22:37.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1231(String)
+2025-02-04T13:22:37.146+08:00 DEBUG 12744 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:43.342+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:26:43.342+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:26:43.343+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:26:43.344+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:26:43.344+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1231(String)
+2025-02-04T13:26:43.346+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:43.346+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:26:43.346+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:26:43.347+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:26:43.347+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:26:43.347+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1231(String)
+2025-02-04T13:26:43.348+08:00 DEBUG 12744 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:45.407+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:26:45.408+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:26:45.408+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:26:45.409+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:26:45.409+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1231(String)
+2025-02-04T13:26:45.409+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:45.409+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:26:45.409+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:26:45.410+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:26:45.410+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:26:45.410+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1231(String)
+2025-02-04T13:26:45.411+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:47.423+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:26:47.424+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:26:47.424+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:26:47.424+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:26:47.424+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1231(String)
+2025-02-04T13:26:47.426+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:47.427+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:26:47.427+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:26:47.428+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:26:47.428+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:26:47.429+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 1231(String)
+2025-02-04T13:26:47.430+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:49.904+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:26:49.904+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:26:49.905+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:26:49.906+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:26:49.906+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T13:26:49.906+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:49.906+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T13:26:49.906+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T13:26:49.908+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T13:26:49.908+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:26:49.908+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:26:49.909+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:26:49.909+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:26:49.909+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T13:26:49.910+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:49.910+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T13:26:49.910+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T13:26:49.910+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T13:26:49.911+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T13:26:49.911+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T13:26:49.911+08:00 DEBUG 12744 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T13:26:52.114+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:26:52.114+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:26:52.114+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:26:52.114+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:26:52.116+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T13:26:52.116+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:52.116+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T13:26:52.116+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T13:26:52.117+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T13:26:52.117+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:26:52.117+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:26:52.118+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:26:52.118+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:26:52.118+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T13:26:52.119+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:26:52.120+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T13:26:52.120+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T13:26:52.121+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T13:26:52.121+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T13:26:52.121+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T13:26:52.121+08:00 DEBUG 12744 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T13:27:02.192+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:27:02.192+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:27:02.193+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:27:02.193+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:27:02.193+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T13:27:02.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:27:02.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T13:27:02.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T13:27:02.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T13:27:02.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T13:27:02.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T13:27:02.196+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T13:27:02.196+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T13:27:02.196+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T13:27:02.197+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T13:27:02.197+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T13:27:02.197+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T13:27:02.198+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T13:27:02.198+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T13:27:02.198+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T13:27:02.198+08:00 DEBUG 12744 --- [http-nio-8080-exec-6] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T14:15:08.043+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T14:15:08.043+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T14:15:08.044+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T14:15:08.045+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T14:15:08.045+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T14:15:08.046+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T14:15:08.046+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T14:15:08.046+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T14:15:08.047+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T14:15:08.047+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T14:15:08.047+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T14:15:08.047+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T14:15:08.047+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T14:15:08.048+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T14:15:08.048+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T14:15:08.048+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T14:15:08.048+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T14:15:08.049+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T14:15:08.049+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T14:15:08.050+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T14:15:08.051+08:00 DEBUG 12744 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T14:17:25.143+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T14:17:25.143+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T14:17:25.144+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T14:17:25.144+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T14:17:25.144+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T14:17:25.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T14:17:25.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T14:17:25.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T14:17:25.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T14:17:25.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T14:17:25.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T14:17:25.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T14:17:25.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T14:17:25.145+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T14:17:25.146+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T14:17:25.146+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T14:17:25.146+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T14:17:25.146+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T14:17:25.146+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T14:17:25.146+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T14:17:25.147+08:00 DEBUG 12744 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T14:56:04.867+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T14:56:04.868+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T14:56:04.869+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T14:56:04.869+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T14:56:04.870+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T14:56:04.870+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T14:56:04.871+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T14:56:04.871+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T14:56:04.872+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T14:56:04.872+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T14:56:04.872+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T14:56:04.872+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T14:56:04.873+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T14:56:04.873+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T14:56:04.873+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T14:56:04.873+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T14:56:04.873+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T14:56:04.874+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T14:56:04.874+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T14:56:04.874+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T14:56:04.874+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T15:05:38.039+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T15:05:38.040+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T15:05:38.040+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T15:05:38.042+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T15:05:38.042+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T15:05:38.042+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T15:05:38.043+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T15:05:38.043+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T15:05:38.043+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T15:05:38.043+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T15:05:38.043+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T15:05:38.044+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T15:05:38.044+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T15:05:38.044+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T15:05:38.045+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T15:05:38.046+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T15:05:38.046+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T15:05:38.047+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T15:05:38.047+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T15:05:38.047+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T15:05:38.048+08:00 DEBUG 12744 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T15:07:25.192+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T15:07:25.193+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T15:07:25.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T15:07:25.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T15:07:25.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T15:07:25.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T15:07:25.194+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T15:07:25.195+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T15:07:25.195+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T15:07:25.195+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T15:07:25.195+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T15:07:25.196+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T15:07:25.196+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T15:07:25.196+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T15:07:25.197+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T15:07:25.197+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T15:07:25.197+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T15:07:25.197+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T15:07:25.198+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T15:07:25.198+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T15:07:25.198+08:00 DEBUG 12744 --- [http-nio-8080-exec-10] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T15:07:49.251+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T15:07:49.251+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T15:07:49.252+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T15:07:49.252+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T15:07:49.252+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T15:07:49.253+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T15:07:49.253+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T15:07:49.253+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T15:07:49.253+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T15:07:49.254+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-04T15:07:49.254+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-04T15:07:49.254+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-04T15:07:49.254+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-04T15:07:49.254+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-04T15:07:49.255+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-04T15:07:49.255+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T15:07:49.255+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T15:07:49.255+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T15:07:49.256+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-04T15:07:49.256+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-04T15:07:49.256+08:00 DEBUG 12744 --- [http-nio-8080-exec-9] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-04T15:07:55.255+08:00  INFO 12744 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-02-04T15:07:55.296+08:00  INFO 12744 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-02-04T15:07:55.322+08:00  INFO 12744 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-04T15:07:55.326+08:00  INFO 12744 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-04T16:20:32.468+08:00  INFO 5948 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 5948 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by 张先生 in D:\GraphAlignment-Visualization\BackEnd)
+2025-02-04T16:20:32.470+08:00 DEBUG 5948 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-02-04T16:20:32.470+08:00  INFO 5948 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-02-04T16:20:32.921+08:00  INFO 5948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-02-04T16:20:32.924+08:00  INFO 5948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-02-04T16:20:32.945+08:00  INFO 5948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-02-04T16:20:33.321+08:00  INFO 5948 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-02-04T16:20:33.332+08:00  INFO 5948 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-04T16:20:33.332+08:00  INFO 5948 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-04T16:20:33.379+08:00  INFO 5948 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-04T16:20:33.379+08:00  INFO 5948 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 878 ms
+2025-02-04T16:20:33.594+08:00  WARN 5948 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'emailUtil': Injection of autowired dependencies failed
+2025-02-04T16:20:33.596+08:00  INFO 5948 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-02-04T16:20:33.615+08:00  INFO 5948 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-02-04T16:20:33.632+08:00 ERROR 5948 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'emailUtil': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:515) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1441) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:289) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1093) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1030) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.1.jar:3.4.1]
+	at xjtu.BackEndApplication.main(BackEndApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.util.PlaceholderResolutionException: Could not resolve placeholder 'spring.main.username' in value "${spring.main.username}"
+	at org.springframework.util.PlaceholderResolutionException.withValue(PlaceholderResolutionException.java:81) ~[spring-core-6.2.1.jar:6.2.1]
+	at org.springframework.util.PlaceholderParser$ParsedValue.resolve(PlaceholderParser.java:416) ~[spring-core-6.2.1.jar:6.2.1]
+	at org.springframework.util.PlaceholderParser.replacePlaceholders(PlaceholderParser.java:128) ~[spring-core-6.2.1.jar:6.2.1]
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:118) ~[spring-core-6.2.1.jar:6.2.1]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:114) ~[spring-core-6.2.1.jar:6.2.1]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:255) ~[spring-core-6.2.1.jar:6.2.1]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:226) ~[spring-core-6.2.1.jar:6.2.1]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:201) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:963) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1541) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1519) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:888) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:849) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.1.jar:6.2.1]
+	... 19 common frames omitted
+
+2025-02-04T16:23:20.060+08:00  INFO 14044 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 14044 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by 张先生 in D:\GraphAlignment-Visualization\BackEnd)
+2025-02-04T16:23:20.062+08:00 DEBUG 14044 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-02-04T16:23:20.062+08:00  INFO 14044 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-02-04T16:23:20.428+08:00  INFO 14044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-02-04T16:23:20.430+08:00  INFO 14044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-02-04T16:23:20.450+08:00  INFO 14044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-02-04T16:23:20.768+08:00  INFO 14044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-02-04T16:23:20.777+08:00  INFO 14044 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-04T16:23:20.777+08:00  INFO 14044 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-04T16:23:20.821+08:00  INFO 14044 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-04T16:23:20.821+08:00  INFO 14044 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 734 ms
+2025-02-04T16:23:21.452+08:00  INFO 14044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-02-04T16:23:21.459+08:00  INFO 14044 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 1.681 seconds (process running for 2.075)
+2025-02-04T16:23:26.384+08:00  INFO 14044 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-04T16:23:26.384+08:00  INFO 14044 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-04T16:23:26.385+08:00  INFO 14044 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-04T16:54:20.672+08:00  INFO 14044 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-02-04T16:54:20.709+08:00  INFO 14044 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete

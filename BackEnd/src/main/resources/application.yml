@@ -16,6 +16,12 @@ spring:
           max-idle: 3
           max-wait: -1ms
           min-idle: 0
+  main:
+    host: smtp.qq.com
+    port: 9999
+    username: 2158405639@qq.com
+    password: qywwjeammzesdjcd
+
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:

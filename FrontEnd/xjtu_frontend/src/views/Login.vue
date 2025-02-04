@@ -1,9 +1,10 @@
 <template>
   <div class="login-container">
     <div class="login-box">
-      <h2>用户登录</h2>
+      <h2 v-if="!showForgotPassword && !showRegister">用户登录</h2>
+      <h2 v-if="showRegister">注册账号</h2>
       
-      <div class="form-group" v-if="!showForgotPassword">
+      <div class="form-group" v-if="!showForgotPassword && !showRegister">
         <input
           type="text"
           v-model="username"
@@ -12,7 +13,7 @@
         >
       </div>
       
-      <div class="form-group" v-if="!showForgotPassword">
+      <div class="form-group" v-if="!showForgotPassword && !showRegister">
         <input
           type="password"
           v-model="password"
@@ -21,22 +22,72 @@
         >
       </div>
       
+      <div class="form-group" v-if="showRegister">
+        <input
+          type="text"
+          v-model="newUsername"
+          placeholder="请输入新用户名"
+          class="form-input"
+        >
+      </div>
+      
+      <div class="form-group" v-if="showRegister">
+        <input
+          type="password"
+          v-model="newPassword"
+          placeholder="请输入新密码"
+          class="form-input"
+        >
+      </div>
+      
+      <div class="form-group" v-if="showRegister">
+        <input
+          type="email"
+          v-model="email"
+          placeholder="请输入注册邮箱"
+          class="form-input"
+        >
+      </div>
+
+      <div class="form-group" v-if="showRegister">
+        <div class="inline-form">
+          <input
+            type="text"
+            v-model="verifyCode"
+            placeholder="请输入验证码"
+            class="form-input inline-input"
+          > 
+          <el-button 
+            type="primary" 
+            @click="handleSendVerifyCode" 
+            :disabled="countdown > 0"
+          >
+            {{ countdown > 0 ? `${countdown}秒后重试` : '发送验证码' }}
+          </el-button>
+        </div>
+      </div>
+      
       <div v-if="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
       
-      <button @click="handleLogin" class="login-button" v-if="!showForgotPassword">
+      <button @click="handleLogin" class="login-button" v-if="!showForgotPassword && !showRegister">
         登录
       </button>
       
+      <button @click="handleRegister" class="login-button" v-if="showRegister">
+        注册
+      </button>
+      
       <div class="additional-links">
-        <a href="#" @click.prevent="toggleForgotPassword">忘记密码？</a>
-        <a href="#">注册账号</a>
+        <a href="#" @click.prevent="toggleForgotPassword" v-if="!showForgotPassword && !showRegister">忘记密码？</a>
+        <a href="#" @click.prevent="toggleRegister" v-if="!showForgotPassword && !showRegister">注册账号</a>
+        <a href="#" @click.prevent="toggleRegister" v-if="showRegister">返回登录</a>
       </div>
       
       <!-- 忘记密码表单 -->
       <div v-if="showForgotPassword" class="forgot-password-form">
-        <h3>忘记密码</h3>
+        <h2>忘记密码</h2>
         <div class="form-group">
           <input
             type="email"
@@ -44,6 +95,23 @@
             placeholder="请输入注册邮箱"
             class="form-input"
           >
+        </div>
+        <div class="form-group">
+          <div class="inline-form">
+          <input
+            type="text"
+            v-model="verifyCode"
+            placeholder="请输入验证码"
+            class="form-input inline-input"
+          > 
+          <el-button 
+            type="primary" 
+            @click="handleSendVerifyCode" 
+            :disabled="countdown > 0"
+          >
+            {{ countdown > 0 ? `${countdown}秒后重试` : '发送验证码' }}
+          </el-button>
+        </div>
         </div>
         <button @click="handleForgotPassword" class="login-button">
           提交
@@ -64,9 +132,13 @@ import { useRouter } from 'vue-router'  // 导入路由
 const router = useRouter()
 const username = ref('')
 const password = ref('')
+const newUsername = ref('')
+const newPassword = ref('')
 const email = ref('')
 const errorMessage = ref('')
 const showForgotPassword = ref(false)
+const showRegister = ref(false)
+const countdown = ref(0)  // 新增倒计时变量
 
 const handleLogin = async () => {
   // 表单验证
@@ -113,6 +185,49 @@ const handleLogin = async () => {
   }
 }
 
+const handleRegister = async () => {
+  // 表单验证
+  if (!newUsername.value || !newPassword.value || !email.value) {
+    errorMessage.value = '用户名、密码和邮箱不能为空'
+    return
+  }
+
+  try {
+    console.log('发送注册请求:', {
+      username: newUsername.value,
+      password: newPassword.value,
+      email: email.value
+    })
+
+    const response = await axios.post('http://localhost:8080/user/register', 
+      {
+        username: newUsername.value,
+        password: newPassword.value,
+        email: email.value
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true  // 允许携带凭证
+      }
+    )
+
+    console.log('注册响应:', response.data)
+
+    if (response.data.code === 200) {  // 假设后端返回 code 200 表示成功
+      alert('注册成功，请登录')
+      toggleRegister()
+    } else {
+      errorMessage.value = response.data.msg || '注册失败'
+      alert(errorMessage.value);
+    }
+  } catch (error) {
+    console.error('注册错误详情:', error.response || error)
+    errorMessage.value = error.response?.data?.message || '注册失败，请稍后重试'
+  }
+}
+
 const handleForgotPassword = async () => {
   // 表单验证
   if (!email.value) {
@@ -155,6 +270,36 @@ const handleForgotPassword = async () => {
 const toggleForgotPassword = () => {
   showForgotPassword.value = !showForgotPassword.value
   errorMessage.value = ''
+}
+
+const toggleRegister = () => {
+  showRegister.value = !showRegister.value
+  errorMessage.value = ''
+}
+const isValidEmail = (email) => {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+}
+
+const handleSendVerifyCode = () => {
+  if (!isValidEmail(email.value)) {
+    alert("请输入有效的邮箱地址")
+    return
+  }
+  // 这里添加发送验证码的逻辑
+  console.log('发送验证码逻辑')
+  startCountdown()  // 发送验证码后开始倒计时
+}
+
+const startCountdown = () => {
+  countdown.value = 60
+  const timer = setInterval(() => {
+    if (countdown.value > 0) {
+      countdown.value--
+    } else {
+      clearInterval(timer)
+    }
+  }, 1000)
 }
 </script>
 
@@ -260,5 +405,19 @@ h2 {
 
 .forgot-password-form {
   margin-top: 20px;
+}
+
+.inline-form {
+  display: flex;
+  align-items: center;
+}
+
+.inline-input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.el-button {
+  height: 42px;
 }
 </style>
