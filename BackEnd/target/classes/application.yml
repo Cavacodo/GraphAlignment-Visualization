@@ -5,6 +5,17 @@ spring:
     username: root
     password: "0403"
     url: jdbc:mysql://localhost:3306/xjtu
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+      jedis:
+        pool:
+          max-active: 100
+          max-idle: 3
+          max-wait: -1ms
+          min-idle: 0
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:

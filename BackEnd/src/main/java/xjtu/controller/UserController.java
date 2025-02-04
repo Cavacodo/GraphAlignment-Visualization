@@ -17,6 +17,7 @@ import xjtu.service.TokenService;
 import xjtu.service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -52,7 +53,9 @@ public class UserController {
     }
     @PostMapping("/login")
     @ResponseBody
-    public R<String> login(String account, String pwd){
+    public R<String> login(@RequestBody Map<String, String> credentials){
+        String account = credentials.get("account");
+        String pwd = credentials.get("pwd");
         if(StringUtils.isNotBlank(account) && StringUtils.isNotBlank(pwd)){
             if(userService.login(account,pwd) == 1 && tokenService.getTokenByAccount(account) == null){
                 JSONObject jsonObject = JSONUtil.createObj().put("name","Me");

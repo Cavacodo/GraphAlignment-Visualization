@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import xjtu.annotation.Auth;
 import xjtu.dao.TokenDao;
 import xjtu.service.TokenService;
+
+import java.util.UUID;
+
 @Service
 public class TokenServiceImpl implements TokenService {
     @Autowired
@@ -30,4 +33,7 @@ public class TokenServiceImpl implements TokenService {
     public int addToken(String account, String token) {
         return tokenDao.addToken(account,token);
     }
+
+    // 使用这个方法生成token
+
 }
