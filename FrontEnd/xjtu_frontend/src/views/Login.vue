@@ -97,6 +97,22 @@
           >
         </div>
         <div class="form-group">
+          <input
+            type="text"
+            v-model="FirstPassword"
+            placeholder="请输入新密码"
+            class="form-input"
+          ></input>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            v-model="SecondPassword"
+            placeholder="再次输入密码"
+            class="form-input"
+          ></input> 
+        </div>
+        <div class="form-group">
           <div class="inline-form">
           <input
             type="text"
@@ -134,11 +150,14 @@ const username = ref('')
 const password = ref('')
 const newUsername = ref('')
 const newPassword = ref('')
+const FirstPassword = ref('')
+const SecondPassword = ref('')
 const email = ref('')
 const errorMessage = ref('')
 const showForgotPassword = ref(false)
 const showRegister = ref(false)
 const countdown = ref(0)  // 新增倒计时变量
+const verifyCode = ref('')
 
 const handleLogin = async () => {
   // 表单验证
@@ -234,37 +253,44 @@ const handleForgotPassword = async () => {
     errorMessage.value = '邮箱不能为空'
     return
   }
-
-  try {
-    console.log('发送忘记密码请求:', {
-      email: email.value
-    })
-
-    const response = await axios.post('http://localhost:8080/user/forgot-password', 
-      {
-        email: email.value
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true  // 允许携带凭证
-      }
-    )
-
-    console.log('忘记密码响应:', response.data)
-
-    if (response.data.code === 200) {  // 假设后端返回 code 200 表示成功
-      alert('重置密码邮件已发送，请查收')
-      toggleForgotPassword()
-    } else {
-      errorMessage.value = response.data.msg || '操作失败'
-      alert(errorMessage.value);
-    }
-  } catch (error) {
-    console.error('忘记密码错误详情:', error.response || error)
-    errorMessage.value = error.response?.data?.message || '操作失败，请稍后重试'
+  if(FirstPassword.value !== SecondPassword.value){
+    alert("两次密码不一致")
+    return
   }
+  if(FirstPassword.value == null || SecondPassword.value == null || FirstPassword.value == '' || SecondPassword.value == ''){
+    alert("密码不能为空")
+    return
+  }
+  // try {
+  //   console.log('发送忘记密码请求:', {
+  //     email: email.value
+  //   })
+
+  //   const response = await axios.post('http://localhost:8080/sendEmail', 
+  //     {
+  //       email: email.value
+  //     },
+  //     {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       withCredentials: true  // 允许携带凭证
+  //     }
+  //   )
+
+  //   console.log('忘记密码响应:', response.data)
+
+  //   if (response.data.code === 200) {  // 假设后端返回 code 200 表示成功
+  //     alert('重置密码邮件已发送，请查收')
+  //     toggleForgotPassword()
+  //   } else {
+  //     errorMessage.value = response.data.msg || '操作失败'
+  //     alert(errorMessage.value);
+  //   }
+  // } catch (error) {
+  //   console.error('忘记密码错误详情:', error.response || error)
+  //   errorMessage.value = error.response?.data?.message || '操作失败，请稍后重试'
+  // }
 }
 
 const toggleForgotPassword = () => {
@@ -281,12 +307,45 @@ const isValidEmail = (email) => {
   return emailRegex.test(email);
 }
 
-const handleSendVerifyCode = () => {
+const handleSendVerifyCode = async() => {
   if (!isValidEmail(email.value)) {
     alert("请输入有效的邮箱地址")
     return
   }
-  // 这里添加发送验证码的逻辑
+  try {
+    console.log('发送忘记密码请求:', {
+      email: email.value
+    })
+
+    const response = await axios.post('http://localhost:8080/sendEmail', 
+      {
+        email: email.value
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true  // 允许携带凭证
+      }
+    )
+
+    console.log('忘记密码响应:', response)
+
+    if (response.status === 202) {  // 假设后端返回 code 200 表示成功
+      alert('重置密码邮件已发送，请查收')
+      toggleForgotPassword()
+    }else if(response.status === 208){
+      alert("验证码已发送，请误重复点击")
+    } 
+    else {
+      errorMessage.value = response.data.msg || '操作失败'
+      alert(errorMessage.value);
+    }
+  } catch (error) {
+    console.error('忘记密码错误详情:', error.response || error)
+    errorMessage.value = error.response?.data?.message || '操作失败，请稍后重试'
+  }
+
   console.log('发送验证码逻辑')
   startCountdown()  // 发送验证码后开始倒计时
 }

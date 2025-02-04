@@ -4,6 +4,6 @@ package xjtu.service;
  */
 
 public interface EmailService {
-    public void send(String email);
+    public String send(String email);
     public String getVerifyCode();
 }
