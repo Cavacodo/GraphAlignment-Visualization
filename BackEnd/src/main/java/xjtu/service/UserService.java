@@ -20,4 +20,5 @@ public interface UserService {
     Integer findUserByEmail(String email);
     String getRedisVerifyCode(String email);
     int updatePwdById(int id,String pwd);
+    int register(User user, String verifyCode);
 }

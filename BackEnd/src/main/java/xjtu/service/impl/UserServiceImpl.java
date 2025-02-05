@@ -25,8 +25,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     TokenDao tokenDao;
     private final RedisTemplate<String,Object> redisTemplate;
-    @Autowired
-    private LettuceConnectionFactory redisConnectionFactoryVirtualThreads;
 
     @Autowired
     public UserServiceImpl(RedisTemplate<String, Object> redisTemplate) {
@@ -91,6 +89,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updatePwdById(int id, String pwd) {
         return userDao.updatePwdById(id,pwd);
+    }
+
+    @Override
+    public int register(User user, String verifyCode) {
+        if(redisTemplate.opsForValue().get(user.getEmail()) == null || !verifyCode.equals(redisTemplate.opsForValue().get(user.getEmail()))) return -1;
+        int res = addUserTransaction(user);
+        if(res == 3){
+            return 1;
+        }
+        return 0;
     }
 
 }

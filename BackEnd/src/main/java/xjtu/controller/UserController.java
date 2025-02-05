@@ -94,5 +94,14 @@ public class UserController {
         userService.updatePwdById(userId,pwd);
         return new ResponseEntity<>("发送成功", HttpStatus.ACCEPTED);
     }
-
+    @PostMapping("/register")
+    @ResponseBody
+    public ResponseEntity<String> register(@RequestBody Map<String,String> info){
+        User user = new User(0,info.get("username"),info.get("password"),info.get("email"));
+        String verifyCode = info.get("verifyCode");
+        int res = userService.register(user,verifyCode);
+        if(res == 1) return new ResponseEntity<>("发送成功", HttpStatus.ACCEPTED);
+        else if(res == -1) return new ResponseEntity<>("该邮箱已被注册或者用户名重复", HttpStatus.CONFLICT);
+        else return new ResponseEntity<>("发送失败", HttpStatus.BAD_REQUEST);
+    }
 }

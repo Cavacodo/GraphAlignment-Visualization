@@ -432,3 +432,238 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check th
 2025-02-05T11:55:04.620+08:00 DEBUG 21124 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.updatePwdById           : ==>  Preparing: update user set pwd = ? where id = ?;
 2025-02-05T11:55:04.620+08:00 DEBUG 21124 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.updatePwdById           : ==> Parameters: aaa(String), 2(Integer)
 2025-02-05T11:55:04.624+08:00 DEBUG 21124 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.updatePwdById           : <==    Updates: 1
+2025-02-05T14:34:00.918+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-05T14:34:00.918+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-05T14:34:00.921+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-05T14:34:00.921+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-05T14:34:00.921+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-05T14:34:00.922+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-05T14:34:00.923+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-05T14:34:00.923+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-05T14:34:00.924+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-05T14:34:00.924+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-02-05T14:34:00.924+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmj(String)
+2025-02-05T14:34:00.926+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-02-05T14:34:00.926+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-02-05T14:34:00.926+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : ==> Parameters: zmj(String), 123(String)
+2025-02-05T14:34:00.927+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-02-05T14:34:00.927+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-05T14:34:00.928+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-05T14:34:00.929+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-05T14:34:00.929+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-02-05T14:34:00.929+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmj(String)
+2025-02-05T14:34:00.929+08:00 DEBUG 21124 --- [http-nio-8080-exec-4] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-02-05T14:55:02.733+08:00  INFO 21124 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-02-05T14:55:02.790+08:00  INFO 21124 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-02-05T14:55:02.804+08:00  INFO 21124 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-05T14:55:02.810+08:00  INFO 21124 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-05T14:55:07.316+08:00  INFO 8416 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 8416 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by 张先生 in D:\GraphAlignment-Visualization\BackEnd)
+2025-02-05T14:55:07.319+08:00 DEBUG 8416 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-02-05T14:55:07.319+08:00  INFO 8416 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-02-05T14:55:07.805+08:00  INFO 8416 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-02-05T14:55:07.807+08:00  INFO 8416 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-02-05T14:55:07.829+08:00  INFO 8416 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-02-05T14:55:08.263+08:00  INFO 8416 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-02-05T14:55:08.275+08:00  INFO 8416 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-05T14:55:08.275+08:00  INFO 8416 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-05T14:55:08.337+08:00  INFO 8416 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-05T14:55:08.337+08:00  INFO 8416 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 986 ms
+2025-02-05T14:55:09.089+08:00  INFO 8416 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-02-05T14:55:09.097+08:00  INFO 8416 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.113 seconds (process running for 2.588)
+2025-02-05T14:55:10.994+08:00  INFO 8416 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-05T14:55:10.995+08:00  INFO 8416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-05T14:55:10.995+08:00  INFO 8416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-02-05T14:55:11.396+08:00  INFO 8416 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-05T14:55:11.676+08:00  INFO 8416 --- [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75dc8f3
+2025-02-05T14:55:11.677+08:00  INFO 8416 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-05T14:55:11.683+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.addUser                 : ==>  Preparing: INSERT INTO user(account,pwd,email) VALUES (?,?,?);
+2025-02-05T14:55:11.703+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.addUser                 : ==> Parameters: abc(String), 123(String), 15091076006@163.com(String)
+2025-02-05T14:55:11.709+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.addUser                 : <==    Updates: 1
+2025-02-05T14:55:11.719+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.RoleDao.addRole                 : ==>  Preparing: insert into role(account) values(?);
+2025-02-05T14:55:11.720+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.RoleDao.addRole                 : ==> Parameters: abc(String)
+2025-02-05T14:55:11.724+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.RoleDao.addRole                 : <==    Updates: 1
+2025-02-05T14:55:11.725+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.addToken               : ==>  Preparing: insert into token (account, token) values (?, ?);
+2025-02-05T14:55:11.725+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.addToken               : ==> Parameters: abc(String), (String)
+2025-02-05T14:55:11.727+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.TokenDao.addToken               : <==    Updates: 1
+2025-02-05T14:57:00.169+08:00 DEBUG 8416 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.addUser                 : ==>  Preparing: INSERT INTO user(account,pwd,email) VALUES (?,?,?);
+2025-02-05T14:57:00.169+08:00 DEBUG 8416 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.addUser                 : ==> Parameters: ddd(String), 123(String), 15091076006@163.com(String)
+2025-02-05T14:57:00.172+08:00 DEBUG 8416 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.addUser                 : <==    Updates: 1
+2025-02-05T14:57:00.173+08:00 DEBUG 8416 --- [http-nio-8080-exec-3] xjtu.dao.RoleDao.addRole                 : ==>  Preparing: insert into role(account) values(?);
+2025-02-05T14:57:00.174+08:00 DEBUG 8416 --- [http-nio-8080-exec-3] xjtu.dao.RoleDao.addRole                 : ==> Parameters: ddd(String)
+2025-02-05T14:57:00.175+08:00 DEBUG 8416 --- [http-nio-8080-exec-3] xjtu.dao.RoleDao.addRole                 : <==    Updates: 1
+2025-02-05T14:57:00.175+08:00 DEBUG 8416 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.addToken               : ==>  Preparing: insert into token (account, token) values (?, ?);
+2025-02-05T14:57:00.176+08:00 DEBUG 8416 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.addToken               : ==> Parameters: ddd(String), (String)
+2025-02-05T14:57:00.178+08:00 DEBUG 8416 --- [http-nio-8080-exec-3] xjtu.dao.TokenDao.addToken               : <==    Updates: 1
+2025-02-05T15:00:14.051+08:00 DEBUG 8416 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.addUser                 : ==>  Preparing: INSERT INTO user(account,pwd,email) VALUES (?,?,?);
+2025-02-05T15:00:14.052+08:00 DEBUG 8416 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.addUser                 : ==> Parameters: dda(String), 123(String), 15091076006@163.com(String)
+2025-02-05T15:00:14.055+08:00 DEBUG 8416 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.addUser                 : <==    Updates: 1
+2025-02-05T15:00:14.055+08:00 DEBUG 8416 --- [http-nio-8080-exec-8] xjtu.dao.RoleDao.addRole                 : ==>  Preparing: insert into role(account) values(?);
+2025-02-05T15:00:14.056+08:00 DEBUG 8416 --- [http-nio-8080-exec-8] xjtu.dao.RoleDao.addRole                 : ==> Parameters: dda(String)
+2025-02-05T15:00:14.058+08:00 DEBUG 8416 --- [http-nio-8080-exec-8] xjtu.dao.RoleDao.addRole                 : <==    Updates: 1
+2025-02-05T15:00:14.059+08:00 DEBUG 8416 --- [http-nio-8080-exec-8] xjtu.dao.TokenDao.addToken               : ==>  Preparing: insert into token (account, token) values (?, ?);
+2025-02-05T15:00:14.059+08:00 DEBUG 8416 --- [http-nio-8080-exec-8] xjtu.dao.TokenDao.addToken               : ==> Parameters: dda(String), (String)
+2025-02-05T15:00:14.062+08:00 DEBUG 8416 --- [http-nio-8080-exec-8] xjtu.dao.TokenDao.addToken               : <==    Updates: 1
+2025-02-05T15:00:28.234+08:00 DEBUG 8416 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.addUser                 : ==>  Preparing: INSERT INTO user(account,pwd,email) VALUES (?,?,?);
+2025-02-05T15:00:28.235+08:00 DEBUG 8416 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.addUser                 : ==> Parameters: dda(String), 123(String), 15091076006@163.com(String)
+2025-02-05T15:00:28.376+08:00 ERROR 8416 --- [http-nio-8080-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'dda' for key 'user.account'
+### The error may exist in file [D:\GraphAlignment-Visualization\BackEnd\target\classes\mapper\UserMapper.xml]
+### The error may involve xjtu.dao.UserDao.addUser-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO user(account,pwd,email) VALUES (?,?,?);
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'dda' for key 'user.account'
+; Duplicate entry 'dda' for key 'user.account'] with root cause
+
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'dda' for key 'user.account'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:58) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.proxy3/jdk.proxy3.$Proxy106.execute(Unknown Source) ~[na:na]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184) ~[mybatis-3.5.14.jar:3.5.14]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at jdk.proxy2/jdk.proxy2.$Proxy69.insert(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy73.addUser(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.1.jar:6.2.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.1.jar:6.2.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.1.jar:6.2.1]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.2.1.jar:6.2.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.1.jar:6.2.1]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.2.1.jar:6.2.1]
+	at jdk.proxy2/jdk.proxy2.$Proxy74.addUser(Unknown Source) ~[na:na]
+	at xjtu.service.impl.UserServiceImpl.addUserTransaction(UserServiceImpl.java:73) ~[classes/:na]
+	at xjtu.service.impl.UserServiceImpl.register(UserServiceImpl.java:97) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.1.jar:6.2.1]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:723) ~[spring-aop-6.2.1.jar:6.2.1]
+	at xjtu.service.impl.UserServiceImpl$$SpringCGLIB$$0.register(<generated>) ~[classes/:na]
+	at xjtu.controller.UserController.register(UserController.java:102) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-02-05T15:02:33.339+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByEmail         : ==>  Preparing: SELECT id FROM user WHERE email = ?;
+2025-02-05T15:02:33.340+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByEmail         : ==> Parameters: 15091076006@163.com(String)
+2025-02-05T15:02:33.351+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByEmail         : <==      Total: 1
+2025-02-05T15:02:33.355+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByEmail         : ==>  Preparing: SELECT id FROM user WHERE email = ?;
+2025-02-05T15:02:33.355+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByEmail         : ==> Parameters: 15091076006@163.com(String)
+2025-02-05T15:02:33.357+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByEmail         : <==      Total: 1
+2025-02-05T15:02:33.358+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.updatePwdById           : ==>  Preparing: update user set pwd = ? where id = ?;
+2025-02-05T15:02:33.358+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.updatePwdById           : ==> Parameters: 321(String), 1021(Integer)
+2025-02-05T15:02:33.361+08:00 DEBUG 8416 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.updatePwdById           : <==    Updates: 1
+2025-02-05T15:03:45.845+08:00 DEBUG 8416 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.addUser                 : ==>  Preparing: INSERT INTO user(account,pwd,email) VALUES (?,?,?);
+2025-02-05T15:03:45.845+08:00 DEBUG 8416 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.addUser                 : ==> Parameters: zmjkk(String), 123(String), 15091076006@163.com(String)
+2025-02-05T15:03:45.850+08:00 DEBUG 8416 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.addUser                 : <==    Updates: 1
+2025-02-05T15:03:45.850+08:00 DEBUG 8416 --- [http-nio-8080-exec-5] xjtu.dao.RoleDao.addRole                 : ==>  Preparing: insert into role(account) values(?);
+2025-02-05T15:03:45.851+08:00 DEBUG 8416 --- [http-nio-8080-exec-5] xjtu.dao.RoleDao.addRole                 : ==> Parameters: zmjkk(String)
+2025-02-05T15:03:45.853+08:00 DEBUG 8416 --- [http-nio-8080-exec-5] xjtu.dao.RoleDao.addRole                 : <==    Updates: 1
+2025-02-05T15:03:45.854+08:00 DEBUG 8416 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.addToken               : ==>  Preparing: insert into token (account, token) values (?, ?);
+2025-02-05T15:03:45.854+08:00 DEBUG 8416 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.addToken               : ==> Parameters: zmjkk(String), (String)
+2025-02-05T15:03:45.857+08:00 DEBUG 8416 --- [http-nio-8080-exec-5] xjtu.dao.TokenDao.addToken               : <==    Updates: 1
+2025-02-05T15:04:42.339+08:00  INFO 8416 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-02-05T15:04:42.392+08:00  INFO 8416 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-02-05T15:04:42.404+08:00  INFO 8416 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-05T15:04:42.410+08:00  INFO 8416 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-05T15:04:46.025+08:00  INFO 31608 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 31608 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by 张先生 in D:\GraphAlignment-Visualization\BackEnd)
+2025-02-05T15:04:46.026+08:00 DEBUG 31608 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-02-05T15:04:46.027+08:00  INFO 31608 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-02-05T15:04:46.496+08:00  INFO 31608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-02-05T15:04:46.497+08:00  INFO 31608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-02-05T15:04:46.521+08:00  INFO 31608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2025-02-05T15:04:46.922+08:00  INFO 31608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-02-05T15:04:46.933+08:00  INFO 31608 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-05T15:04:46.934+08:00  INFO 31608 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-05T15:04:46.989+08:00  INFO 31608 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-05T15:04:46.989+08:00  INFO 31608 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 932 ms
+2025-02-05T15:04:47.701+08:00  INFO 31608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-02-05T15:04:47.709+08:00  INFO 31608 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.018 seconds (process running for 2.465)
+2025-02-05T15:07:07.035+08:00  INFO 31608 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-05T15:07:07.035+08:00  INFO 31608 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-05T15:07:07.036+08:00  INFO 31608 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-05T15:07:16.242+08:00  INFO 31608 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-05T15:07:16.379+08:00  INFO 31608 --- [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@397d97fd
+2025-02-05T15:07:16.380+08:00  INFO 31608 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-05T15:07:16.386+08:00 DEBUG 31608 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.addUser                 : ==>  Preparing: INSERT INTO user(account,pwd,email) VALUES (?,?,?);
+2025-02-05T15:07:16.404+08:00 DEBUG 31608 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.addUser                 : ==> Parameters: zmjkk2(String), 123(String), 15091076006@163.com(String)
+2025-02-05T15:07:16.412+08:00 DEBUG 31608 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.addUser                 : <==    Updates: 1
+2025-02-05T15:07:16.431+08:00 DEBUG 31608 --- [http-nio-8080-exec-2] xjtu.dao.RoleDao.addRole                 : ==>  Preparing: insert into role(account) values(?);
+2025-02-05T15:07:16.432+08:00 DEBUG 31608 --- [http-nio-8080-exec-2] xjtu.dao.RoleDao.addRole                 : ==> Parameters: zmjkk2(String)
+2025-02-05T15:07:16.435+08:00 DEBUG 31608 --- [http-nio-8080-exec-2] xjtu.dao.RoleDao.addRole                 : <==    Updates: 1
+2025-02-05T15:07:16.435+08:00 DEBUG 31608 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.addToken               : ==>  Preparing: insert into token (account, token) values (?, ?);
+2025-02-05T15:07:16.436+08:00 DEBUG 31608 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.addToken               : ==> Parameters: zmjkk2(String), (String)
+2025-02-05T15:07:16.438+08:00 DEBUG 31608 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.addToken               : <==    Updates: 1

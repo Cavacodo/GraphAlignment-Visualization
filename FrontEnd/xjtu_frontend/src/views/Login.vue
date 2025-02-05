@@ -207,8 +207,8 @@ const handleLogin = async () => {
 
 const handleRegister = async () => {
   // 表单验证
-  if (!newUsername.value || !newPassword.value || !email.value) {
-    errorMessage.value = '用户名、密码和邮箱不能为空'
+  if (!newUsername.value || !newPassword.value || !email.value || !isValidEmail(email.value) || !verifyCode.value) {
+    errorMessage.value = '用户名、密码和邮箱验证码不能为空'
     return
   }
 
@@ -216,14 +216,16 @@ const handleRegister = async () => {
     console.log('发送注册请求:', {
       username: newUsername.value,
       password: newPassword.value,
-      email: email.value
+      email: email.value,
+      verifyCode: verifyCode.value
     })
 
     const response = await axios.post('http://localhost:8080/user/register', 
       {
         username: newUsername.value,
         password: newPassword.value,
-        email: email.value
+        email: email.value,
+        verifyCode: verifyCode.value
       },
       {
         headers: {
@@ -233,11 +235,12 @@ const handleRegister = async () => {
       }
     )
 
-    console.log('注册响应:', response.data)
+    console.log('注册响应:', response.status)
 
-    if (response.data.code === 200) {  // 假设后端返回 code 200 表示成功
+    if (response.status === 202) {  // 假设后端返回 code 202 表示成功
+      showRegister.value = false
+      showForgotPassword.value = false
       alert('注册成功，请登录')
-      toggleRegister()
     } else {
       errorMessage.value = response.data.msg || '注册失败'
       alert(errorMessage.value);
@@ -250,7 +253,7 @@ const handleRegister = async () => {
 
 const handleForgotPassword = async () => {
   // 表单验证
-  if (!email.value) {
+  if (!email.value || !isValidEmail(email.value)) {
     errorMessage.value = '邮箱不能为空'
     return
   }
@@ -296,36 +299,6 @@ const handleForgotPassword = async () => {
   }catch(error){
     alert("操作错误")
   }
-  // try {
-  //   console.log('发送忘记密码请求:', {
-  //     email: email.value
-  //   })
-
-  //   const response = await axios.post('http://localhost:8080/sendEmail', 
-  //     {
-  //       email: email.value
-  //     },
-  //     {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       withCredentials: true  // 允许携带凭证
-  //     }
-  //   )
-
-  //   console.log('忘记密码响应:', response.data)
-
-  //   if (response.data.code === 200) {  // 假设后端返回 code 200 表示成功
-  //     alert('重置密码邮件已发送，请查收')
-  //     toggleForgotPassword()
-  //   } else {
-  //     errorMessage.value = response.data.msg || '操作失败'
-  //     alert(errorMessage.value);
-  //   }
-  // } catch (error) {
-  //   console.error('忘记密码错误详情:', error.response || error)
-  //   errorMessage.value = error.response?.data?.message || '操作失败，请稍后重试'
-  // }
 }
 
 const toggleForgotPassword = () => {
@@ -367,7 +340,7 @@ const handleSendVerifyCode = async() => {
     console.log('忘记密码响应:', response)
 
     if (response.status === 202) {  // 假设后端返回 code 200 表示成功
-      alert('重置密码邮件已发送，请查收')
+      alert('邮件已发送，请查收')
 
     }else if(response.status === 208){
       alert("验证码已发送，请误重复点击")

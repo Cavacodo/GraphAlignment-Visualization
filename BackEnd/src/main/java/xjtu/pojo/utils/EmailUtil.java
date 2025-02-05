@@ -62,7 +62,7 @@ public class EmailUtil {
 
             //邮件的主题
             message.setSubject("注册验证码");
-            message.setContent("<h1>来自网站的注册用户验证码邮件,请接收你的验证码：</h1><h3>你的验证码是：" + vcode + "，请妥善保管好你的验证码！</h3>"+"<h3>5分钟内有效！</h3>", "text/html;charset=UTF-8");
+            message.setContent("<h1>来自网站的用户验证码邮件,请接收你的验证码：</h1><h3>你的验证码是：" + vcode + "，请妥善保管好你的验证码！</h3>"+"<h3>5分钟内有效！</h3>", "text/html;charset=UTF-8");
 
             Transport.send(message);
 
