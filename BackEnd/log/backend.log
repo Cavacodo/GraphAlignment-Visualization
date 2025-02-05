@@ -836,3 +836,5 @@ java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'dda' for key
 2025-02-05T17:12:27.463+08:00  INFO 2768 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 2025-02-05T17:12:27.530+08:00  INFO 2768 --- [http-nio-8080-exec-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
 2025-02-05T17:12:27.564+08:00  INFO 2768 --- [http-nio-8080-exec-1] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#44d43cc9:0/SimpleConnection@11901cb5 [delegate=amqp://guest@127.0.0.1:5672/, localPort=10285]
+2025-02-05T18:16:59.725+08:00  INFO 2768 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-02-05T18:16:59.786+08:00  INFO 2768 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
