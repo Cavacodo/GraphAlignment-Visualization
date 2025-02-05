@@ -16,9 +16,23 @@ const router = createRouter({
     {
       path: '/table',
       name: 'Table',
-      component: Table
+      component: Table,
+      meta: {
+        requiresAuth: true
+      },
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const isAuthenticated = localStorage.getItem('token');
+  if (requiresAuth && !isAuthenticated) {
+    // 如果当前路由需要认证且用户未登录，重定向到登录页面
+    next({ name: 'Login' });
+  } else {
+    next(); // 否则继续导航
+  }
+});
 
 export default router

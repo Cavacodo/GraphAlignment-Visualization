@@ -392,7 +392,7 @@ body {
   align-items: center;
   background-color: #f5f5f5;
   /* 可以添加背景图片 */
-  background-image: url('@/assets/background.jpg');
+  background-image: url('D:\GraphAlignment-Visualization\FrontEnd\xjtu_frontend\src\assets\background.jpg');
   background-size: cover;
   background-position: center;
 }

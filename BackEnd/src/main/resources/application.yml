@@ -21,6 +21,12 @@ spring:
     port: 9999
     username: 2158405639@qq.com
     password: qywwjeammzesdjcd
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
 
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 
