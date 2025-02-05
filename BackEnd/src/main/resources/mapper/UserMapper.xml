@@ -27,6 +27,12 @@
         FROM user
         WHERE account = #{account} AND pwd = #{pwd};
     </select>
+    <select id="findUserByEmail" resultType="java.lang.Integer">
+        SELECT id FROM user WHERE email = #{email};
+    </select>
+    <update id="updatePwdById">
+        update user set pwd = #{pwd} where id = #{id};
+    </update>
     <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="xjtu.pojo.User">
         INSERT INTO user(account,pwd,email) VALUES (#{account},#{pwd},#{email});
     </insert>

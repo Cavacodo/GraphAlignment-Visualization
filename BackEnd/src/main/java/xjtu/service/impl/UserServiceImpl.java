@@ -1,6 +1,8 @@
 package xjtu.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xjtu.annotation.Auth;
@@ -22,6 +24,15 @@ public class UserServiceImpl implements UserService {
     RoleDao roleDao;
     @Autowired
     TokenDao tokenDao;
+    private final RedisTemplate<String,Object> redisTemplate;
+    @Autowired
+    private LettuceConnectionFactory redisConnectionFactoryVirtualThreads;
+
+    @Autowired
+    public UserServiceImpl(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
+
     @Override
     public List<User> listUser() {
         return userDao.listUser();
@@ -66,4 +77,20 @@ public class UserServiceImpl implements UserService {
         int tokenAdd = tokenDao.addToken(user.getAccount(), "");
         return userAdd + roleAdd + tokenAdd;
     }
+
+    @Override
+    public Integer findUserByEmail(String email) {
+        return userDao.findUserByEmail(email);
+    }
+
+    @Override
+    public String getRedisVerifyCode(String email) {
+        return (String) redisTemplate.opsForValue().get(email);
+    }
+
+    @Override
+    public int updatePwdById(int id, String pwd) {
+        return userDao.updatePwdById(id,pwd);
+    }
+
 }

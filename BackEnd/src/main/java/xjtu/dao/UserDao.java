@@ -16,4 +16,6 @@ public interface UserDao {
     public User checkEmailDuplicate(String email);
     public List<UserWithRole> listUserWithPrivilege();
     public int login(String account, String pwd);
+    public Integer findUserByEmail(String email);
+    public int updatePwdById(int id,String pwd);
 }

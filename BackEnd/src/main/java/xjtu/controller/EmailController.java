@@ -18,7 +18,6 @@ public class EmailController {
     private EmailService emailService;
     @RequestMapping("/sendEmail")
     public ResponseEntity<String> sendEmail(@RequestBody Map<String,String> email) {
-        System.out.println(email.get("email"));
         try{
             String s = emailService.send(email.get("email"));
             if(s.equals("邮件已经发出，请注意查收")) return  new ResponseEntity<>(s, HttpStatus.ALREADY_REPORTED);

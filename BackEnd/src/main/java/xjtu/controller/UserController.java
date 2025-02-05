@@ -5,6 +5,8 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -77,6 +79,20 @@ public class UserController {
             }
         }
         return R.error(ResponseEnum.USERNAME_PASSWORD_ERROR);
+    }
+    @PostMapping("/forgetPassword")
+    @ResponseBody
+    public ResponseEntity<String> forgetPassword(@RequestBody Map<String,String> info){
+        String email = info.get("email");
+        String pwd = info.get("password");
+        String verifyCode = info.get("verifyCode");
+        if(userService.findUserByEmail(email) == null) return new ResponseEntity<>("该邮箱未注册", HttpStatus.BAD_REQUEST);
+        String vCode = userService.getRedisVerifyCode(email);
+        if(vCode == null) return new ResponseEntity<>("验证码已过期", HttpStatus.ALREADY_REPORTED);
+        if(!vCode.equals(verifyCode)) return new ResponseEntity<>("验证码错误", HttpStatus.CONFLICT);
+        int userId = userService.findUserByEmail(email);
+        userService.updatePwdById(userId,pwd);
+        return new ResponseEntity<>("发送成功", HttpStatus.ACCEPTED);
     }
 
 }

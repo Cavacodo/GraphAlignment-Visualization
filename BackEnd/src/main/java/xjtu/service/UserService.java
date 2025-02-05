@@ -17,4 +17,7 @@ public interface UserService {
     List<UserWithRole> listUserWithPrivilege();
     int login(String account, String pwd);
     int addUserTransaction(User user);
+    Integer findUserByEmail(String email);
+    String getRedisVerifyCode(String email);
+    int updatePwdById(int id,String pwd);
 }

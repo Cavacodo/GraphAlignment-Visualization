@@ -144,6 +144,7 @@
 import { ref } from 'vue'
 import axios from 'axios'  // 确保已经安装并导入 axios
 import { useRouter } from 'vue-router'  // 导入路由
+import { fa } from 'element-plus/es/locales.mjs'
 
 const router = useRouter()
 const username = ref('')
@@ -261,6 +262,40 @@ const handleForgotPassword = async () => {
     alert("密码不能为空")
     return
   }
+  try{
+    console.log('发送忘记密码请求:', {
+      email: email.value,
+      password: FirstPassword.value,
+      verifyCode: verifyCode.value
+    })
+    const response = await axios.post('http://localhost:8080/user/forgetPassword', 
+      {
+        email: email.value,
+        password: FirstPassword.value,
+        verifyCode: verifyCode.value
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true  // 允许携带凭证
+      },
+    )
+    console.log(response)
+    if(response.status === 202){
+        alert("修改成功")
+        showForgotPassword.value = false
+        showRegister.value = false
+      }else if(response.status === 400){
+        alert("修改失败,邮箱未注册")
+      }else if(response.status === 208){
+        alert("验证码已过期")
+      }else{
+        alert("验证码已发送，请勿重复点击")
+      }
+  }catch(error){
+    alert("操作错误")
+  }
   // try {
   //   console.log('发送忘记密码请求:', {
   //     email: email.value
@@ -333,7 +368,7 @@ const handleSendVerifyCode = async() => {
 
     if (response.status === 202) {  // 假设后端返回 code 200 表示成功
       alert('重置密码邮件已发送，请查收')
-      toggleForgotPassword()
+
     }else if(response.status === 208){
       alert("验证码已发送，请误重复点击")
     } 
