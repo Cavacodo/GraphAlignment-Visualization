@@ -1,21 +1,21 @@
 import pika
 import json
+import requests
 
 # RabbitMQ连接配置
 rabbitmq_host = 'localhost'  # 根据实际情况修改
 queue_name = 'stock-request-queue'
 exchange_name = 'stock-exchange'
 routing_key = 'stock-request-key'
+url = "http://localhost:8080/res/python"
 
 def callback(ch, method, properties, body):
     try:
         # 解析JSON格式的消息体
         message = json.loads(body.decode('utf-8'))
         print(f"Received message: {message}")
-
-        # 在这里处理接收到的消息
-        # ...
-
+        response = requests.post(url, json=process_data())
+        print(response.text)
         # 确认消息已处理
         ch.basic_ack(delivery_tag=method.delivery_tag)
     except Exception as e:
@@ -45,6 +45,8 @@ def main():
         channel.stop_consuming()
     finally:
         connection.close()
+def process_data():
+    return {"res": "处理好了"}
 
 if __name__ == '__main__':
     main()
