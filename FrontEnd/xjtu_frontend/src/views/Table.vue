@@ -4,8 +4,12 @@
       <el-table-column prop="singleColumn" label="结果"></el-table-column>
     </el-table>
   </div>
+  <div style="margin-top: 10px; display: flex; justify-content: center;">
+    <el-button type="primary" @click="handleMethod1">方法1</el-button>
+    <el-button type="primary" @click="handleMethod2">方法2</el-button>
+  </div>
 </template>
-  
+
 <script setup>
   import { ref, onMounted, onBeforeUnmount } from 'vue'
   import axios from 'axios'  // 需要先运行: npm install axios
@@ -66,8 +70,20 @@
   onBeforeUnmount(() => {
     clearInterval(pollInterval)
   })
+
+  // 方法1的处理函数
+  const handleMethod1 = () => {
+    console.log('方法1被点击')
+    // 在这里添加方法1的具体逻辑
+  }
+
+  // 方法2的处理函数
+  const handleMethod2 = () => {
+    console.log('方法2被点击')
+    // 在这里添加方法2的具体逻辑
+  }
 </script>
-  
+
 <style scoped>
   .table-page {
     padding: 20px;

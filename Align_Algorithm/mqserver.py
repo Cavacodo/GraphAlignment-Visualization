@@ -1,3 +1,5 @@
+import time
+
 import pika
 import json
 import requests
@@ -46,6 +48,7 @@ def main():
     finally:
         connection.close()
 def process_data():
+    time.sleep(1)
     return {"res": "处理好了"}
 
 if __name__ == '__main__':
