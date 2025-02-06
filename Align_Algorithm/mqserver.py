@@ -1,34 +1,50 @@
 import pika
-# from GTCAlign import main
+import json
 
-# RabbitMQ服务器连接配置
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-channel = connection.channel()
-print("建立连接")
+# RabbitMQ连接配置
+rabbitmq_host = 'localhost'  # 根据实际情况修改
+queue_name = 'stock-request-queue'
+exchange_name = 'stock-exchange'
+routing_key = 'stock-request-key'
 
-# 声明要监听的队列，确保与Java端的队列名称相匹配
-queue_name = 'stock-queue'
-channel.queue_declare(queue=queue_name, durable=True)
-
-
-# 建立回调函数，获取队列消息内容
 def callback(ch, method, properties, body):
     try:
-        print("连接成功")
-        print("回调函数执行成功")
-        print("Received JSON data:", body)
-        response_body = "接收到了"
-        ch.basic_publish(exchange='', routing_key=method.routing_key, body=response_body)
-        print("Message sent back to queue")
+        # 解析JSON格式的消息体
+        message = json.loads(body.decode('utf-8'))
+        print(f"Received message: {message}")
+
+        # 在这里处理接收到的消息
+        # ...
+
+        # 确认消息已处理
+        ch.basic_ack(delivery_tag=method.delivery_tag)
     except Exception as e:
-        print("Error:", str(e))
+        print(f"Failed to process message: {e}")
+        # 拒绝消息，可以重新入队或丢弃
+        ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
 
-    # 设置回调函数，当有消息到达时将被调用
+def main():
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host))
+    channel = connection.channel()
 
+    # 声明交换机和队列（确保与Java端一致）
+    channel.exchange_declare(exchange=exchange_name, exchange_type='direct', durable=True)
+    channel.queue_declare(queue=queue_name, durable=True)
+    channel.queue_bind(queue=queue_name, exchange=exchange_name, routing_key=routing_key)
 
-channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=True)
+    # 设置QoS以限制未确认的消息数量
+    channel.basic_qos(prefetch_count=1)
 
-print('Waiting for messages. To exit, press Ctrl+C')
-channel.start_consuming()
+    # 开始消费消息
+    channel.basic_consume(queue=queue_name, on_message_callback=callback)
 
-# main.run()
+    print('Waiting for messages. To exit press CTRL+C')
+    try:
+        channel.start_consuming()
+    except KeyboardInterrupt:
+        channel.stop_consuming()
+    finally:
+        connection.close()
+
+if __name__ == '__main__':
+    main()
