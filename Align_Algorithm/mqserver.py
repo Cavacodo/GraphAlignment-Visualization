@@ -16,7 +16,11 @@ def callback(ch, method, properties, body):
         # 解析JSON格式的消息体
         message = json.loads(body.decode('utf-8'))
         print(f"Received message: {message}")
-        response = requests.post(url, json=process_data())
+        res = message['type']
+        if res == 1:
+            response = requests.post(url, json=list(process_data_1()))
+        elif res == 2:
+            response = requests.post(url, json=list(process_data_2()))
         print(response.text)
         # 确认消息已处理
         ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -47,9 +51,12 @@ def main():
         channel.stop_consuming()
     finally:
         connection.close()
-def process_data():
-    time.sleep(1)
-    return {"res": "处理好了"}
+def process_data_1():
+    time.sleep(5)
+    return {"res": ["方法一处理好了"],"type" : 1}
+def process_data_2():
+    time.sleep(5)
+    return {"res": ["方法二处理好了"],"type" : 2}
 
 if __name__ == '__main__':
     main()
