@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Table from '../views/Table.vue'
+import Neo4j from '../views/Neo4j.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -19,6 +20,13 @@ const router = createRouter({
       component: Table,
       meta: {
         requiresAuth: true
+      },
+    },{
+      path: '/neo4j',
+      name: 'Neo4j',
+      component: Neo4j,
+      meta: {
+        requiresAuth: false
       },
     }
   ]

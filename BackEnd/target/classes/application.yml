@@ -27,6 +27,10 @@ spring:
     username: guest
     password: guest
     virtual-host: /
+  neo4j:
+    uri: bolt://localhost:7687
+    username: neo4j
+    password: neo4jpassword
 
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 

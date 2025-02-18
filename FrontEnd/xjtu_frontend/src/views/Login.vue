@@ -192,9 +192,7 @@ const handleLogin = async () => {
       // 登录成功，可以存储token或用户信息
       localStorage.setItem('token', response.data.token)  // 如果后端返回token
       localStorage.setItem('user', JSON.stringify(response.data.user))  // 存储用户信息
-      
-      // 跳转到首页或其他页面
-      router.push('/table')  // 确保你有一个名为 home 的路由
+      router.push('/neo4j')  // 确保你有一个名为 home 的路由
     } else {
       errorMessage.value = response.data.msg || '登录失败'
       alert(errorMessage.value);
