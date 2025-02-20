@@ -1,5 +1,28 @@
 <template>
-  <div ref="neo4jGraph" class="graph-container"></div>
+  <div class="main-container">
+    <el-container>
+      <el-aside width="200px">
+        <!-- 左侧导航栏内容 -->
+        <el-menu default-active="1" class="el-menu-vertical-demo">
+          <el-menu-item index="1">
+            <i class="el-icon-menu"></i>
+            <span slot="title">导航一</span>
+          </el-menu-item>
+          <el-menu-item index="2">
+            <i class="el-icon-document"></i>
+            <span slot="title">导航二</span>
+          </el-menu-item>
+          <el-menu-item index="3">
+            <i class="el-icon-setting"></i>
+            <span slot="title">导航三</span>
+          </el-menu-item>
+        </el-menu>
+      </el-aside>
+      <el-main>
+        <div ref="neo4jGraph" class="graph-container"></div>
+      </el-main>
+    </el-container>
+  </div>
 </template>
 
 <script>
@@ -87,8 +110,48 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  height: 100%;
+  width: 100%;
+}
+
+.main-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
 .graph-container {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.el-container {
   height: 100vh;
-  width: 100vw;
+}
+
+.el-aside {
+  background-color: #D3DCE6;
+  color: #333;
+  text-align: center;
+  line-height: 200px;
+}
+
+.el-main {
+  background-color: #E9EEF3;
+  color: #333;
+  text-align: center;
+  line-height: 160px;
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
 }
 </style>
+
