@@ -19,20 +19,35 @@
         </el-menu>
       </el-aside>
       <el-main>
-        <div ref="neo4jGraph" class="graph-container"></div>
-        <div ref="neo4jGraph2" class="graph-container"></div> <!-- 添加第二个图表容器 -->
-        <!-- 添加对话框组件 -->
-        <div ref="dialog">
-          <el-dialog :visible.sync="dialogVisible" title="节点信息">
-          <pre>{{ selectedNode }}</pre>
-          </el-dialog>
+        <div class="m-4-1">
+          
         </div>
+        <div class="m-4-2">
+          
+        </div>
+        <div class="g1">
+          <el-cascader v-model="value1" :options="options" @change="handleChange1" />
+          <div ref="neo4jGraph" class="graph-container1"></div>
+        </div>
+        <div class="g2">
+          <el-cascader v-model="value2" :options="options" @change="handleChange2" />
+          <div ref="neo4jGraph2" class="graph-container2"></div>
+        </div> <!-- 添加第二个图表容器 -->
+        <el-dialog v-model="dialogTableVisible" title="节点信息" width="800">
+          <el-table :data="gridData">
+            <el-table-column property="id" label="id" width="150" />
+            <el-table-column property="label" label="label" width="200" />
+            <el-table-column property="neighbor" label="neighbor" />
+            <el-table-column property="align" label="align" width="200" />
+          </el-table>
+        </el-dialog>
       </el-main>
     </el-container>
   </div>
 </template>
 
 <script>
+import { reactive, ref } from 'vue'
 import neo4j from "neo4j-driver";
 import vis from 'vis-network/dist/vis-network.min';
 import 'vis-network/styles/vis-network.css'; // 修改后的路径
@@ -45,9 +60,34 @@ export default {
       edges: new vis.DataSet([]),
       nodes2: new vis.DataSet([]), // 添加第二个图表的节点数据集
       edges2: new vis.DataSet([]),  // 添加第二个图表的边数据集
-      dialogVisible: false, // 对话框显示状态
-      selectedNode: null // 选中的节点信息
+      selectedNode: null, // 选中的节点信息
+      dialogTableVisible: false, // 添加 dialogTableVisible 到 data 中
+      gridData: [], // 添加 gridData 数组
+      value1: [], // 移动 value 到 data 中
+      value2: [], // 移动 value 到 data 中
+      options: [ // 移动 options 到 data 中
+        {
+          value: 'first',
+          label: '0-500'
+        },
+        {
+          value: 'second',
+          label: '501-1000'
+        },
+        {
+          value: 'third',
+          label: '1001-1500'
+        }
+      ]
     };
+  },
+  methods: {
+    handleChange1(value) { // 移动 handleChange 到 methods 中
+      console.log(value);
+    },
+    handleChange2(value) { // 移动 handleChange 到 methods 中
+      console.log(value);
+    }
   },
   mounted() {
     // 初始化 Neo4j 驱动
@@ -105,6 +145,11 @@ export default {
         const options = {
           physics: {
             enabled: false
+          },
+          edges: {
+            arrows: {
+              to: { enabled: true } // 添加箭头到目标节点
+            }
           }
         };
         const network = new vis.Network(container, data, options);
@@ -112,12 +157,28 @@ export default {
         // 监听 selectNode 事件
         network.on('selectNode', (params) => {
           if (params.nodes.length > 0) {
+            this.dialogTableVisible = true; // 修改为 this.dialogTableVisible
             const nodeId = params.nodes[0];
             const node = this.nodes.get(nodeId);
             this.selectedNode = node;
-            this.dialogVisible = true;
             console.log('Selected Node:', node); // 添加调试信息
-            console.log('Dialog Visible:', this.dialogVisible); // 添加调试信息
+
+            // 获取邻居节点
+            const neighbors = this.edges.get({
+              filter: function(edge) {
+                return edge.from === nodeId || edge.to === nodeId;
+              }
+            }).map(edge => {
+              return edge.from === nodeId ? edge.to : edge.from;
+            }).map(id => this.nodes.get(id));
+
+            // 填充 gridData 数组
+            this.gridData = [{
+              id: node.id,
+              label: node.label,
+              neighbor: neighbors.map(n => n.label).join(', '),
+              align: '' // 假设 align 字段为空，可以根据需要填充
+            }];
           }
         });
 
@@ -169,20 +230,23 @@ export default {
           physics: {
             enabled: false
           },
-          nodes:{
-            color:{
+          nodes: {
+            color: {
               background: '#8BC34A',
               border: '#333',
               highlight: {
-                background: '#66BB6A', 
+                background: '#66BB6A',
                 border: '#2e7d32'
               }
             }
           },
-          edges:{
-            color:{
+          edges: {
+            color: {
               color: '#000', // 红色
               highlight: '#000' // 红色
+            },
+            arrows: {
+              to: { enabled: true } // 添加箭头到目标节点
             }
           }
         };
@@ -191,12 +255,28 @@ export default {
         // 监听 selectNode 事件
         network2.on('selectNode', (params) => {
           if (params.nodes.length > 0) {
+            this.dialogTableVisible = true; // 修改为 this.dialogTableVisible
             const nodeId = params.nodes[0];
             const node = this.nodes2.get(nodeId);
             this.selectedNode = node;
-            this.dialogVisible = true;
             console.log('Selected Node:', node); // 添加调试信息
-            console.log('Dialog Visible:', this.dialogVisible); // 添加调试信息
+
+            // 获取邻居节点
+            const neighbors = this.edges2.get({
+              filter: function(edge) {
+                return edge.from === nodeId || edge.to === nodeId;
+              }
+            }).map(edge => {
+              return edge.from === nodeId ? edge.to : edge.from;
+            }).map(id => this.nodes2.get(id));
+
+            // 填充 gridData 数组
+            this.gridData = [{
+              id: node.id,
+              label: node.label,
+              neighbor: neighbors.map(n => n.label).join(', '),
+              align: '' // 假设 align 字段为空，可以根据需要填充
+            }];
           }
         });
       })
@@ -223,9 +303,9 @@ export default {
   position: absolute;
 }
 
-.graph-container {
+.graph-container1, .graph-container2 {
   height: 100%; /* 调整图表容器的高度 */
-  width: 50%; /* 调整图表容器的宽度 */
+  width: 100%; /* 调整图表容器的宽度 */
   margin: 0;
   padding: 0;
 }
@@ -245,10 +325,16 @@ export default {
   background-color: #E9EEF3;
   color: #333;
   text-align: center;
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
   display: flex; /* 使用 flex 布局 */
   flex-direction: row; /* 水平排列图表 */
+}
+
+.g1, .g2 {
+  /* margin-top: 100px; */
+  width: 50%; /* 设置宽度为50% */
+  height: 100%;
 }
 
 body {
@@ -256,4 +342,5 @@ body {
   margin: 0;
   width: 100%;
 }
+
 </style>
