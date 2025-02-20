@@ -20,6 +20,13 @@
       </el-aside>
       <el-main>
         <div ref="neo4jGraph" class="graph-container"></div>
+        <div ref="neo4jGraph2" class="graph-container"></div> <!-- 添加第二个图表容器 -->
+        <!-- 添加对话框组件 -->
+        <div ref="dialog">
+          <el-dialog :visible.sync="dialogVisible" title="节点信息">
+          <pre>{{ selectedNode }}</pre>
+          </el-dialog>
+        </div>
       </el-main>
     </el-container>
   </div>
@@ -35,7 +42,11 @@ export default {
   data() {
     return {
       nodes: new vis.DataSet([]),
-      edges: new vis.DataSet([])
+      edges: new vis.DataSet([]),
+      nodes2: new vis.DataSet([]), // 添加第二个图表的节点数据集
+      edges2: new vis.DataSet([]),  // 添加第二个图表的边数据集
+      dialogVisible: false, // 对话框显示状态
+      selectedNode: null // 选中的节点信息
     };
   },
   mounted() {
@@ -49,8 +60,9 @@ export default {
 
     // 查询 Neo4j 数据
     const query = `
-      MATCH (n)-[r]->(m)
-      RETURN n,r,m LIMIT 100
+      MATCH (n)-[r]-(m)
+      WHERE n.type = '网络1' AND m.type = '网络1'
+      RETURN DISTINCT n, r, m LIMIT 500
     `;
     session
       .run(query)
@@ -59,7 +71,6 @@ export default {
           console.warn("No data returned from the query.");
           return;
         }
-        console.log("Query result:", result); // 添加调试信息
         result.records.forEach((record) => {
           const node1 = record.get('n');
           const node2 = record.get('m');
@@ -72,11 +83,9 @@ export default {
           // 添加节点
           if (!this.nodes.get(node1Id)) {
             this.nodes.add({ id: node1Id, label: node1.properties.name || node1Id });
-            console.log("Added node:", { id: node1Id, label: node1.properties.name || node1Id }); // 添加调试信息
           }
           if (!this.nodes.get(node2Id)) {
             this.nodes.add({ id: node2Id, label: node2.properties.name || node2Id });
-            console.log("Added node:", { id: node2Id, label: node2.properties.name || node2Id }); // 添加调试信息
           }
 
           // 添加边
@@ -85,18 +94,111 @@ export default {
             to: node2Id,
             label: relationship.properties.type || ''
           });
-          console.log("Added edge:", { from: node1Id, to: node2Id, label: relationship.properties.type || '' }); // 添加调试信息
         });
 
-        // 创建网络
+        // 创建第一个网络
         const container = this.$refs.neo4jGraph;
         const data = {
           nodes: this.nodes,
           edges: this.edges
         };
-        const options = {};
-        new vis.Network(container, data, options);
-        console.log("Network created with data:", data); // 添加调试信息
+        const options = {
+          physics: {
+            enabled: false
+          }
+        };
+        const network = new vis.Network(container, data, options);
+
+        // 监听 selectNode 事件
+        network.on('selectNode', (params) => {
+          if (params.nodes.length > 0) {
+            const nodeId = params.nodes[0];
+            const node = this.nodes.get(nodeId);
+            this.selectedNode = node;
+            this.dialogVisible = true;
+            console.log('Selected Node:', node); // 添加调试信息
+            console.log('Dialog Visible:', this.dialogVisible); // 添加调试信息
+          }
+        });
+
+        // 查询第二个图表的数据
+        const query2 = `
+          MATCH (n)-[r]-(m)
+          WHERE n.type = '网络2' AND m.type = '网络2'
+          RETURN DISTINCT n, r, m LIMIT 500
+        `;
+        return session.run(query2);
+      })
+      .then((result2) => {
+        if (result2.records.length === 0) {
+          console.warn("No data returned from the second query.");
+          return;
+        }
+        result2.records.forEach((record) => {
+          const node1 = record.get('n');
+          const node2 = record.get('m');
+          const relationship = record.get('r');
+
+          // 确保节点有 id 属性
+          const node1Id = node1.identity.toNumber();
+          const node2Id = node2.identity.toNumber();
+
+          // 添加节点
+          if (!this.nodes2.get(node1Id)) {
+            this.nodes2.add({ id: node1Id, label: node1.properties.name || node1Id });
+          }
+          if (!this.nodes2.get(node2Id)) {
+            this.nodes2.add({ id: node2Id, label: node2.properties.name || node2Id });
+          }
+
+          // 添加边
+          this.edges2.add({
+            from: node1Id,
+            to: node2Id,
+            label: relationship.properties.type || ''
+          });
+        });
+
+        // 创建第二个网络
+        const container2 = this.$refs.neo4jGraph2;
+        const data2 = {
+          nodes: this.nodes2,
+          edges: this.edges2
+        };
+        const options2 = {
+          physics: {
+            enabled: false
+          },
+          nodes:{
+            color:{
+              background: '#8BC34A',
+              border: '#333',
+              highlight: {
+                background: '#66BB6A', 
+                border: '#2e7d32'
+              }
+            }
+          },
+          edges:{
+            color:{
+              color: '#000', // 红色
+              highlight: '#000' // 红色
+            }
+          }
+        };
+        const network2 = new vis.Network(container2, data2, options2);
+
+        // 监听 selectNode 事件
+        network2.on('selectNode', (params) => {
+          if (params.nodes.length > 0) {
+            const nodeId = params.nodes[0];
+            const node = this.nodes2.get(nodeId);
+            this.selectedNode = node;
+            this.dialogVisible = true;
+            console.log('Selected Node:', node); // 添加调试信息
+            console.log('Dialog Visible:', this.dialogVisible); // 添加调试信息
+          }
+        });
       })
       .catch((error) => {
         console.error("Error executing query:", error);
@@ -122,8 +224,8 @@ export default {
 }
 
 .graph-container {
-  height: 100%;
-  width: 100%;
+  height: 100%; /* 调整图表容器的高度 */
+  width: 50%; /* 调整图表容器的宽度 */
   margin: 0;
   padding: 0;
 }
@@ -143,9 +245,10 @@ export default {
   background-color: #E9EEF3;
   color: #333;
   text-align: center;
-  line-height: 160px;
   margin: 0; 
   padding: 0; 
+  display: flex; /* 使用 flex 布局 */
+  flex-direction: row; /* 水平排列图表 */
 }
 
 body {
@@ -154,4 +257,3 @@ body {
   width: 100%;
 }
 </style>
-
