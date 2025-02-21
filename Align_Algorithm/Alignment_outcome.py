@@ -45,4 +45,3 @@ def add_relationship(node1, node2, rel_type, properties=None):
 
 
 if __name__ == '__main__':
-    
