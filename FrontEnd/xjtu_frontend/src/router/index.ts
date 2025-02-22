@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Table from '../views/Table.vue'
 import Neo4j from '../views/Neo4j.vue'
+import DeepSeek from '../views/DeepSeek.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -28,7 +29,14 @@ const router = createRouter({
       meta: {
         requiresAuth: false
       },
-    }
+    },{
+      path: '/deepseek',
+        name: 'DeepSeek',
+        component: DeepSeek,
+        meta: {
+          requiresAuth: false
+        }
+    },
   ]
 })
 

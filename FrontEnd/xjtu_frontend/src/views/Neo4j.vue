@@ -85,12 +85,10 @@ export default {
   },
   methods: {
     handleChange1(value) {
-      // 将 value 转换为字符串
       const valueStr = Array.isArray(value) ? value.join('-') : value.toString();
       this.fetchData(valueStr, '网络1', this.nodes, this.edges, this.$refs.neo4jGraph);
     },
     handleChange2(value) {
-      // 将 value 转换为字符串
       const valueStr = Array.isArray(value) ? value.join('-') : value.toString();
       this.fetchData(valueStr, '网络2', this.nodes2, this.edges2, this.$refs.neo4jGraph2);
     },
@@ -99,7 +97,7 @@ export default {
       nodes.clear();
       edges.clear();
 
-      // 初始化 Neo4j 驱动
+      // 连接到 Neo4j 数据库
       const driver = neo4j.driver(
         "bolt://localhost:7687",
         neo4j.auth.basic("neo4j", "neo4jpassword")
@@ -107,10 +105,8 @@ export default {
 
       const session = driver.session();
 
-      // 根据选择的值构建查询
+      // 解析选中的范围，获取最小和最大 ID
       const [minId, maxId] = value.split('-').map(Number);
-      console.log(type)
-      console.log(minId, maxId)
       const query = `
         MATCH (n)-[r]-(m)
         WHERE n.type = '${type}' AND m.type = '${type}' AND n.id >= ${minId} AND n.id <= ${maxId} AND m.id >= ${minId} AND m.id <= ${maxId}
@@ -125,16 +121,17 @@ export default {
             console.warn("No data returned from the query.");
             return;
           }
+          
+          // 遍历查询结果并填充数据
           result.records.forEach((record) => {
             const node1 = record.get('n');
             const node2 = record.get('m');
             const relationship = record.get('r');
 
-            // 确保节点有 id 属性
             const node1Id = node1.identity.toNumber();
             const node2Id = node2.identity.toNumber();
 
-            // 检查节点ID是否在范围内
+            // 根据 ID 过滤节点
             if (node1Id >= minId && node1Id <= maxId) {
               if (!nodes.get(node1Id)) {
                 nodes.add({ id: node1Id, label: node1.properties.name || node1Id });
@@ -156,31 +153,29 @@ export default {
             }
           });
 
-          // 创建网络
+          // 创建图表数据
           const data = {
             nodes: nodes,
             edges: edges
           };
+
+          // 设置图表选项
           const options = {
-            physics: {
-              enabled: false
-            },
-            edges: {
-              arrows: {
-                to: { enabled: true } // 添加箭头到目标节点
-              }
-            }
+            physics: { enabled: false },
+            edges: { arrows: { to: { enabled: true } } }
           };
+
+          // 创建图表
           const network = new vis.Network(container, data, options);
 
-          // 监听 selectNode 事件
+          // 监听节点选择事件
           network.on('selectNode', (params) => {
             if (params.nodes.length > 0) {
-              this.dialogTableVisible = true; // 修改为 this.dialogTableVisible
+              this.dialogTableVisible = true;
               const nodeId = params.nodes[0];
               const node = nodes.get(nodeId);
               this.selectedNode = node;
-              console.log('Selected Node:', node); // 添加调试信息
+              console.log('Selected Node:', node);
 
               // 获取邻居节点
               const neighbors = edges.get({
@@ -191,12 +186,12 @@ export default {
                 return edge.from === nodeId ? edge.to : edge.from;
               }).map(id => nodes.get(id));
 
-              // 填充 gridData 数组
+              // 填充 gridData
               this.gridData = [{
                 id: node.id,
                 label: node.label,
                 neighbor: neighbors.map(n => n.label).join(', '),
-                align: '' // 假设 align 字段为空，可以根据需要填充
+                align: '' // 可以根据需要填充
               }];
             }
           });
