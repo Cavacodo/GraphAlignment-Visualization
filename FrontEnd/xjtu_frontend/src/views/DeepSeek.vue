@@ -3,15 +3,9 @@
   <div class="main-container">
     <div class="chat-layout">
       <!-- 左侧边栏 -->
-      <div class="sidebar">
-        <div class="new-chat" @click="startNewChat">
-          <i class="el-icon-plus"></i>
-          新对话
-        </div>
-        <div class="history-list">
-          <!-- 这里可以添加历史对话列表 -->
-        </div>
-      </div>
+      <el-aside width="200px">
+        <Sidebar />
+      </el-aside>
 
       <!-- 主聊天区域 -->
       <div class="chat-main">
@@ -101,6 +95,8 @@ import 'katex/dist/katex.min.css';
 import mk from 'markdown-it-katex';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
+import Sidebar from '../components/SideBar.vue';
+
 
 const openai = new OpenAI({
   baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
@@ -154,11 +150,8 @@ export default {
       isLoading: false
     };
   },
+  components: { Sidebar },
   methods: {
-    startNewChat() {
-      this.messages = [];
-      this.userInput = '';
-    },
 
     async sendMessage() {
       if (this.userInput.trim() === '' || this.isLoading) return;
@@ -241,13 +234,6 @@ export default {
 .chat-layout {
   display: flex;
   height: 100%;
-}
-
-.sidebar {
-  width: 260px;
-  background-color: #202123;
-  padding: 20px;
-  color: white;
 }
 
 .new-chat {

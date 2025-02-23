@@ -2,21 +2,7 @@
   <div class="main-container">
     <el-container>
       <el-aside width="200px">
-        <!-- 左侧导航栏内容 -->
-        <el-menu default-active="1" class="el-menu-vertical-demo">
-          <el-menu-item index="1">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航一</span>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <i class="el-icon-document"></i>
-            <span slot="title">导航二</span>
-          </el-menu-item>
-          <el-menu-item index="3">
-            <i class="el-icon-setting"></i>
-            <span slot="title">导航三</span>
-          </el-menu-item>
-        </el-menu>
+        <Sidebar />
       </el-aside>
       <el-main>
         <div class="g1">
@@ -41,13 +27,17 @@
 </template>
 
 <script>
+import Sidebar from "../components/Sidebar.vue"; // 引入 Sidebar 组件
 import { reactive, ref } from 'vue'
 import neo4j from "neo4j-driver";
 import vis from 'vis-network/dist/vis-network.min';
-import 'vis-network/styles/vis-network.css'; // 修改后的路径
+import 'vis-network/styles/vis-network.css';
 
 export default {
   name: "Neo4jGraph",
+  components: {
+    Sidebar // 注册 Sidebar 组件
+  },
   data() {
     return {
       nodes: new vis.DataSet([]),
