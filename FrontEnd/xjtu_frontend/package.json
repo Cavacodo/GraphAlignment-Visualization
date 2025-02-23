@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "ant-design-vue": "^4.2.6",
     "axios": "^1.7.9",
     "element-plus": "^2.9.3",
     "highlight.js": "^11.11.1",
@@ -21,8 +22,10 @@
     "neo4j-driver": "^5.28.1",
     "neovis.js": "^2.1.0",
     "openai": "^4.85.3",
+    "typeit": "^8.8.7",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "vue3-markdown-it": "^1.0.10"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
@@ -31,6 +34,7 @@
     "@vitejs/plugin-vue-jsx": "^4.1.1",
     "@vue/tsconfig": "^0.7.0",
     "npm-run-all2": "^7.0.2",
+    "sass-embedded": "^1.85.0",
     "typescript": "~5.6.3",
     "vite": "^6.0.5",
     "vite-plugin-vue-devtools": "^7.6.8",

@@ -31,26 +31,28 @@
                :key="index" 
                class="message-wrapper"
                :class="message.sender">
-            <div class="avatar">
-              {{ message.sender === 'user' ? '👤' : '🤖' }}
-            </div>
-            <div class="message-content">
-              <div class="message-text" v-if="message.sender === 'user'">
-                {{ message.text }}
+            <template v-if="message.sender === 'model'">
+              <div class="avatar">🤖</div>
+              <div class="message-content">
+                <div 
+                  class="message-text markdown-body" 
+                  v-html="message.displayText">
+                </div>
+                <div 
+                  v-if="message.reasoning_content" 
+                  class="reasoning-content markdown-body"
+                  v-html="message.displayReasoningContent">
+                </div>
               </div>
-              <div 
-                class="message-text markdown-body" 
-                v-else 
-                :class="{ 'typing': message.isTyping }"
-                v-html="message.displayText">
+            </template>
+            <template v-else>
+              <div class="message-content user-message">
+                <div class="message-text">
+                  {{ message.text }}
+                </div>
               </div>
-              <div 
-                v-if="message.reasoning_content" 
-                class="reasoning-content markdown-body"
-                :class="{ 'typing': message.isTyping }"
-                v-html="message.displayReasoningContent">
-              </div>
-            </div>
+              <div class="avatar user-avatar">👤</div>
+            </template>
           </div>
           
           <div v-if="isLoading" class="message-wrapper model">
@@ -94,9 +96,11 @@
 <script>
 import OpenAI from "openai";
 import MarkdownIt from 'markdown-it';
-import mathjax3 from 'markdown-it-mathjax3';
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
+import mk from 'markdown-it-katex';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/github.css'; // 使用 GitHub 风格的代码高亮主题
+import 'highlight.js/styles/github.css';
 
 const openai = new OpenAI({
   baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
@@ -104,13 +108,25 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true
 });
 
-// 使用 $$ 作为分隔符的数学公式示例
-const formula = `
-$$
-r = \\frac{\\sum_{i=1}^{n}(x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum_{i=1}^{n}(x_i - \\bar{x})^2} \\sqrt{\\sum_{i=1}^{n}(y_i - \\bar{y})^2}}
-$$
-`;
+// 修改 system prompt
+const SYSTEM_PROMPT = `你是一个专业的数学助手。请直接用中文回答问题，不需要问候语，直接给出答案。遵循以下数学公式格式规则：
 
+1. 对于块级公式（单独一行的公式），必须使用 $$....$$ 包裹，例如：
+
+$$
+\\text{Cov}(X, Y) = \\frac{1}{n} \\sum_{i=1}^n (x_i - \\bar{x})(y_i - \\bar{y})
+$$
+
+2. 对于行内公式，必须使用 $...$ 包裹，例如：
+样本量为 $n$，均值为 $\\bar{x}$
+
+3. 严格禁止使用 ()( 或其他格式包裹公式，只能使用：
+- 块级公式：$$....$$
+- 行内公式：$....$
+
+请直接回答问题，给出清晰的解释和公式。`;
+
+// 修改 markdown-it 配置
 const md = new MarkdownIt({
   html: true,
   linkify: true,
@@ -123,7 +139,11 @@ const md = new MarkdownIt({
     }
     return '';
   }
-}).use(mathjax3);
+}).use(mk, {
+  throwOnError: false,
+  errorColor: '#cc0000',
+  output: 'html'
+});
 
 export default {
   name: "DeepSeek",
@@ -131,9 +151,7 @@ export default {
     return {
       messages: [],
       userInput: '',
-      isLoading: false,
-      typingSpeed: 30,
-      isTyping: false,
+      isLoading: false
     };
   },
   methods: {
@@ -141,32 +159,14 @@ export default {
       this.messages = [];
       this.userInput = '';
     },
-    async typeWriter(message, fullText, property) {
-      this.isTyping = true;
-      let currentText = '';
-      const chars = fullText.split('');
-      
-      for (let char of chars) {
-        currentText += char;
-        // 使用 markdown 渲染器处理文本
-        message[property] = this.renderMarkdown(currentText);
-        await new Promise(resolve => setTimeout(resolve, this.typingSpeed));
-        
-        this.$nextTick(() => {
-          this.scrollToBottom();
-        });
-      }
-      
-      this.isTyping = false;
-    },
+
     async sendMessage() {
       if (this.userInput.trim() === '' || this.isLoading) return;
       
       const userMessage = this.userInput.trim();
       this.messages.push({ 
         sender: 'user', 
-        text: userMessage,
-        displayText: userMessage 
+        text: userMessage
       });
       
       this.userInput = '';
@@ -174,51 +174,44 @@ export default {
 
       try {
         const response = await this.fetchResponse(userMessage);
-        const modelMessage = {
+        this.messages.push({
           sender: 'model',
           text: response.content,
-          displayText: '',
+          displayText: md.render(response.content),
           reasoning_content: response.reasoning_content,
-          displayReasoningContent: '',
-          isTyping: true
-        };
-        
-        this.messages.push(modelMessage);
-        
-        // 直接使用原始内容，让 typeWriter 处理渲染
-        await this.typeWriter(modelMessage, response.content, 'displayText');
-        
-        if (response.reasoning_content) {
-          await this.typeWriter(
-            modelMessage, 
-            response.reasoning_content, 
-            'displayReasoningContent'
-          );
-        }
-        
-        modelMessage.isTyping = false;
+          displayReasoningContent: response.reasoning_content ? 
+            md.render(response.reasoning_content) : ''
+        });
       } catch (error) {
         console.error('Error:', error);
         this.messages.push({
           sender: 'model',
           text: '抱歉，发生了一些错误，请稍后重试。',
-          displayText: '抱歉，发生了一些错误，请稍后重试。',
-          isTyping: false
+          displayText: '抱歉，发生了一些错误，请稍后重试。'
         });
       } finally {
         this.isLoading = false;
+        this.$nextTick(() => {
+          this.scrollToBottom();
+        });
       }
     },
+
     async fetchResponse(input) {
       const completion = await openai.chat.completions.create({
         messages: [
           { 
             role: "system", 
-            content: "You are a helpful assistant. When writing mathematical formulas, please use $$...$$" 
+            content: SYSTEM_PROMPT 
           },
-          { role: "user", content: input }
-        ],
+          {
+            role: "user",
+            content: input
+          }
+        ],  // 添加用户输入到消息列表中
         model: "deepseek-v3",
+        temperature: 0.7,  // 添加温度参数来控制输出的创造性
+        max_tokens: 2000   // 增加最大 token 数以确保完整输出
       });
 
       return {
@@ -226,22 +219,12 @@ export default {
         reasoning_content: completion.choices[0].message.reasoning_content
       };
     },
+
     scrollToBottom() {
       const container = this.$refs.messagesContainer;
       container.scrollTop = container.scrollHeight;
     },
-    renderMarkdown(text) {
-      if (!text) return '';
-      
-      // 处理数学公式
-      text = text
-        // 处理块级公式，将 [...] 转换为 $$...$$
-        .replace(/\[(.*?)\]/g, (match, p1) => `$$${p1}$$`)
-        // 处理行内公式，将 (x_1) 这样的格式转换为 \(x_1\)
-        .replace(/\$1\$/g, (match, p1) => `\\(${p1}\\)`);
-      
-      return md.render(text);
-    },
+
     stripMarkdown(text) {
       return text.replace(/[#*`_\[\]]/g, '');
     }
@@ -317,10 +300,15 @@ export default {
 
 .message-wrapper.user {
   background-color: #f7f7f8;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 40px;
+  gap: 12px;
 }
 
 .message-wrapper.model {
   background-color: #ffffff;
+  padding: 20px 20px 20px 40px;
 }
 
 .avatar {
@@ -335,8 +323,10 @@ export default {
 }
 
 .message-content {
-  flex: 1;
+  flex: 0 1 auto;
   line-height: 1.6;
+  max-width: 80%;
+  min-width: 0;
 }
 
 .message-text {
@@ -345,7 +335,11 @@ export default {
 }
 
 .message-wrapper.user .message-text {
-  color: #000000;
+  background-color: #e3f2fd;
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: fit-content;
+  margin: 0;
 }
 
 .message-wrapper.model .message-text {
@@ -502,15 +496,68 @@ export default {
   50% { opacity: 0; }
 }
 
-/* 添加 MathJax 相关样式 */
-.mjx-chtml {
-  margin: 1em 0 !important;
-  font-size: 1.1em !important;
+/* 添加 KaTeX 样式 */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1em 0;
+  margin: 0.5em 0;
+  background-color: #f8f9fa;
+  border-radius: 4px;
 }
 
-.mjx-math {
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  max-width: 100% !important;
+.katex {
+  font-size: 1.1em !important;
+  text-rendering: auto;
+  max-width: 100%;
+}
+
+.katex-html {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* 确保公式容器不会溢出 */
+.message-content {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* 优化行内公式样式 */
+.katex-inline {
+  padding: 0.2em 0.1em;
+  background-color: #f8f9fa;
+  border-radius: 2px;
+}
+.main-container{
+  height: 100vh;
+  width: 100vw;
+}
+
+.user-message {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-avatar {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.message-wrapper.user .message-content {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.message-wrapper.user .message-text {
+  background-color: #e3f2fd;
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: fit-content;
+  margin: 0;
 }
 </style>
