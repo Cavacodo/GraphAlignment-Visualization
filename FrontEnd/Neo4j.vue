@@ -1,37 +1,8 @@
-<template>
-  <div class="main-container">
-    <el-container>
-      <el-aside width="200px">
-        <Sidebar />
-      </el-aside>
-      <el-main>
-        <div class="g1">
-          <el-cascader v-model="value1" :options="options1" @change="handleChange1" style="margin-top: 20px;"/>
-          <div ref="neo4jGraph" class="graph-container1"></div>
-        </div>
-        <div class="g2">
-          <el-cascader v-model="value2" :options="options2" @change="handleChange2" style="margin-top: 20px;"/>
-          <div ref="neo4jGraph2" class="graph-container2"></div>
-        </div> <!-- 添加第二个图表容器 -->
-        <el-dialog v-model="dialogTableVisible" title="节点信息" width="800">
-          <el-table :data="gridData">
-            <el-table-column property="id" label="id" width="150" />
-            <el-table-column property="label" label="label" width="200" />
-            <el-table-column property="neighbor" label="neighbor" />
-            <el-table-column property="align" label="align" width="200" />
-          </el-table>
-        </el-dialog>
-      </el-main>
-    </el-container>
-  </div>
-</template>
-
 <script>
 import Sidebar from "../components/Sidebar.vue"; // 引入 Sidebar 组件
 import { reactive, ref } from 'vue'
 import neo4j from "neo4j-driver";
 import * as echarts from 'echarts';
-import { colProps } from "element-plus";
 
 let chart = null;
 let chart2 = null;
@@ -136,7 +107,7 @@ export default {
                 nodes.push({ id: node2Id, name: node2.properties.name || node2Id });
               }
             }
-            
+
             // 添加边
             if (nodes.find(n => n.id === node1Id) && nodes.find(n => n.id === node2Id)) {
               edges.push({
@@ -173,10 +144,9 @@ export default {
                 width: 2,
                 curveness: 0
               },
-              itemStyle: {
-                color: container === this.$refs.neo4jGraph ? '' : 'green'
-              },
-              edgeSymbol: ['none', 'none'] // 添加箭头表示有向图
+              itemStyle: { // 添加 itemStyle 配置
+                color: container === this.$refs.neo4jGraph ? 'blue' : 'red' // 设置不同图表的节点颜色
+              }
             }]
           };
 
@@ -202,7 +172,7 @@ export default {
 
               // 填充 gridData
               this.gridData = [{
-                id: node.id,
+                id: node.properties.id,
                 label: node.name,
                 neighbor: neighbors.map(n => n.name).join(', '),
                 align: '' // 可以根据需要填充
@@ -247,15 +217,15 @@ export default {
           const relationship = record.get('r');
 
           // 确保节点有 id 属性
-          const node1Id = node1.properties.id.toNumber();
-          const node2Id = node2.properties.id.toNumber();
+          const node1Id = node1.identity.toNumber();
+          const node2Id = node2.identity.toNumber();
 
           // 添加节点
           if (!this.nodes.find(n => n.id === node1Id)) {
-            this.nodes.push({ id: node1Id, name: node1.properties.id.toNumber() || node1Id });
+            this.nodes.push({ id: node1Id, name: node1.properties.name || node1Id });
           }
           if (!this.nodes.find(n => n.id === node2Id)) {
-            this.nodes.push({ id: node2Id, name: node2.properties.id.toNumber() || node2Id });
+            this.nodes.push({ id: node2Id, name: node2.properties.name || node2Id });
           }
 
           // 添加边
@@ -290,8 +260,7 @@ export default {
               opacity: 0.9,
               width: 2,
               curveness: 0
-            },
-            edgeSymbol: ['none', 'none'] // 添加箭头表示有向图
+            }
           }]
         };
         chart = echarts.init(container);
@@ -372,7 +341,6 @@ export default {
             data: data2.nodes.map(node => ({ ...node, x: null, y: null })),
             links: data2.links,
             categories: [],
-            
             roam: true,
             label: {
               show: true
@@ -385,10 +353,9 @@ export default {
               width: 2,
               curveness: 0
             },
-            itemStyle: {
-              color: 'green'
-            },
-            edgeSymbol: ['none', 'none'] // 添加箭头表示有向图
+            itemStyle: { // 添加 itemStyle 配置
+              color: 'red' // 设置 chart2 的节点颜色为红色
+            }
           }]
         };
         chart2 = echarts.init(container2);
@@ -408,7 +375,6 @@ export default {
               .map(edge => edge.source === nodeId ? edge.target : edge.source)
               .map(id => this.nodes2.find(n => n.id === id));
 
-            console.log('Neighbors:', neighbors);
             // 填充 gridData 数组
             this.gridData = [{
               id: node.id,
@@ -429,56 +395,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-:root {
-  height: 100%;
-  width: 100%;
-}
-
-.main-container {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
-
-.graph-container1, .graph-container2 {
-  height: 100%; /* 调整图表容器的高度 */
-  width: 100%; /* 调整图表容器的宽度 */
-  margin: 0;
-  padding: 0;
-}
-
-.el-container {
-  height: 100vh;
-}
-
-.el-aside {
-  background-color: #D3DCE6;
-  color: #333;
-  text-align: center;
-  line-height: 200px;
-}
-
-.el-main {
-  background-color: #E9EEF3;
-  color: #333;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  display: flex; /* 使用 flex 布局 */
-  flex-direction: row; /* 水平排列图表 */
-}
-
-.g1, .g2 {
-  /* margin-top: 100px; */
-  width: 50%; /* 设置宽度为50% */
-  height: 100%;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-  width: 100%;
-}
-</style>
