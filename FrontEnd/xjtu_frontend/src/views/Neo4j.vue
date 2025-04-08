@@ -13,11 +13,10 @@
           <el-cascader v-model="value2" :options="options2" @change="handleChange2" style="margin-top: 20px;"/>
           <div ref="neo4jGraph2" class="graph-container2"></div>
         </div> <!-- 添加第二个图表容器 -->
-        <el-dialog v-model="dialogTableVisible" title="节点信息" width="800">
+        <el-dialog v-model="dialogTableVisible" title="节点信息" width="600">
           <el-table :data="gridData">
-            <el-table-column property="id" label="id" width="150" />
+            <el-table-column property="id" label="id" width="200" />
             <el-table-column property="label" label="label" width="200" />
-            <el-table-column property="neighbor" label="neighbor" />
             <el-table-column property="align" label="align" width="200" />
           </el-table>
         </el-dialog>
@@ -32,6 +31,7 @@ import { reactive, ref } from 'vue'
 import neo4j from "neo4j-driver";
 import * as echarts from 'echarts';
 import { colProps } from "element-plus";
+
 
 let chart = null;
 let chart2 = null;
@@ -136,12 +136,11 @@ export default {
                 nodes.push({ id: node2Id, name: node2.properties.name || node2Id });
               }
             }
-            
             // 添加边
             if (nodes.find(n => n.id === node1Id) && nodes.find(n => n.id === node2Id)) {
               edges.push({
-                source: node1Id,
-                target: node2Id,
+                source: node1Id.toString(),
+                target: node2Id.toString(),
                 label: relationship.properties.type || ''
               });
             }
@@ -152,6 +151,7 @@ export default {
             nodes: nodes,
             links: edges
           };
+
 
           // 设置图表选项
           const option = {
@@ -179,7 +179,7 @@ export default {
               edgeSymbol: ['none', 'none'] // 添加箭头表示有向图
             }]
           };
-
+          console.log(option);
           // 创建图表
           // const chart = echarts.init(container);
           if(container === this.$refs.neo4jGraph) chart.setOption(option);
@@ -195,16 +195,11 @@ export default {
               this.selectedNode = node;
               console.log('Selected Node:', node);
 
-              // 获取邻居节点
-              const neighbors = edges.filter(edge => edge.source === nodeId || edge.target === nodeId)
-                .map(edge => edge.source === nodeId ? edge.target : edge.source)
-                .map(id => nodes.find(n => n.id === id));
 
               // 填充 gridData
               this.gridData = [{
                 id: node.id,
                 label: node.name,
-                neighbor: neighbors.map(n => n.name).join(', '),
                 align: '' // 可以根据需要填充
               }];
             }
@@ -260,8 +255,8 @@ export default {
 
           // 添加边
           this.edges.push({
-            source: node1Id,
-            target: node2Id,
+            source: node1Id.toString(),
+            target: node2Id.toString(),
             label: relationship.properties.type || ''
           });
         });
@@ -307,15 +302,13 @@ export default {
             console.log('Selected Node:', node); // 添加调试信息
 
             // 获取邻居节点
-            const neighbors = this.edges.filter(edge => edge.source === nodeId || edge.target === nodeId)
-              .map(edge => edge.source === nodeId ? edge.target : edge.source)
-              .map(id => this.nodes.find(n => n.id === id));
+            const nodeIdStr = nodeId.toString();
+
 
             // 填充 gridData 数组
             this.gridData = [{
               id: node.id,
               label: node.name,
-              neighbor: neighbors.map(n => n.name).join(', '),
               align: '' // 假设 align 字段为空，可以根据需要填充
             }];
           }
@@ -353,8 +346,8 @@ export default {
 
           // 添加边
           this.edges2.push({
-            source: node1Id,
-            target: node2Id,
+            source: node1Id.toString(),
+            target: node2Id.toString(),
             label: relationship.properties.type || ''
           });
         });
@@ -402,18 +395,12 @@ export default {
             const node = this.nodes2.find(n => n.id === nodeId);
             this.selectedNode = node;
             console.log('Selected Node:', node); // 添加调试信息
+            
 
-            // 获取邻居节点
-            const neighbors = this.edges2.filter(edge => edge.source === nodeId || edge.target === nodeId)
-              .map(edge => edge.source === nodeId ? edge.target : edge.source)
-              .map(id => this.nodes2.find(n => n.id === id));
-
-            console.log('Neighbors:', neighbors);
             // 填充 gridData 数组
             this.gridData = [{
               id: node.id,
               label: node.name,
-              neighbor: neighbors.map(n => n.name).join(', '),
               align: '' // 假设 align 字段为空，可以根据需要填充
             }];
           }
