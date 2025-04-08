@@ -105,7 +105,7 @@ const openai = new OpenAI({
 });
 
 // 修改 system prompt
-const SYSTEM_PROMPT = `你是一个专业的助手。请直接用中文回答问题，不需要问候语，直接给出答案。遵循以下数学公式格式规则：
+const SYSTEM_PROMPT = `你是一个专业的数学助手。请直接用中文回答问题，不需要问候语，直接给出答案。遵循以下数学公式格式规则：
 
 1. 对于块级公式（单独一行的公式），必须使用 $$....$$ 包裹，例如：
 
@@ -147,8 +147,7 @@ export default {
     return {
       messages: [],
       userInput: '',
-      isLoading: false,
-      currentMessageIndex: 0 // 添加: 用于跟踪当前显示的字符索引
+      isLoading: false
     };
   },
   components: { Sidebar },
@@ -168,17 +167,14 @@ export default {
 
       try {
         const response = await this.fetchResponse(userMessage);
-        const fullMessage = response.content;
         this.messages.push({
           sender: 'model',
-          text: fullMessage,
-          displayText: '',
+          text: response.content,
+          displayText: md.render(response.content),
           reasoning_content: response.reasoning_content,
           displayReasoningContent: response.reasoning_content ? 
             md.render(response.reasoning_content) : ''
         });
-        this.currentMessageIndex = 0; // 重置索引
-        this.typeWriter(fullMessage, this.messages.length - 1); // 调用 typeWriter 方法
       } catch (error) {
         console.error('Error:', error);
         this.messages.push({
@@ -191,14 +187,6 @@ export default {
         this.$nextTick(() => {
           this.scrollToBottom();
         });
-      }
-    },
-
-    typeWriter(message, messageIndex) {
-      if (this.currentMessageIndex < message.length) {
-        this.messages[messageIndex].displayText += message.charAt(this.currentMessageIndex);
-        this.currentMessageIndex++;
-        setTimeout(() => this.typeWriter(message, messageIndex), 50); // 递归调用 typeWriter
       }
     },
 

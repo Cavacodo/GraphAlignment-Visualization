@@ -30,8 +30,7 @@
 import Sidebar from "../components/Sidebar.vue"; // 引入 Sidebar 组件
 import { reactive, ref } from 'vue'
 import neo4j from "neo4j-driver";
-import vis from 'vis-network/dist/vis-network.min';
-import 'vis-network/styles/vis-network.css';
+import * as echarts from 'echarts';
 
 export default {
   name: "Neo4jGraph",
@@ -40,10 +39,10 @@ export default {
   },
   data() {
     return {
-      nodes: new vis.DataSet([]),
-      edges: new vis.DataSet([]),
-      nodes2: new vis.DataSet([]), // 添加第二个图表的节点数据集
-      edges2: new vis.DataSet([]),  // 添加第二个图表的边数据集
+      nodes: [],
+      edges: [],
+      nodes2: [], // 添加第二个图表的节点数据集
+      edges2: [],  // 添加第二个图表的边数据集
       selectedNode: null, // 选中的节点信息
       dialogTableVisible: false, // 添加 dialogTableVisible 到 data 中
       gridData: [], // 添加 gridData 数组
@@ -84,8 +83,8 @@ export default {
     },
     fetchData(value, type, nodes, edges, container) {
       // 清空现有数据
-      nodes.clear();
-      edges.clear();
+      nodes.length = 0;
+      edges.length = 0;
 
       // 连接到 Neo4j 数据库
       const driver = neo4j.driver(
@@ -123,21 +122,21 @@ export default {
 
             // 根据 ID 过滤节点
             if (node1Id >= minId && node1Id <= maxId) {
-              if (!nodes.get(node1Id)) {
-                nodes.add({ id: node1Id, label: node1.properties.name || node1Id });
+              if (!nodes.find(n => n.id === node1Id)) {
+                nodes.push({ id: node1Id, name: node1.properties.name || node1Id });
               }
             }
             if (node2Id >= minId && node2Id <= maxId) {
-              if (!nodes.get(node2Id)) {
-                nodes.add({ id: node2Id, label: node2.properties.name || node2Id });
+              if (!nodes.find(n => n.id === node2Id)) {
+                nodes.push({ id: node2Id, name: node2.properties.name || node2Id });
               }
             }
 
             // 添加边
-            if (nodes.get(node1Id) && nodes.get(node2Id)) {
-              edges.add({
-                from: node1Id,
-                to: node2Id,
+            if (nodes.find(n => n.id === node1Id) && nodes.find(n => n.id === node2Id)) {
+              edges.push({
+                source: node1Id,
+                target: node2Id,
                 label: relationship.properties.type || ''
               });
             }
@@ -146,41 +145,55 @@ export default {
           // 创建图表数据
           const data = {
             nodes: nodes,
-            edges: edges
+            links: edges
           };
 
           // 设置图表选项
-          const options = {
-            physics: { enabled: false },
-            edges: { arrows: { to: { enabled: true } } }
+          const option = {
+            series: [{
+              type: 'graph',
+              layout: 'force',
+              data: data.nodes.map(node => ({ ...node, x: null, y: null })),
+              links: data.links,
+              categories: [],
+              roam: true,
+              label: {
+                show: true
+              },
+              force: {
+                repulsion: 100
+              },
+              lineStyle: {
+                opacity: 0.9,
+                width: 2,
+                curveness: 0
+              }
+            }]
           };
 
           // 创建图表
-          const network = new vis.Network(container, data, options);
+          const chart = echarts.init(container);
+          chart.setOption(option);
 
           // 监听节点选择事件
-          network.on('selectNode', (params) => {
-            if (params.nodes.length > 0) {
+          chart.on('click', (params) => {
+            if (params.dataType === 'node') {
               this.dialogTableVisible = true;
-              const nodeId = params.nodes[0];
-              const node = nodes.get(nodeId);
+              const nodeId = params.data.id;
+              const node = nodes.find(n => n.id === nodeId);
               this.selectedNode = node;
               console.log('Selected Node:', node);
 
               // 获取邻居节点
-              const neighbors = edges.get({
-                filter: function(edge) {
-                  return edge.from === nodeId || edge.to === nodeId;
-                }
-              }).map(edge => {
-                return edge.from === nodeId ? edge.to : edge.from;
-              }).map(id => nodes.get(id));
+              const neighbors = edges.filter(edge => edge.source === nodeId || edge.target === nodeId)
+                .map(edge => edge.source === nodeId ? edge.target : edge.source)
+                .map(id => nodes.find(n => n.id === id));
 
               // 填充 gridData
               this.gridData = [{
                 id: node.id,
-                label: node.label,
-                neighbor: neighbors.map(n => n.label).join(', '),
+                label: node.name,
+                neighbor: neighbors.map(n => n.name).join(', '),
                 align: '' // 可以根据需要填充
               }];
             }
@@ -208,7 +221,7 @@ export default {
     const query = `
       MATCH (n)-[r]-(m)
       WHERE n.type = '网络1' AND m.type = '网络1'
-      RETURN DISTINCT n, r, m LIMIT 500
+      RETURN DISTINCT n, r, m LIMIT 5000
     `;
     session
       .run(query)
@@ -227,17 +240,17 @@ export default {
           const node2Id = node2.identity.toNumber();
 
           // 添加节点
-          if (!this.nodes.get(node1Id)) {
-            this.nodes.add({ id: node1Id, label: node1.properties.name || node1Id });
+          if (!this.nodes.find(n => n.id === node1Id)) {
+            this.nodes.push({ id: node1Id, name: node1.properties.name || node1Id });
           }
-          if (!this.nodes.get(node2Id)) {
-            this.nodes.add({ id: node2Id, label: node2.properties.name || node2Id });
+          if (!this.nodes.find(n => n.id === node2Id)) {
+            this.nodes.push({ id: node2Id, name: node2.properties.name || node2Id });
           }
 
           // 添加边
-          this.edges.add({
-            from: node1Id,
-            to: node2Id,
+          this.edges.push({
+            source: node1Id,
+            target: node2Id,
             label: relationship.properties.type || ''
           });
         });
@@ -246,43 +259,51 @@ export default {
         const container = this.$refs.neo4jGraph;
         const data = {
           nodes: this.nodes,
-          edges: this.edges
+          links: this.edges
         };
-        const options = {
-          physics: {
-            enabled: false
-          },
-          edges: {
-            arrows: {
-              to: { enabled: true } // 添加箭头到目标节点
+        const option = {
+          series: [{
+            type: 'graph',
+            layout: 'force',
+            data: data.nodes.map(node => ({ ...node, x: null, y: null })),
+            links: data.links,
+            categories: [],
+            roam: true,
+            label: {
+              show: true
+            },
+            force: {
+              repulsion: 100
+            },
+            lineStyle: {
+              opacity: 0.9,
+              width: 2,
+              curveness: 0
             }
-          }
+          }]
         };
-        const network = new vis.Network(container, data, options);
+        const chart = echarts.init(container);
+        chart.setOption(option);
 
         // 监听 selectNode 事件
-        network.on('selectNode', (params) => {
-          if (params.nodes.length > 0) {
+        chart.on('click', (params) => {
+          if (params.dataType === 'node') {
             this.dialogTableVisible = true; // 修改为 this.dialogTableVisible
-            const nodeId = params.nodes[0];
-            const node = this.nodes.get(nodeId);
+            const nodeId = params.data.id;
+            const node = this.nodes.find(n => n.id === nodeId);
             this.selectedNode = node;
             console.log('Selected Node:', node); // 添加调试信息
 
             // 获取邻居节点
-            const neighbors = this.edges.get({
-              filter: function(edge) {
-                return edge.from === nodeId || edge.to === nodeId;
-              }
-            }).map(edge => {
-              return edge.from === nodeId ? edge.to : edge.from;
-            }).map(id => this.nodes.get(id));
+            const neighbors = this.edges.filter(edge => edge.source === nodeId || edge.target === nodeId)
+              .map(edge => edge.source === nodeId ? edge.target : edge.source)
+              .map(id => this.nodes.find(n => n.id === id));
 
             // 填充 gridData 数组
             this.gridData = [{
               id: node.id,
-              label: node.label,
-              neighbor: neighbors.map(n => n.label).join(', '),
+              label: node.name,
+              neighbor: neighbors.map(n => n.name).join(', '),
               align: '' // 假设 align 字段为空，可以根据需要填充
             }];
           }
@@ -292,7 +313,7 @@ export default {
         const query2 = `
           MATCH (n)-[r]-(m)
           WHERE n.type = '网络2' AND m.type = '网络2'
-          RETURN DISTINCT n, r, m LIMIT 500
+          RETURN DISTINCT n, r, m LIMIT 5000
         `;
         return session.run(query2);
       })
@@ -311,17 +332,17 @@ export default {
           const node2Id = node2.identity.toNumber();
 
           // 添加节点
-          if (!this.nodes2.get(node1Id)) {
-            this.nodes2.add({ id: node1Id, label: node1.properties.name || node1Id });
+          if (!this.nodes2.find(n => n.id === node1Id)) {
+            this.nodes2.push({ id: node1Id, name: node1.properties.name || node1Id });
           }
-          if (!this.nodes2.get(node2Id)) {
-            this.nodes2.add({ id: node2Id, label: node2.properties.name || node2Id });
+          if (!this.nodes2.find(n => n.id === node2Id)) {
+            this.nodes2.push({ id: node2Id, name: node2.properties.name || node2Id });
           }
 
           // 添加边
-          this.edges2.add({
-            from: node1Id,
-            to: node2Id,
+          this.edges2.push({
+            source: node1Id,
+            target: node2Id,
             label: relationship.properties.type || ''
           });
         });
@@ -330,57 +351,51 @@ export default {
         const container2 = this.$refs.neo4jGraph2;
         const data2 = {
           nodes: this.nodes2,
-          edges: this.edges2
+          links: this.edges2
         };
-        const options2 = {
-          physics: {
-            enabled: false
-          },
-          nodes: {
-            color: {
-              background: '#8BC34A',
-              border: '#333',
-              highlight: {
-                background: '#66BB6A',
-                border: '#2e7d32'
-              }
-            }
-          },
-          edges: {
-            color: {
-              color: '#000', // 红色
-              highlight: '#000' // 红色
+        const option2 = {
+          series: [{
+            type: 'graph',
+            layout: 'force',
+            data: data2.nodes.map(node => ({ ...node, x: null, y: null })),
+            links: data2.links,
+            categories: [],
+            roam: true,
+            label: {
+              show: true
             },
-            arrows: {
-              to: { enabled: true } // 添加箭头到目标节点
+            force: {
+              repulsion: 100
+            },
+            lineStyle: {
+              opacity: 0.9,
+              width: 2,
+              curveness: 0
             }
-          }
+          }]
         };
-        const network2 = new vis.Network(container2, data2, options2);
+        const chart2 = echarts.init(container2);
+        chart2.setOption(option2);
 
         // 监听 selectNode 事件
-        network2.on('selectNode', (params) => {
-          if (params.nodes.length > 0) {
+        chart2.on('click', (params) => {
+          if (params.dataType === 'node') {
             this.dialogTableVisible = true; // 修改为 this.dialogTableVisible
-            const nodeId = params.nodes[0];
-            const node = this.nodes2.get(nodeId);
+            const nodeId = params.data.id;
+            const node = this.nodes2.find(n => n.id === nodeId);
             this.selectedNode = node;
             console.log('Selected Node:', node); // 添加调试信息
 
             // 获取邻居节点
-            const neighbors = this.edges2.get({
-              filter: function(edge) {
-                return edge.from === nodeId || edge.to === nodeId;
-              }
-            }).map(edge => {
-              return edge.from === nodeId ? edge.to : edge.from;
-            }).map(id => this.nodes2.get(id));
+            const neighbors = this.edges2.filter(edge => edge.source === nodeId || edge.target === nodeId)
+              .map(edge => edge.source === nodeId ? edge.target : edge.source)
+              .map(id => this.nodes2.find(n => n.id === id));
 
             // 填充 gridData 数组
             this.gridData = [{
               id: node.id,
-              label: node.label,
-              neighbor: neighbors.map(n => n.label).join(', '),
+              label: node.name,
+              neighbor: neighbors.map(n => n.name).join(', '),
               align: '' // 假设 align 字段为空，可以根据需要填充
             }];
           }
