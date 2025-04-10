@@ -4,12 +4,13 @@
         <i class="el-icon-plus"></i>
         全局节点展示
       </div>
+      <div class="new-chat" @click="navigateTo('groundTruth')">
+        <i class="el-icon-plus"></i>
+        GroundTruth
+      </div>
       <div class="new-chat" @click="navigateTo('DeepSeek')">
         <i class="el-icon-plus"></i>
         DeepSeek
-      </div>
-      <div class="history-list">
-        <!-- 这里可以添加历史对话列表 -->
       </div>
     </div>
   </template>
