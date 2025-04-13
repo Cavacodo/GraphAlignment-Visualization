@@ -18,7 +18,6 @@ import Sidebar from '../components/SideBar.vue';
 import * as neo4j from 'neo4j-driver';
 import * as echarts from 'echarts';
 import axios from 'axios'; // 导入 axios
-
 export default {
   components: {
     Sidebar // Register the Sidebar component
@@ -31,15 +30,16 @@ export default {
         links: []
       },
       backendData: [],// 新增属性用于存储后端返回的二维数组
-      sourceNode : [],
-      targetNode : [],
-      alignmentNode : [],
-      alignmentLink : []
+      sourceNode: [],
+      targetNode: [],
+      alignmentNode: [],
+      alignmentLink: []
     };
   },
   mounted() {
     this.initNeo4j().then(() => {
-      this.fetchDataFromBackend();
+      this.fetchDataFromBackend(0, 3, 5);
+
     });
   },
   methods: {
@@ -63,19 +63,8 @@ export default {
             const node1 = record.get('n');
             // 确保节点有 id 属性
             const node1Id = node1.properties.id.toNumber();
-            this.graphData.nodes.push({ id: node1Id, name: node1.properties.id.toNumber() || node1Id , type : node1.properties.type });
-            if(node1.properties.type === '网络1'){
-              this.sourceNode.push(node1);
-            }else if(node1.properties.type === '网络2'){
-              this.targetNode.push(node1);
-            }
+            this.graphData.nodes.push({ id: node1.properties.type + ' ' + node1.properties.id.toNumber(), name: node1Id || node1Id, type: node1.properties.type });
 
-            // 添加边
-            // this.graphData.links.push({
-            //   source: node1Id.toString(),
-            //   target: node2Id.toString(),
-            //   label: relationship.properties.type || ''
-            // });
           });
           session.close();
           driver.close();
@@ -85,7 +74,6 @@ export default {
         });
     },
     initChart() {
-      console.log(this.alignmentLink);
       this.chart = echarts.init(this.$refs.chart);
 
       // 定义节点类型到颜色的映射
@@ -103,7 +91,9 @@ export default {
           trigger: 'item',
           formatter: (params) => {
             if (params.dataType === 'node') {
-              return `节点 ID: ${params.data.properties.id.low}<br/>节点类型: ${params.data.properties.type}<br/>节点名称 : ${params.data.name}`;
+              return `节点 ID: ${params.data.id}<br/>节点类型: ${params.data.type}<br/>节点名称 : ${params.data.name}`;
+            } else if (params.dataType === 'edge') {
+              return `边：${params.data.source} -> ${params.data.target}`;
             }
             return '';
           },
@@ -117,25 +107,32 @@ export default {
         series: [
           {
             type: 'graph',
-            layout: 'force',
+            layout: 'none',
             data: this.alignmentNode.map(node => ({
               ...node,
-              x: null,
-              y: null,
               itemStyle: {
-                color: typeColorMap[node.properties.type] || 'gray' // 根据类型设置颜色，默认为灰色
+                color: typeColorMap[node.type] || 'gray', // 根据类型设置颜色，默认为灰色
+                borderColor: 'black', // 边框颜色
+                borderWidth: 1, // 边框宽度
               }
             })),
             links: this.alignmentLink,
-            categories: [],
+            categories: [
+
+            ],
             roam: true,
             force: {
-              repulsion: 100
+              repulsion: 100,
             },
-            lineStyle: {
-              opacity: 0.9,
-              width: 2,
-              curveness: 0
+            edgeLabel: {
+              show: false, // 关键：必须声明默认结构
+              formatter: () => ''
+            },
+            emphasis: {
+              lineStyle: {
+                opacity: 1,  // 悬停时显示线
+                color: '#f00'
+              }
             },
             edgeSymbol: ['none', 'none'] // 添加箭头表示有向图
           }
@@ -143,60 +140,129 @@ export default {
       };
       this.chart.setOption(option);
     },
-    fetchDataFromBackend() { // 新增方法
-      axios.get('http://localhost:8080/neo4j/doubanGT')
+    fetchDataFromBackend(type, k, id) {
+      axios.get('http://localhost:8080/neo4j/doubanNetWork', {
+        params: {
+          type: type,
+          k: k,
+          id: id
+        }
+      }) // 替换为实际的后端 API 地址
         .then(response => {
-          const data = response.data;
-          if (data) {
-            this.backendData = data; // 存储二维数组
-            for(let i = 0; i < this.backendData[0].length; i++){
-              let id = this.backendData[0][i];
-              for(let j = 0; j < this.sourceNode.length; j++){
-                if(this.sourceNode[j].properties.id.low === id) {
-                  this.alignmentNode.push(this.sourceNode[j]);
-                }
+          this.backendData = response.data;
+          this.sourceNode = this.backendData.src_node;
+          this.targetNode = this.backendData.target_node;
+          var prefix1 = type === 0 ? '网络1 ' : '网络2 ';
+          var prefix2 = type === 0 ? '网络2 ' : '网络1 ';
+          for (var i = 0; i < this.backendData.src.length; i++) {
+            this.alignmentLink.push({
+              source: prefix1 + this.backendData.src[i][0],
+              target: prefix1 + this.backendData.src[i][1],
+              label: "internal",
+              lineStyle:{
+                opacity: 0.5,
+                width: 2,
+                curveness: 0
               }
-            }
-            const len = this.alignmentNode.length;
-            for(let i = 0; i < this.backendData[1].length; i++){
-              let id = this.backendData[1][i];
-              for(let j = 0; j < this.targetNode.length; j++){
-                if(this.targetNode[j].properties.id.low === id) this.alignmentNode.push(this.targetNode[j]);
+            });
+          }
+          for (var i = 0; i < this.backendData.target.length; i++) {
+            this.alignmentLink.push({
+              source: prefix2 + this.backendData.target[i][0],
+              target: prefix2 + this.backendData.target[i][1],
+              label: "internal",
+              lineStyle:{
+                opacity: 0.5,
+                width: 2,
+                curveness: 0
               }
-            }
-            console.log(this.targetNode.length);
-            console.log(this.alignmentNode.length);
-            for(let i = len; i < this.alignmentNode.length; i++){
-              this.alignmentLink.push({
-                source: this.alignmentNode[i-len].properties.id.low,
-                target: this.alignmentNode[i].properties.id.low,
-                label: 'aligned'
+            });
+          }
+          for (var i = 0; i < this.backendData.align.length; i++) {
+            this.alignmentLink.push({
+              source: prefix1 + this.backendData.align[i][1 - type],
+              target: prefix2 + this.backendData.align[i][type],
+              label: "align",
+              lineStyle:{
+                opacity: 0,
+                width: 2,
+                curveness: 0
+              }
+            });
+          }
+          var radius = 120;
+          if (type === 0) {
+            for (var i = 0; i < this.sourceNode.length; i++) {
+              const theta = Math.random() * 2 * Math.PI;
+              const r = Math.sqrt(Math.random()) * radius;
+              this.alignmentNode.push({
+                id: "网络1 " + this.sourceNode[i],
+                type: '网络1',
+                name: this.sourceNode[i],
+                x: 300 + r * Math.cos(theta),
+                y: 300 + r * Math.sin(theta),
               });
             }
-            
-            this.initChart();
+            for (var j = 0; j < this.targetNode.length; j++) {
+              const theta = Math.random() * 2 * Math.PI;
+              const r = Math.sqrt(Math.random()) * radius;
+              this.alignmentNode.push({
+                id: "网络2 " + this.targetNode[j],
+                type: '网络2',
+                name: this.targetNode[j],
+                x: 700 + r * Math.cos(theta),
+                y: 300 + r * Math.sin(theta),
+              });
+            }
           } else {
-            console.warn("No valid data returned from the backend.");
+            for (var i = 0; i < this.targetNode.length; i++) {
+              const theta = Math.random() * 2 * Math.PI;
+              const r = Math.sqrt(Math.random()) * radius;
+              this.alignmentNode.push({
+                id: "网络1 " + this.targetNode[i],
+                type: '网络1',
+                name: this.targetNode[i],
+                x: 300 + r * Math.cos(theta),
+                y: 300 + r * Math.sin(theta),
+              });
+            }
+            for (var j = 0; j < this.sourceNode.length; j++) {
+              const theta = Math.random() * 2 * Math.PI;
+              const r = Math.sqrt(Math.random()) * radius;
+              this.alignmentNode.push({
+                id: "网络2 " + this.sourceNode[j],
+                type: '网络2',
+                name: this.sourceNode[j],
+                x: 700 + r * Math.cos(theta),
+                y: 300 + r * Math.sin(theta),
+              })
+            }
           }
+          this.initChart();
         })
         .catch(error => {
-          console.error("Error fetching data from backend:", error);
+          console.error('Error fetching data:', error);
         });
-    }
+    },
+
   }
 }
 </script>
 
 <style scoped>
 .main-container {
-  height: 100vh; /* Ensure the container takes the full viewport height */
-  width: 100vw; /* Ensure the container takes the full viewport width */
+  height: 100vh;
+  /* Ensure the container takes the full viewport height */
+  width: 100vw;
+  /* Ensure the container takes the full viewport width */
   background-color: #f7f7f8;
-  margin: 0; /* Ensure no margin */
-  padding: 0; /* Ensure no padding */
+  margin: 0;
+  /* Ensure no margin */
+  padding: 0;
+  /* Ensure no padding */
 }
 
-.display-layout { 
+.display-layout {
   display: flex;
   height: 100%;
   width: 100%;

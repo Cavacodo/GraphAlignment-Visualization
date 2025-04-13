@@ -369,8 +369,8 @@ const startCountdown = () => {
 </script>
 
 <style scoped>
-/* 添加这些全局样式确保页面占满整个视口 */
-:root {
+/* 添加这些全局样式确保页r占满整个视口 */
+root {
   height: 100%;
 }
 
