@@ -1,4 +1,6 @@
+import os
 import time
+from http.client import responses
 
 import pika
 import json
@@ -12,22 +14,27 @@ routing_key = 'stock-request-key'
 url = "http://localhost:8080/res/python"
 
 def callback(ch, method, properties, body):
+    GCNA = ['IsoRank', 'BigAlign', 'FINAL', 'DeepLink', 'REGAL']
     try:
         # 解析JSON格式的消息体
         message = json.loads(body.decode('utf-8'))
         print(f"Received message: {message}")
         res = message['type']
-        if res == 1:
-            response = requests.post(url, json=list(process_data_1()))
-        elif res == 2:
-            response = requests.post(url, json=list(process_data_2()))
+        if res in GCNA:
+            response = requests.post(url, json=process_data(res))
+        elif res == 'GTCAlign':
+            response = requests.post(url, json=process_data('GTCAlign'))
+        elif res == 'GAlign':
+            response = requests.post(url, json=process_data('GAlign'))
+        else:
+            print(f"Invalid type: {res}")
         print(response.text)
         # 确认消息已处理
         ch.basic_ack(delivery_tag=method.delivery_tag)
     except Exception as e:
         print(f"Failed to process message: {e}")
         # 拒绝消息，可以重新入队或丢弃
-        ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+        ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
 
 def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host))
@@ -51,12 +58,35 @@ def main():
         channel.stop_consuming()
     finally:
         connection.close()
-def process_data_1():
-    time.sleep(5)
-    return {"res": ["方法一处理好了"],"type" : 1}
-def process_data_2():
-    time.sleep(5)
-    return {"res": ["方法二处理好了"],"type" : 2}
+def process_data(type,args=''):
+    print("Processing...")
+    command = None
+    GCNA = ['IsoRank','BigAlign','FINAL','DeepLink','REGAL']
+    m = []
+    if type in GCNA:
+        os.chdir('D:\GraphAlignment-Visualization\Align_Algorithm\GCNA_Origin\GCNA')
+    elif type == 'GAlign':
+        os.chdir('D:\GraphAlignment-Visualization\Align_Algorithm\GAlign')
+    elif type == 'GTCAlign':
+        os.chdir('D:\GraphAlignment-Visualization\Align_Algorithm\GTCAlign')
+    if type in GCNA:
+        command = 'python -u network_alignment.py ' + type + args
+    elif type == 'GAlign':
+        command = 'python -u network_alignment.py GAlign' + args
+    elif type == 'GTCAlign':
+        command = 'python -u main.py' + args
+    else: return None
+    with os.popen(command) as pipe:
+        output = pipe.read()
+    with open('m.txt','r',encoding='utf-8') as f:
+        for line in f:
+            tmp = line.strip().split(' ')
+            m.append(tmp)
+    ans = {'type': type,'acc':output,'m':m}
+    print("Process Done")
+    return ans
+
+
 
 if __name__ == '__main__':
     main()

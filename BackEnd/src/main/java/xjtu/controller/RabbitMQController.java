@@ -31,13 +31,14 @@ public class RabbitMQController {
 
     @PostMapping("/send")
     public ResponseEntity<String> sendJsonMessage(@RequestBody Object jsonData) {
+
         rabbitMQProducerService.sendJsonMessage(jsonData);
         System.out.println(jsonData);
 
         while (true) {
-            Map<String, Integer> map = objectMapper.convertValue(jsonData, Map.class);
-            int val = map.get("type");
-            List<Object> value = redisTemplate.opsForList().range("res1", 0, -1);
+            Map<String, String> map = objectMapper.convertValue(jsonData, Map.class);
+            String val = map.get("type");
+            List<Object> value = redisTemplate.opsForList().range("type", 0, -1);
             if (value != null) {
                 return new ResponseEntity<>(""+value, HttpStatus.OK);
             }

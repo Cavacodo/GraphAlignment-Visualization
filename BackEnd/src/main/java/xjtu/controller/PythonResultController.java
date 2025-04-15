@@ -28,20 +28,11 @@ public class PythonResultController {
     public ResponseEntity<String> pythonResult(@RequestBody Map<String,Object> res)
     {
         System.out.println(res);
-        Integer type = (Integer) res.get("type");
-        System.out.println(res.get("res"));
-        List<Object> r = (List<Object>) res.get("res");
+        String type = (String) res.get("type");
+        String acc = (String) res.get("acc");
+        List<Object> m = (List<Object>) res.get("m");
         if(type == null) return new ResponseEntity<>("type is null", HttpStatus.BAD_REQUEST);
-        if(type == 1){
-            for(Object val : r){
-                redisTemplate.opsForList().rightPush("res1",val);
-            }
-            return ResponseEntity.ok("done");
-        }else{
-            for(Object val : r){
-                redisTemplate.opsForList().rightPush("res2",val);
-            }
-            return ResponseEntity.ok("done");
-        }
+        redisTemplate.opsForList().rightPush("type",type);
+        return new ResponseEntity<>("done", HttpStatus.OK);
     }
 }
