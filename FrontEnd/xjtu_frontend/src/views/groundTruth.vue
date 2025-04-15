@@ -1,3 +1,4 @@
+//TODO 本页面
 <template>
   <div class="main-container">
     <div class="display-layout">
@@ -80,6 +81,7 @@ export default {
       const typeColorMap = {
         '网络1': 'blue',
         '网络2': 'green',
+        '中心点' : 'red'
         // 可以根据需要添加更多类型和颜色
       };
 
@@ -236,6 +238,12 @@ export default {
                 x: 700 + r * Math.cos(theta),
                 y: 300 + r * Math.sin(theta),
               })
+            }
+          }
+          for(var i = 0; i < this.alignmentNode.length; i++){
+            var tmp = type === 0 ? '网络1' : '网络2';
+            if(this.alignmentNode[i].type === tmp && this.alignmentNode[i].name === id){
+              this.alignmentNode[i].type = '中心点';
             }
           }
           this.initChart();

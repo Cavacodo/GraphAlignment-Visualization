@@ -82,7 +82,15 @@ def process_data(type,args=''):
         for line in f:
             tmp = line.strip().split(' ')
             m.append(tmp)
-    ans = {'type': type,'acc':output,'m':m}
+    output = output.split('\n')
+    acc = {'Accuracy':None,'MAP':None,'Precision_5':None,'Precision_10':None,'AUC':None,'Running time':None}
+    info = ['Accuracy','MAP','Precision_5','Precision_10','AUC','Running time']
+    for line in output:
+        tmp = line.split(':')
+        if tmp[0] in info:
+            acc[tmp[0]] = tmp[1]
+    acc = str(acc)[1:-1]
+    ans = {'type': type,'acc':acc,'m':m}
     print("Process Done")
     return ans
 
