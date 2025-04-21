@@ -3,6 +3,10 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
+import Antd from 'ant-design-vue'
+import "ant-design-vue/dist/reset.css";
 // 1. 引入 Element Plus
 import ElementPlus from 'element-plus'
 // 2. 引入 Element Plus 的样式
@@ -15,4 +19,5 @@ app.use(ElementPlus)
 
 app.use(router)
 
+app.use(Antd)
 app.mount('#app')
