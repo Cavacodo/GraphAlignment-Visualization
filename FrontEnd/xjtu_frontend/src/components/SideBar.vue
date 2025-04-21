@@ -6,31 +6,38 @@
     </div>
     <div class="container">
       <div class="new-chat":class="{ active: $route.name === 'Neo4j' }" @click="navigateTo('Neo4j')"> 
-        <i class="el-icon-plus">
+        <div class="el-icon-plus">
           <RadarChartOutlined class="neo4j-svg" />
-        </i>
-        全局节点展示
+          <div class="text">全局节点展示</div>
+        </div>
       </div>
       <div class="new-chat":class="{ active: $route.name === 'groundTruth' }" @click="navigateTo('groundTruth')">
-        <i class="el-icon-plus"></i>
-        GroundTruth
+        <div class="el-icon-plus">
+          <DotChartOutlined class="groundtruth-svg"/>
+          <div class="text">GroundTruth</div>
+        </div>
       </div>
       <div class="new-chat":class="{ active: $route.name === 'DeepSeek' }" @click="navigateTo('DeepSeek')">
-        <i class="el-icon-plus"></i>
-        DeepSeek
+        <div class="el-icon-plus">
+          <SearchOutlined  class="deepseek-svg"/>
+          <div class="text">DeepSeek</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { LineChartOutlined,RadarChartOutlined } from '@ant-design/icons-vue';
+import { LineChartOutlined,RadarChartOutlined,SearchOutlined,DotChartOutlined} from '@ant-design/icons-vue';
 import { useCssVar } from '@vueuse/core'
 import { commentProps } from 'ant-design-vue/es/comment';
 export default {
   name: "Sidebar",
   components: {
     LineChartOutlined,
+    RadarChartOutlined,
+    SearchOutlined,
+    DotChartOutlined,
   },
   methods: {
     navigateTo(page) {
@@ -109,5 +116,14 @@ h1 {
 }
 .history-list {
   margin-top: 20px;
+}
+.el-icon-plus {
+  display: flex;
+  align-items: center;
+}
+.text {
+  font-size: 15px;
+  font-weight: 550;
+  margin-left: 10px;
 }
 </style>

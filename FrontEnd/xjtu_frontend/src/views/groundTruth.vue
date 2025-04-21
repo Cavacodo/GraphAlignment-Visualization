@@ -7,8 +7,10 @@
         <Sidebar />
       </el-aside>
       <!-- 右侧内容区域 -->
-      <el-main>
-        <div ref="chart" style="width: 100%; height: 100%;"></div>
+      <el-main style="height: 100%;">
+          <el-card>
+            <div ref="chart" class="chart-container"></div>
+          </el-card>
       </el-main>
     </div>
   </div>
@@ -17,11 +19,13 @@
 <script>
 import Sidebar from '../components/SideBar.vue';
 import * as neo4j from 'neo4j-driver';
+import { Card } from 'ant-design-vue';
 import * as echarts from 'echarts';
 import axios from 'axios'; // 导入 axios
 export default {
   components: {
-    Sidebar // Register the Sidebar component
+    Sidebar, // Register the Sidebar component
+    Card,// Register the Card component
   },
   data() {
     return {
@@ -81,7 +85,7 @@ export default {
       const typeColorMap = {
         '网络1': 'blue',
         '网络2': 'green',
-        '中心点' : 'red'
+        '中心点': 'red'
         // 可以根据需要添加更多类型和颜色
       };
 
@@ -161,7 +165,7 @@ export default {
               source: prefix1 + this.backendData.src[i][0],
               target: prefix1 + this.backendData.src[i][1],
               label: "internal",
-              lineStyle:{
+              lineStyle: {
                 opacity: 0.5,
                 width: 2,
                 curveness: 0
@@ -173,7 +177,7 @@ export default {
               source: prefix2 + this.backendData.target[i][0],
               target: prefix2 + this.backendData.target[i][1],
               label: "internal",
-              lineStyle:{
+              lineStyle: {
                 opacity: 0.5,
                 width: 2,
                 curveness: 0
@@ -185,7 +189,7 @@ export default {
               source: prefix1 + this.backendData.align[i][1 - type],
               target: prefix2 + this.backendData.align[i][type],
               label: "align",
-              lineStyle:{
+              lineStyle: {
                 opacity: 0,
                 width: 2,
                 curveness: 0
@@ -240,9 +244,9 @@ export default {
               })
             }
           }
-          for(var i = 0; i < this.alignmentNode.length; i++){
+          for (var i = 0; i < this.alignmentNode.length; i++) {
             var tmp = type === 0 ? '网络1' : '网络2';
-            if(this.alignmentNode[i].type === tmp && this.alignmentNode[i].name === id){
+            if (this.alignmentNode[i].type === tmp && this.alignmentNode[i].name === id) {
               this.alignmentNode[i].type = '中心点';
             }
           }
@@ -263,7 +267,7 @@ export default {
   /* Ensure the container takes the full viewport height */
   width: 100vw;
   /* Ensure the container takes the full viewport width */
-  background-color: #f7f7f8;
+  background-color: #dedee0;
   margin: 0;
   /* Ensure no margin */
   padding: 0;
@@ -277,6 +281,14 @@ export default {
 }
 
 .el-main {
-  padding: 20px;
+  align-items: center;
+  padding: 10px;
+}
+.el-card{
+  height: 100%;
+}
+.chart-container{
+  width: 100%;
+  height: 900px;
 }
 </style>

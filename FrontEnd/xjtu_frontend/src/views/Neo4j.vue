@@ -5,7 +5,10 @@
       <el-aside width="200px">
         <Sidebar />
       </el-aside>
-
+      <div class="card-container">
+        <el-card class="card">
+        </el-card>
+      </div>
       
     </div>
   </div>
@@ -13,9 +16,11 @@
 
 <script>
 import Sidebar from '../components/SideBar.vue';
+import { Card } from 'ant-design-vue';
 export default {
   components: {
-    Sidebar // Register the Sidebar component
+    Sidebar,
+    Card, // Register the Sidebar component
   }
 }
 </script>
@@ -24,7 +29,7 @@ export default {
 .main-container {
   height: 100vh; /* Ensure the container takes the full viewport height */
   width: 100vw; /* Ensure the container takes the full viewport width */
-  background-color: #f7f7f8;
+  background-color: #dedee0;
   margin: 0; /* Ensure no margin */
   padding: 0; /* Ensure no padding */
 }
@@ -33,5 +38,15 @@ export default {
   display: flex;
   height: 100%;
   width: 100%;
+}
+.el-card{
+  width: 100%;
+  height: 100%;
+}
+.card-container {
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  align-items: center;
 }
 </style>
