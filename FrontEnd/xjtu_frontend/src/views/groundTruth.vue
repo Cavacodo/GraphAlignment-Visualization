@@ -8,9 +8,33 @@
       </el-aside>
       <!-- 右侧内容区域 -->
       <el-main style="height: 100%;">
-          <el-card>
-            <div ref="chart" class="chart-container"></div>
-          </el-card>
+        <el-card class="canvas-container">
+          <div ref="chart" class="chart-container"></div>
+        </el-card>
+        <el-card class="evaluation-container">
+          <div class="evaluation-content">
+            <el-card class="eva gradient-card">
+              <div class="index">Accuracy</div>
+              <div class="acc">{{accuracy}}</div>
+            </el-card>
+            <el-card class="eva gradient-card">
+              <div class="index">MAP</div>
+              <div class="map">{{MAP}}</div>
+            </el-card>
+            <el-card class="eva gradient-card">
+              <div class="index">Presion_5</div>
+              <div class="precision_5">{{precision_5}}</div>
+            </el-card>
+            <el-card class="eva gradient-card">
+              <div class="index">Presion_10</div>
+              <div class="precision_10">{{precision_10}}</div>
+            </el-card>
+            <el-card class="eva gradient-card">
+              <div class="index">AUC</div>
+              <div class="auc">{{AUC}}</div>
+            </el-card>
+          </div>
+        </el-card>
       </el-main>
     </div>
   </div>
@@ -38,7 +62,12 @@ export default {
       sourceNode: [],
       targetNode: [],
       alignmentNode: [],
-      alignmentLink: []
+      alignmentLink: [],
+      accuracy  : '--%',
+      MAP : '--',
+      precision_5 : '--',
+      precision_10 : '--',
+      AUC : '--'
     };
   },
   mounted() {
@@ -126,7 +155,7 @@ export default {
             categories: [
 
             ],
-            roam: true,
+            roam: false,
             force: {
               repulsion: 100,
             },
@@ -284,11 +313,72 @@ export default {
   align-items: center;
   padding: 10px;
 }
-.el-card{
-  height: 100%;
+
+.canvas-container {
+  height: 85%;
 }
-.chart-container{
+
+.chart-container {
   width: 100%;
-  height: 900px;
+  height: 720px;
+}
+
+.evaluation-container {
+  margin-top: 10px;
+  padding: 0px;
+  height: 13%;
+  width: 100%;
+
+}
+.evaluation-content{
+  display: flex;
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+.gradient-card {
+  background: linear-gradient(135deg, #cfe3fa, #accef4);
+  /* 渐变蓝色 */
+  border: none;
+  /* 可选：去掉边框 */
+}
+.eva{
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 20%;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* 垂直方向居中 */
+  align-items: flex-start;     /* 水平方向靠左 */
+}
+.acc{
+  font-size: 20px;
+  font-weight: 800;
+  color:#224ead;
+}
+.map{
+  font-size: 20px;
+  font-weight: 800;
+  color:#224ead;
+}
+.precision_5{
+  font-size: 20px;
+  font-weight: 800;
+  color:#224ead;
+}
+.precision_10{
+  font-size: 20px;
+  font-weight: 800;
+  color:#224ead;
+}
+.auc{
+  font-size: 20px;
+  font-weight: 800;
+  color:#224ead;
+}
+.index{
+  font-weight: 600;
+  font-size: small;
 }
 </style>

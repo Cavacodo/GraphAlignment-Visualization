@@ -6,6 +6,8 @@ import router from './router'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 import Antd from 'ant-design-vue'
+import "@/utils/mathjax"; // 必须在引入mathjax前引入mathjax的配置文件
+import "mathjax/es5/tex-mml-chtml"; // 使用 tex-mml-chtml 
 import "ant-design-vue/dist/reset.css";
 // 1. 引入 Element Plus
 import ElementPlus from 'element-plus'

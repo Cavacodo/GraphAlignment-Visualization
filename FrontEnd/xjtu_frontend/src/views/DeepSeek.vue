@@ -75,11 +75,8 @@
 
 <script>
 import OpenAI from "openai";
-import MarkdownIt from 'markdown-it';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
-import mk from 'markdown-it-katex';
-import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
 import Sidebar from '../components/SideBar.vue';
 import { Card } from 'ant-design-vue';
@@ -97,25 +94,6 @@ const SYSTEM_PROMPT = `你是一个专业的助手。主要回答图对齐算法
 
 请直接回答问题，给出清晰的解释和公式。结果请输出为html格式，不要输出为markdown格式。
 `;
-
-// 修改 markdown-it 配置
-const md = new MarkdownIt({
-  html: false,
-  linkify: true,
-  typographer: true,
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(str, { language: lang }).value;
-      } catch (__) { }
-    }
-    return '';
-  }
-}).use(mk, {
-  throwOnError: false,
-  errorColor: '#cc0000',
-  output: 'html'
-});
 
 export default {
   name: "DeepSeek",
@@ -145,13 +123,14 @@ export default {
       try {
         const response = await this.fetchResponse(userMessage);
         const fullMessage = response.content;
+        console.log('fullMessage:', fullMessage);
         this.messages.push({
           sender: 'model',
           text: fullMessage,
           displayText: '',
           reasoning_content: response.reasoning_content,
           displayReasoningContent: response.reasoning_content ?
-            md.render(response.reasoning_content) : ''
+            response.reasoning_content : ''
         });
         this.currentMessageIndex = 0; // 重置索引
         this.typeWriter(fullMessage, this.messages.length - 1); // 调用 typeWriter 方法
