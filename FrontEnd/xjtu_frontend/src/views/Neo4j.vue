@@ -16,7 +16,7 @@
             </a-select>
             <!-- 算法选择器 -->
             <a-select v-model:value="selectedAlgorithm" placeholder="选择算法" style="width: 120px"
-              class="cascade !rounded-button" @change="handleAlgorithmChange">
+              class="cascade !rounded-button">
               <a-select-option v-for="algorithm in algorithms" :key="algorithm" :value="algorithm">
                 {{ algorithm }}
               </a-select-option>
@@ -39,9 +39,12 @@
               </a-button>
               <template #overlay>
                 <a-card class="params-card" style="width: 150px">
-                  <div class="space-y-3" style="display: flex; flex-direction: column;">
-                    <div v-for="alg in args" key="alg.key">
+                  <div class="space-y-3" style="display: flex; flex-direction: column; align-items: center;">
+                    <div v-for="arg in args[selectedAlgorithm] || []" key="arg.label">
+                      <a-input v-if="arg.type === 'number' || arg.type === 'float'" v-model:value="arg.value"
+                        :placeholder="arg.placeholder" style="margin-bottom: 8px; width: 130px;" />
                     </div>
+                  </div>
                 </a-card>
               </template>
             </a-dropdown>
@@ -54,11 +57,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { DownOutlined } from '@ant-design/icons-vue';
 import SideBar from '../components/SideBar.vue';
 import { Button } from 'ant-design-vue';
-import { type } from 'os';
+
 const selectedType = ref(null);
 const selectedAlgorithm = ref(null);
 const selectedKValue = ref(null);
@@ -141,9 +144,36 @@ const args = {
     { label: 'top_k', type: 'number', value: null, placeholder: 'top_k' }
   ]
 }
+watch(selectedAlgorithm, (newAlg => {
+  if (newAlg && args[newAlg]) {
+    const newParams = {};
+    args[newAlg].forEach(arg => {
+      newParams[arg.label] = null;
+    });
+    params.value = newParams
+  } else {
+    params.value = {};
+  }
+}))
 //TODO 提交按钮
 const handleClick = async () => {
-  dropdownVisible.value = false;
+  // dropdownVisible.value = false;
+  console.log(selectedType.value);
+  console.log(selectedAlgorithm.value);
+  console.log(selectedKValue.value);
+  console.log(nodeId.value);
+  console.log(args[selectedAlgorithm.value]);
+  clearArgs();
+};
+
+const clearArgs = () => {
+  for (const algorithm in args) {
+    if (Array.isArray(args[algorithm])) {
+      args[algorithm].forEach(arg => {
+        arg.value = null;
+      });
+    }
+  }
 };
 </script>
 

@@ -15,23 +15,23 @@
           <div class="evaluation-content">
             <el-card class="eva gradient-card">
               <div class="index">Accuracy</div>
-              <div class="acc">{{accuracy}}</div>
+              <div class="acc">{{ accuracy }}</div>
             </el-card>
             <el-card class="eva gradient-card">
               <div class="index">MAP</div>
-              <div class="map">{{MAP}}</div>
+              <div class="map">{{ MAP }}</div>
             </el-card>
             <el-card class="eva gradient-card">
               <div class="index">Presion_5</div>
-              <div class="precision_5">{{precision_5}}</div>
+              <div class="precision_5">{{ precision_5 }}</div>
             </el-card>
             <el-card class="eva gradient-card">
               <div class="index">Presion_10</div>
-              <div class="precision_10">{{precision_10}}</div>
+              <div class="precision_10">{{ precision_10 }}</div>
             </el-card>
             <el-card class="eva gradient-card">
               <div class="index">AUC</div>
-              <div class="auc">{{AUC}}</div>
+              <div class="auc">{{ AUC }}</div>
             </el-card>
           </div>
         </el-card>
@@ -41,9 +41,10 @@
 </template>
 
 <script>
+import { ref, watch } from 'vue';
 import Sidebar from '../components/SideBar.vue';
 import * as neo4j from 'neo4j-driver';
-import { Card } from 'ant-design-vue';
+import { Card, Button } from 'ant-design-vue';
 import * as echarts from 'echarts';
 import axios from 'axios'; // 导入 axios
 export default {
@@ -63,11 +64,13 @@ export default {
       targetNode: [],
       alignmentNode: [],
       alignmentLink: [],
-      accuracy  : '--%',
-      MAP : '--',
-      precision_5 : '--',
-      precision_10 : '--',
-      AUC : '--'
+      accuracy: '--%',
+      MAP: '--',
+      precision_5: '--',
+      precision_10: '--',
+      AUC: '--'
+
+
     };
   },
   mounted() {
@@ -77,6 +80,9 @@ export default {
     });
   },
   methods: {
+    handleDropdownVisibleChange(visible) {
+      dropdownVisible.value = visible;
+    },
     initNeo4j() {
       const driver = neo4j.driver('bolt://localhost:7687', neo4j.auth.basic('neo4j', 'neo4jpassword'));
       const session = driver.session();
@@ -323,6 +329,7 @@ export default {
   height: 720px;
 }
 
+
 .evaluation-container {
   margin-top: 10px;
   padding: 0px;
@@ -330,54 +337,65 @@ export default {
   width: 100%;
 
 }
-.evaluation-content{
+
+.evaluation-content {
   display: flex;
-  width:100%;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
+
 .gradient-card {
   background: linear-gradient(135deg, #cfe3fa, #accef4);
   /* 渐变蓝色 */
   border: none;
   /* 可选：去掉边框 */
 }
-.eva{
+
+.eva {
   margin-left: 2%;
   margin-right: 2%;
   width: 20%;
   height: 70px;
   display: flex;
   flex-direction: column;
-  justify-content: center;     /* 垂直方向居中 */
-  align-items: flex-start;     /* 水平方向靠左 */
+  justify-content: center;
+  /* 垂直方向居中 */
+  align-items: flex-start;
+  /* 水平方向靠左 */
 }
-.acc{
+
+.acc {
   font-size: 20px;
   font-weight: 800;
-  color:#224ead;
+  color: #224ead;
 }
-.map{
+
+.map {
   font-size: 20px;
   font-weight: 800;
-  color:#224ead;
+  color: #224ead;
 }
-.precision_5{
+
+.precision_5 {
   font-size: 20px;
   font-weight: 800;
-  color:#224ead;
+  color: #224ead;
 }
-.precision_10{
+
+.precision_10 {
   font-size: 20px;
   font-weight: 800;
-  color:#224ead;
+  color: #224ead;
 }
-.auc{
+
+.auc {
   font-size: 20px;
   font-weight: 800;
-  color:#224ead;
+  color: #224ead;
 }
-.index{
+
+.index {
   font-weight: 600;
   font-size: small;
 }
