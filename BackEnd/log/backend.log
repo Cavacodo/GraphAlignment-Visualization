@@ -18,3 +18,57 @@
 2025-04-27T14:46:33.270+08:00  INFO 16284 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 64330035 created for server address localhost:7687
 2025-04-27T14:46:33.446+08:00  INFO 16284 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2025-04-27T14:46:33.452+08:00  INFO 16284 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.897 seconds (process running for 3.455)
+2025-04-27T15:09:27.611+08:00  INFO 16284 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-27T15:09:27.613+08:00  INFO 16284 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-27T15:09:27.619+08:00  INFO 16284 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2025-04-27T15:09:27.697+08:00  INFO 16284 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-27T15:09:27.922+08:00  INFO 16284 --- [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7ed35377
+2025-04-27T15:09:27.922+08:00  INFO 16284 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-27T15:09:27.928+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-04-27T15:09:27.946+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-04-27T15:09:27.978+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-04-27T15:09:27.982+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-04-27T15:09:27.982+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
+2025-04-27T15:09:27.989+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-04-27T15:09:27.989+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-04-27T15:09:27.989+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmjkk(String)
+2025-04-27T15:09:27.989+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-04-27T15:09:27.989+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-04-27T15:09:27.989+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-04-27T15:09:27.989+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-04-27T15:09:27.989+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-04-27T15:09:27.989+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
+2025-04-27T15:09:27.994+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-04-27T15:09:27.995+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-04-27T15:09:27.995+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmjkk(String)
+2025-04-27T15:09:27.996+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-04-27T15:09:27.996+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-04-27T15:09:27.996+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmjkk(String)
+2025-04-27T15:09:27.996+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-04-27T15:09:28.031+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.setToken               : ==>  Preparing: update token set token = ? where account = ?;
+2025-04-27T15:09:28.031+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.setToken               : ==> Parameters: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ7XCJuYW1lXCI6XCJNZVwifSIsImlzcyI6Ik1lICIsImV4cCI6MTc0NjM0MjU2OCwidGVzdCI6IjEyMyJ9.NPp4GWyA7x_EF01IN5lQrOVLUKpV7cDs04WfU1rM_R4(String), zmjkk(String)
+2025-04-27T15:09:28.037+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.setToken               : <==    Updates: 1
+2025-04-27T15:09:28.037+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-04-27T15:09:28.037+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmjkk(String)
+2025-04-27T15:09:28.037+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmjkk(String)
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmjkk(String)
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-04-27T16:41:31.009+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-04-27T16:41:31.022+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmjkk(String)
+2025-04-27T16:41:31.022+08:00 DEBUG 16284 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
