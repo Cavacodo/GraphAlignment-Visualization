@@ -1,4 +1,3 @@
-//TODO 本页面
 <template>
   <div class="main-container">
     <div class="display-layout">
@@ -9,6 +8,7 @@
       <!-- 右侧内容区域 -->
       <el-main style="height: 100%;">
         <el-card class="canvas-container">
+          <a-spin v-if="loading" tip="Loading..." class="spin" />
           <div ref="chart" class="chart-container"></div>
           <div class="select-bar">
             <!-- 类型选择器 -->
@@ -52,7 +52,7 @@
                 </a-card>
               </template>
             </a-dropdown>
-            <Button class="cascade" @click="handleClick">提交</Button>
+            <a-button :disabled="isDisabled" class="cascade" @click="handleClick">提交</a-button>
           </div>
         </el-card>
         <el-card class="evaluation-container">
@@ -85,10 +85,9 @@
 </template>
 
 <script>
-import { watch } from 'vue';
 import Sidebar from '../components/SideBar.vue';
 import * as neo4j from 'neo4j-driver';
-import { Card, Button } from 'ant-design-vue';
+import { Card } from 'ant-design-vue';
 import * as echarts from 'echarts';
 import axios from 'axios'; // 导入 axios
 export default {
@@ -114,19 +113,18 @@ export default {
       precision_5: '--',
       precision_10: '--',
       AUC: '--',
-
+      loading: false,
       args: {
         'IsoRank': [
-          { label: 'maxIteration', type: 'number', value: null, placeholder: 'maxIteration' },
+          { label: 'max_iter', type: 'number', value: null, placeholder: 'maxIteration' },
           { label: 'alpha', type: 'float', value: null, placeholder: 'alpha' },
           { label: 'tol', type: 'float', value: null, placeholder: 'tol' },
-          { label: 'K', type: 'number', value: null, placeholder: 'K' },
         ],
         'REGAL': [
           { label: 'attrvals', type: 'number', value: null, placeholder: 'attrvals' },
           { label: 'dimensions', type: 'numver', value: null, placeholder: 'dimensions' },
           { label: 'max_layer', type: 'number', value: null, placeholder: 'max_layer' },
-          { label: 'K', type: 'number', value: null, placeholder: 'K' },
+          { label: 'k', type: 'number', value: null, placeholder: 'K' },
           { label: 'alpha', type: 'float', value: null, placeholder: 'alpha' },
           { label: 'gammastruc', type: 'float', value: null, placeholder: 'gammastruc' },
           { label: 'gammaattr', type: 'float', value: null, placeholder: 'gammaattr' },
@@ -154,7 +152,7 @@ export default {
           { label: 'lamb', type: 'float', value: null, placeholder: 'lamb' },
         ],
         'FINAL': [
-          { label: 'maxIteration', type: 'number', value: null, placeholder: 'maxIteration' },
+          { label: 'max_iter', type: 'number', value: null, placeholder: 'maxIteration' },
           { label: 'alpha', type: 'float', value: null, placeholder: 'alpha' },
           { label: 'tol', type: 'float', value: null, placeholder: 'tol' },
         ],
@@ -189,13 +187,28 @@ export default {
       algorithms: ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'],
       kValues: [1, 2, 3, 4, 5],
       params: {},
-
+      isDisabled: true,
+      chartTitle : "GroundTruth Data" 
     };
+  },
+  watch: {
+    selectedType() {
+      this.checkIntegrity();
+    },
+    selectedKValue() {
+      this.checkIntegrity();
+    },
+    selectedAlgorithm() {
+      this.checkIntegrity();
+
+    },
+    nodeId() {
+      this.checkIntegrity();
+    },
   },
   mounted() {
     this.initNeo4j().then(() => {
-      this.fetchDataFromBackend(0, 3, 5);
-
+      this.fetchDataFromBackend(0, 3, 5, false, []);
     });
   },
 
@@ -205,20 +218,49 @@ export default {
     },
     clearArgs() {
       for (const algorithm in this.args) {
-        if (Array.isArray(args[algorithm])) {
-          args[algorithm].forEach(arg => {
+        if (Array.isArray(this.args[algorithm])) {
+          this.args[algorithm].forEach(arg => {
             arg.value = null;
           });
         }
       }
     },
+    checkIntegrity() {
+      if (this.selectedType && this.selectedKValue && this.selectedAlgorithm && this.nodeId) {
+        this.isDisabled = false;
+      }
+    },
     handleClick() {
-      console.log(this.selectedType);
-      console.log(this.selectedAlgorithm);
-      console.log(this.selectedKValue);
-      console.log(this.nodeId);
-      console.log(this.args[this.selectedAlgorithm]);
+      this.loading = true;
+      this.isDisabled = true;
+      let m_ = null;
+      const type_ = this.selectedType === '网络1' ? 0 : 1;
+      const result = this.args[this.selectedAlgorithm]
+        .filter(item => item.value !== null && item.value !== undefined)
+        .map(item => `--${item.label} ${item.value}`).join(' ');
+      this.clearGraphData();
+      this.sendInfo(result);
+      axios.get('http://localhost:8080/api/getPythonResult').then(response => {
+        this.accuracy = response.data.acc["'Accuracy'"].trim().replace(/^'(.*)'$/, '$1').trim();
+        this.MAP = response.data.acc[" 'MAP'"].trim().replace(/^'(.*)'$/, '$1').trim();
+        this.AUC = response.data.acc[" 'AUC'"].trim().replace(/^'(.*)'$/, '$1').trim();
+        this.precision_5 = response.data.acc[" 'Precision_5'"].trim().replace(/^'(.*)'$/, '$1').trim();
+        this.precision_10 = response.data.acc[" 'Precision_10'"].trim().replace(/^'(.*)'$/, '$1').trim();
+        m_ = response.data.m;
+      }).then(() => {
+        this.chartTitle = this.selectedAlgorithm;
+        this.fetchDataFromBackend(type_, this.selectedKValue, this.nodeId, true, m_);
+      }).finally(() => {
+        this.loading = false;
+        this.isDisabled = false;
+      });
       this.clearArgs();
+    },
+    sendInfo(result) {
+      axios.post('http://localhost:8080/api/send', {
+        type: this.selectedAlgorithm,
+        args: result
+      })
     },
     initNeo4j() {
       const driver = neo4j.driver('bolt://localhost:7687', neo4j.auth.basic('neo4j', 'neo4jpassword'));
@@ -263,7 +305,7 @@ export default {
 
       const option = {
         title: {
-          text: 'GroundTruth Data'
+          text: this.chartTitle
         },
         tooltip: {
           trigger: 'item',
@@ -318,7 +360,14 @@ export default {
       };
       this.chart.setOption(option);
     },
-    fetchDataFromBackend(type, k, id) {
+    clearGraphData() {
+      this.backendData = [];
+      this.sourceNode = [];
+      this.targetNode = [];
+      this.alignmentNode = [];
+      this.alignmentLink = [];
+    },
+    fetchDataFromBackend(type, k, id, isLinked, newAlign) {
       axios.get('http://localhost:8080/neo4j/doubanNetWork', {
         params: {
           type: type,
@@ -355,6 +404,9 @@ export default {
                 curveness: 0
               }
             });
+          }
+          if (isLinked) {
+            this.backendData.align = newAlign;
           }
           for (var i = 0; i < this.backendData.align.length; i++) {
             this.alignmentLink.push({
@@ -418,11 +470,11 @@ export default {
           }
           for (var i = 0; i < this.alignmentNode.length; i++) {
             var tmp = type === 0 ? '网络1' : '网络2';
-            if (this.alignmentNode[i].type === tmp && this.alignmentNode[i].name === id) {
+            if (this.alignmentNode[i].type === tmp && this.alignmentNode[i].name == id) {
               this.alignmentNode[i].type = '中心点';
             }
           }
-          this.initChart();
+          this.initChart()
         })
         .catch(error => {
           console.error('Error fetching data:', error);
@@ -462,7 +514,14 @@ export default {
   position: relative;
   text-align: center;
 }
-
+.spin{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  display: inline-block;
+}
 .chart-container {
   width: 100%;
   height: 720px;
