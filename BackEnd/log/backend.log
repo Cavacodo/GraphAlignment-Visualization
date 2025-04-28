@@ -18,3 +18,33 @@
 2025-04-28T13:53:54.531+08:00  INFO 24736 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 64330035 created for server address localhost:7687
 2025-04-28T13:53:54.724+08:00  INFO 24736 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2025-04-28T13:53:54.732+08:00  INFO 24736 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.676 seconds (process running for 3.2)
+2025-04-28T13:54:10.563+08:00  INFO 24736 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-28T13:54:10.564+08:00  INFO 24736 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-28T13:54:10.564+08:00  INFO 24736 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-04-28T13:54:10.636+08:00  INFO 24736 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-28T13:54:10.831+08:00  INFO 24736 --- [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@354aea6b
+2025-04-28T13:54:10.832+08:00  INFO 24736 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-28T13:54:10.838+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-04-28T13:54:10.855+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-04-28T13:54:10.873+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-04-28T13:54:10.879+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-04-28T13:54:10.879+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
+2025-04-28T13:54:10.881+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-04-28T13:54:10.881+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-04-28T13:54:10.881+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmjkk(String)
+2025-04-28T13:54:10.883+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-04-28T13:54:10.883+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-04-28T13:54:10.883+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-04-28T13:54:10.884+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-04-28T13:54:10.884+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-04-28T13:54:10.885+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
+2025-04-28T13:54:10.885+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-04-28T13:54:10.886+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-04-28T13:54:10.886+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmjkk(String)
+2025-04-28T13:54:10.886+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-04-28T13:54:10.887+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==>  Preparing: select token from token where account = ?;
+2025-04-28T13:54:10.887+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : ==> Parameters: zmjkk(String)
+2025-04-28T13:54:10.887+08:00 DEBUG 24736 --- [http-nio-8080-exec-2] xjtu.dao.TokenDao.getTokenByAccount      : <==      Total: 1
+2025-04-28T14:06:01.931+08:00  INFO 24736 --- [http-nio-8080-exec-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2025-04-28T14:06:02.054+08:00  INFO 24736 --- [http-nio-8080-exec-3] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#25214797:0/SimpleConnection@3bd3882d [delegate=amqp://guest@127.0.0.1:5672/, localPort=6343]
+2025-04-28T15:02:30.716+08:00  WARN 24736 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('-' (code 45)) in numeric value: expected digit (0-9) to follow minus sign, for valid numeric value]
