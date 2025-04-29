@@ -38,7 +38,7 @@ def callback(ch, method, properties, body):
         ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
 
 def main():
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host,heartbeat=600))
     channel = connection.channel()
 
     # 声明交换机和队列（确保与Java端一致）
@@ -89,6 +89,7 @@ def process_data(type,args=''):
     info = ['Accuracy','MAP','Precision_5','Precision_10','AUC','Running time']
     for line in output:
         tmp = line.split(':')
+        print(tmp)
         if tmp[0] in info:
             acc[tmp[0]] = tmp[1]
     acc = str(acc)[1:-1]
