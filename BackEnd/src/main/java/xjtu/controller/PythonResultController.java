@@ -27,7 +27,7 @@ public class PythonResultController {
     @RequestMapping("/python")
     public ResponseEntity<String> pythonResult(@RequestBody Map<String,Object> res)
     {
-        System.out.println(res);
+        
         String type = (String) res.get("type");
         String acc = (String) res.get("acc");
         List<Object> m = (List<Object>) res.get("m");

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xjtu.dao.OutcomeDao">
+    <select id="getOutcome" resultType="xjtu.pojo.Outcome">
+        select *
+        from outcome where evaluation != '';
+    </select>
+    <select id="getLatest" resultType="xjtu.pojo.Outcome">
+        select * from outcome where evaluation is NULL;
+    </select>
+    <insert id="addOutcome">
+        insert into outcome(type,args,evaluation) values(#{type},#{args},#{evaluation});
+    </insert>
+    <update id="addEvaluationById">
+        update outcome set evaluation = #{evaluation} where id = #{id};
+    </update>
+</mapper>

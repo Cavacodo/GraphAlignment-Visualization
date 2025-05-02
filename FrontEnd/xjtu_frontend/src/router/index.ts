@@ -4,7 +4,7 @@ import Table from '../views/Table.vue'
 import Neo4j from '../views/Neo4j.vue'
 import DeepSeek from '../views/DeepSeek.vue'
 import groundTruth from '../views/groundTruth.vue'
-import Statistic from '../views/Statistic.vue'
+import UserSettings from '../views/UserSettings.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -46,9 +46,9 @@ const router = createRouter({
         requiresAuth: false
       }
     },{
-      path: '/statistic',
-      name: 'Statistic',
-      component: Statistic,
+      path: '/userSettings',
+      name: 'userSettings',
+      component: UserSettings,
       meta: {
         requiresAuth: false
       }

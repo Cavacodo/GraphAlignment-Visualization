@@ -5,22 +5,28 @@
       <h1>算法可视化平台</h1>
     </div>
     <div class="container">
-      <div class="new-chat":class="{ active: $route.name === 'Neo4j' }" @click="navigateTo('Neo4j')"> 
+      <div class="new-chat" :class="{ active: $route.name === 'groundTruth' }" @click="navigateTo('groundTruth')">
+        <div class="el-icon-plus">
+          <DotChartOutlined class="groundtruth-svg" />
+          <div class="text">调参可视化</div>
+        </div>
+      </div>
+      <div class="new-chat" :class="{ active: $route.name === 'DeepSeek' }" @click="navigateTo('DeepSeek')">
+        <div class="el-icon-plus">
+          <SearchOutlined class="deepseek-svg" />
+          <div class="text">DeepSeek</div>
+        </div>
+      </div>
+      <div class="new-chat" :class="{ active: $route.name === 'Neo4j' }" @click="navigateTo('Neo4j')">
         <div class="el-icon-plus">
           <RadarChartOutlined class="neo4j-svg" />
-          <div class="text">全局节点展示</div>
+          <div class="text">结果对比</div>
         </div>
       </div>
-      <div class="new-chat":class="{ active: $route.name === 'groundTruth' }" @click="navigateTo('groundTruth')">
+      <div class="new-chat" :class="{ active: $route.name === 'userSettings' }" @click="navigateTo('userSettings')">
         <div class="el-icon-plus">
-          <DotChartOutlined class="groundtruth-svg"/>
-          <div class="text">GroundTruth</div>
-        </div>
-      </div>
-      <div class="new-chat":class="{ active: $route.name === 'DeepSeek' }" @click="navigateTo('DeepSeek')">
-        <div class="el-icon-plus">
-          <SearchOutlined  class="deepseek-svg"/>
-          <div class="text">DeepSeek</div>
+          <UserOutlined class="user-svg" />
+          <div class="text">用户设置</div>
         </div>
       </div>
     </div>
@@ -28,9 +34,7 @@
 </template>
 
 <script>
-import { LineChartOutlined,RadarChartOutlined,SearchOutlined,DotChartOutlined} from '@ant-design/icons-vue';
-import { useCssVar } from '@vueuse/core'
-import { commentProps } from 'ant-design-vue/es/comment';
+import { LineChartOutlined, RadarChartOutlined, SearchOutlined, DotChartOutlined, UserOutlined } from '@ant-design/icons-vue';
 export default {
   name: "Sidebar",
   components: {
@@ -38,6 +42,8 @@ export default {
     RadarChartOutlined,
     SearchOutlined,
     DotChartOutlined,
+    UserOutlined,
+  
   },
   methods: {
     navigateTo(page) {
@@ -58,7 +64,7 @@ export default {
 .container {
   width: 100%;
   height: 95%;
-  background-color: #1e213a	;
+  background-color: #1e213a;
   align-items: center;
   flex-direction: column;
 
@@ -108,19 +114,24 @@ h1 {
 
 
 .new-chat:hover {
-  background-color: #1e40af; /* 鼠标悬浮蓝色高亮 */
+  background-color: #1e40af;
+  /* 鼠标悬浮蓝色高亮 */
   cursor: pointer;
 }
+
 .new-chat.active {
   background-color: #1e40af;
 }
+
 .history-list {
   margin-top: 20px;
 }
+
 .el-icon-plus {
   display: flex;
   align-items: center;
 }
+
 .text {
   font-size: 15px;
   font-weight: 550;

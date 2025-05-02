@@ -1,6 +1,7 @@
 package xjtu.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import xjtu.pojo.Outcome;
+import xjtu.service.OutcomeService;
 import xjtu.service.RabbitMQProducerService;
 
 import java.util.ArrayList;
@@ -32,13 +35,16 @@ public class RabbitMQController {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private OutcomeService outcomeService;
+
 
     @PostMapping("/send")
-    public ResponseEntity<String> sendJsonMessage(@RequestBody Object jsonData) {
-
+    public ResponseEntity<String> sendJsonMessage(@RequestBody JSONObject jsonData) {
         rabbitMQProducerService.sendJsonMessage(jsonData);
         System.out.println(jsonData);
-
+        System.out.println(jsonData);
+        this.outcomeService.addOutcome(new Outcome(0,jsonData.getString("type"),jsonData.getString("args"),null));
         return new ResponseEntity<>("send success", HttpStatus.OK);
     }
     @GetMapping("/getPythonResult")
@@ -58,6 +64,9 @@ public class RabbitMQController {
         redisTemplate.delete("type");
         redisTemplate.delete("acc");
         redisTemplate.delete("m");
+        Integer id = this.outcomeService.getLastestId();
+        if(id == null) return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
+        this.outcomeService.addEvaluationById(tmap.toString(),id);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
     public List<List<Integer>> convertString2Array(String s){

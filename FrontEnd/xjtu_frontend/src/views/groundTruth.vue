@@ -184,11 +184,11 @@ export default {
       selectedKValue: null,
       nodeId: '',
       types: ['网络1', '网络2'],
-      algorithms: ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'],
+      algorithms: ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign', 'GroundTruth'],
       kValues: [1, 2, 3, 4, 5],
       params: {},
       isDisabled: true,
-      chartTitle : "GroundTruth Data" 
+      chartTitle: "GroundTruth Data"
     };
   },
   watch: {
@@ -235,25 +235,30 @@ export default {
       this.isDisabled = true;
       let m_ = null;
       const type_ = this.selectedType === '网络1' ? 0 : 1;
-      const result = this.args[this.selectedAlgorithm]
-        .filter(item => item.value !== null && item.value !== undefined)
-        .map(item => `--${item.label} ${item.value}`).join(' ');
       this.clearGraphData();
-      this.sendInfo(result);
-      axios.get('http://localhost:8080/api/getPythonResult').then(response => {
-        this.accuracy = response.data.acc["'Accuracy'"].trim().replace(/^'(.*)'$/, '$1').trim();
-        this.MAP = response.data.acc[" 'MAP'"].trim().replace(/^'(.*)'$/, '$1').trim();
-        this.AUC = response.data.acc[" 'AUC'"].trim().replace(/^'(.*)'$/, '$1').trim();
-        this.precision_5 = response.data.acc[" 'Precision_5'"].trim().replace(/^'(.*)'$/, '$1').trim();
-        this.precision_10 = response.data.acc[" 'Precision_10'"].trim().replace(/^'(.*)'$/, '$1').trim();
-        m_ = response.data.m;
-      }).then(() => {
-        this.chartTitle = this.selectedAlgorithm;
-        this.fetchDataFromBackend(type_, this.selectedKValue, this.nodeId, true, m_);
-      }).finally(() => {
+      if (this.selectedAlgorithm != 'GroundTruth') {
+        const result = this.args[this.selectedAlgorithm]
+          .filter(item => item.value !== null && item.value !== undefined)
+          .map(item => `--${item.label} ${item.value}`).join(' ');
+        this.sendInfo(result);
+        axios.get('http://localhost:8080/api/getPythonResult').then(response => {
+          this.accuracy = response.data.acc["'Accuracy'"].trim().replace(/^'(.*)'$/, '$1').trim();
+          this.MAP = response.data.acc[" 'MAP'"].trim().replace(/^'(.*)'$/, '$1').trim();
+          this.AUC = response.data.acc[" 'AUC'"].trim().replace(/^'(.*)'$/, '$1').trim();
+          this.precision_5 = response.data.acc[" 'Precision_5'"].trim().replace(/^'(.*)'$/, '$1').trim();
+          this.precision_10 = response.data.acc[" 'Precision_10'"].trim().replace(/^'(.*)'$/, '$1').trim();
+          m_ = response.data.m;
+        }).then(() => {
+          this.chartTitle = this.selectedAlgorithm;
+          this.fetchDataFromBackend(type_, this.selectedKValue, this.nodeId, true, m_);
+        }).finally(() => {
+          this.loading = false;
+          this.isDisabled = false;
+        });
+      } else {
+        this.fetchDataFromBackend(type_, this.selectedKValue, this.nodeId, false, []);
         this.loading = false;
-        this.isDisabled = false;
-      });
+      }
       this.clearArgs();
     },
     sendInfo(result) {
@@ -514,7 +519,8 @@ export default {
   position: relative;
   text-align: center;
 }
-.spin{
+
+.spin {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -522,6 +528,7 @@ export default {
   z-index: 999;
   display: inline-block;
 }
+
 .chart-container {
   width: 100%;
   height: 720px;

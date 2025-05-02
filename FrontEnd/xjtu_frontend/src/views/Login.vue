@@ -144,7 +144,6 @@
 import { ref } from 'vue'
 import axios from 'axios'  // 确保已经安装并导入 axios
 import { useRouter } from 'vue-router'  // 导入路由
-import { fa } from 'element-plus/es/locales.mjs'
 
 const router = useRouter()
 const username = ref('')
@@ -390,7 +389,7 @@ body {
   align-items: center;
   background-color: #f5f5f5;
   /* 可以添加背景图片 */
-  background-image: url('D:\GraphAlignment-Visualization\FrontEnd\xjtu_frontend\src\assets\background.jpg');
+  background-image: url('https://img.freepik.com/free-vector/japanese-wave-line-art-landscape-background-abstract-mountain-banner-design-pattern-vector-illustration-geometric-poster_90220-714.jpg?t=st=1745911016~exp=1745914616~hmac=b5c83e8390bf9df648dde0c496f8fec25e38ac1b88a8ccb796675d294addd44b&w=1800');
   background-size: cover;
   background-position: center;
 }
