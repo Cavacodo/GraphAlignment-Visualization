@@ -1,23 +1,22 @@
 package xjtu.controller;
 
-import ch.qos.logback.core.util.StringUtil;
-import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
-import io.micrometer.common.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import xjtu.dao.RoleDao;
+import xjtu.dao.RoleDictDao;
 import xjtu.pojo.User;
 import xjtu.pojo.utils.R;
 import xjtu.pojo.utils.ResponseEnum;
 import xjtu.pojo.utils.TokenUtil;
 import xjtu.pojo.utils.UserWithRole;
-import xjtu.service.TokenService;
+import xjtu.service.RoleService;
 import xjtu.service.UserService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,8 +25,11 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+
     @Autowired
-    private TokenService tokenService;
+    private RoleService roleService;
+
+
     @GetMapping("/listUser")
     @ResponseBody
     public List<User> listUser()
@@ -55,28 +57,20 @@ public class UserController {
     }
     @PostMapping("/login")
     @ResponseBody
-    public R<String> login(@RequestBody Map<String, String> credentials){
-        String account = credentials.get("account");
+    public R<Map<String,String>> login(@RequestBody Map<String, String> credentials){
+        String username = credentials.get("account");
         String pwd = credentials.get("pwd");
-        if(StringUtils.isNotBlank(account) && StringUtils.isNotBlank(pwd)){
-            if(userService.login(account,pwd) == 1 && tokenService.getTokenByAccount(account) == null){
-                JSONObject jsonObject = JSONUtil.createObj().put("name","Me");
-                String token = TokenUtil.createToken(jsonObject);
-                tokenService.setToken(account,token);
-                String data = tokenService.getTokenByAccount(account);
-                return R.ok(data);
-            }else if(userService.login(account,pwd) == 1 && tokenService.getTokenByAccount(account) != null){
-                String token = tokenService.getTokenByAccount(account);
-                if(TokenUtil.verifyToken(token)){
-                    return R.ok(token);
-                }else{
-                    JSONObject jsonObject = JSONUtil.createObj().put("name","Me");
-                    String newToken = TokenUtil.createToken(jsonObject);
-                    tokenService.setToken(account,newToken);
-                    String data = tokenService.getTokenByAccount(account);
-                    return R.ok(data);
-                }
-            }
+        Map<String,String> response = new HashMap<>();
+        if(username.isBlank() || pwd.isBlank()){
+            return R.error(ResponseEnum.USERNAME_PASSWORD_ERROR);
+        }
+        if(this.userService.login(username,pwd) == 1){
+            String role = this.roleService.findRoleByAccount(username);
+            String token = TokenUtil.createToken(username,role);
+            response.put("token",token);
+            response.put("role",role);
+            response.put("account",username);
+            return R.ok(response);
         }
         return R.error(ResponseEnum.USERNAME_PASSWORD_ERROR);
     }
@@ -103,5 +97,24 @@ public class UserController {
         if(res == 1) return new ResponseEntity<>("发送成功", HttpStatus.ACCEPTED);
         else if(res == -1) return new ResponseEntity<>("该邮箱已被注册或者用户名重复", HttpStatus.CONFLICT);
         else return new ResponseEntity<>("发送失败", HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/getEmailByName")
+    @ResponseBody
+    public String getEmailByName(String name)
+    {
+        User userByAccount = userService.findUserByAccount(name);
+        return userByAccount.getEmail();
+    }
+
+    @PostMapping("/changeUserPwd")
+    @ResponseBody
+    public ResponseEntity<String> changeUserPwd(@RequestBody Map<String, String> payload){
+        String account = payload.get("account");
+        String oldpwd = payload.get("oldpwd");
+        String newpwd = payload.get("newpwd");
+        int ans = this.userService.updatePassword(account, oldpwd, newpwd);
+        if(ans == 1) return new ResponseEntity<>("修改成功", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("修改失败", HttpStatus.BAD_REQUEST);
     }
 }

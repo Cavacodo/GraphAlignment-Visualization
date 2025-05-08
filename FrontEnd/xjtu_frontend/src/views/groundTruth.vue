@@ -241,7 +241,12 @@ export default {
           .filter(item => item.value !== null && item.value !== undefined)
           .map(item => `--${item.label} ${item.value}`).join(' ');
         this.sendInfo(result);
-        axios.get('http://localhost:8080/api/getPythonResult').then(response => {
+        axios.get('http://localhost:8080/api/getPythonResult', {
+          headers:{
+            Authorization : 'Bearer ' + localStorage.getItem('token'),
+          },
+          withCredentials: true,
+        }).then(response => {
           this.accuracy = response.data.acc["'Accuracy'"].trim().replace(/^'(.*)'$/, '$1').trim();
           this.MAP = response.data.acc[" 'MAP'"].trim().replace(/^'(.*)'$/, '$1').trim();
           this.AUC = response.data.acc[" 'AUC'"].trim().replace(/^'(.*)'$/, '$1').trim();
@@ -265,6 +270,12 @@ export default {
       axios.post('http://localhost:8080/api/send', {
         type: this.selectedAlgorithm,
         args: result
+      },
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
       })
     },
     initNeo4j() {
@@ -378,7 +389,10 @@ export default {
           type: type,
           k: k,
           id: id
-        }
+        }, headers: {
+          Authorization: `Bearer ` + localStorage.getItem('token'),
+        },
+        withCredentials:true,
       }) // 替换为实际的后端 API 地址
         .then(response => {
           this.backendData = response.data;

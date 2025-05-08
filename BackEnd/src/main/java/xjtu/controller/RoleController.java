@@ -24,7 +24,7 @@ public class RoleController {
     }
     @GetMapping("/findRoleByAccount")
     @ResponseBody
-    public Role findRoleByAccount(String account) {
+    public String findRoleByAccount(String account) {
         return roleService.findRoleByAccount(account);
     }
     @PostMapping("/changeUserPrivilege")

@@ -1,18 +1,15 @@
 package xjtu.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import xjtu.annotation.Auth;
 import xjtu.dao.RoleDao;
-import xjtu.dao.TokenDao;
+import xjtu.dao.RoleDictDao;
 import xjtu.dao.UserDao;
 import xjtu.pojo.Role;
 import xjtu.pojo.User;
 import xjtu.pojo.utils.UserWithRole;
-import xjtu.service.TokenService;
 import xjtu.service.UserService;
 
 import java.util.List;
@@ -23,7 +20,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     RoleDao roleDao;
     @Autowired
-    TokenDao tokenDao;
+    RoleDictDao roleDictDao;
     private final RedisTemplate<String,Object> redisTemplate;
 
     @Autowired
@@ -50,6 +47,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String getRoleById(int id){
+        return this.roleDictDao.getRoleNameById(id);
+    }
+
+    @Override
+    public int updatePassword(String account,String old, String newpwd) {
+
+        return this.userDao.updatePwdByAccount(account,old,newpwd);
+    }
+
+    @Override
     public int checkEmailDuplicate(String email) {
         User res = userDao.checkEmailDuplicate(email);
         if(res == null) return 1;
@@ -72,8 +80,7 @@ public class UserServiceImpl implements UserService {
     public int addUserTransaction(User user) {
         int userAdd = userDao.addUser(user);
         int roleAdd = roleDao.addRole(new Role(0,user.getAccount(), 1));
-        int tokenAdd = tokenDao.addToken(user.getAccount(), "");
-        return userAdd + roleAdd + tokenAdd;
+        return userAdd + roleAdd;
     }
 
     @Override

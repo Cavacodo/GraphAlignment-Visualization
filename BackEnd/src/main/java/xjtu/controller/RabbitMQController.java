@@ -45,6 +45,7 @@ public class RabbitMQController {
         System.out.println(jsonData);
         System.out.println(jsonData);
         this.outcomeService.addOutcome(new Outcome(0,jsonData.getString("type"),jsonData.getString("args"),null));
+
         return new ResponseEntity<>("send success", HttpStatus.OK);
     }
     @GetMapping("/getPythonResult")
@@ -67,6 +68,7 @@ public class RabbitMQController {
         Integer id = this.outcomeService.getLastestId();
         if(id == null) return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
         this.outcomeService.addEvaluationById(tmap.toString(),id);
+
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
     public List<List<Integer>> convertString2Array(String s){

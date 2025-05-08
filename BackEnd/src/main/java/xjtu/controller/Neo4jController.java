@@ -1,11 +1,13 @@
 package xjtu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.core.io.ClassPathResource;
-import xjtu.annotation.Auth;
+
 import xjtu.pojo.Neo4j;
 import xjtu.service.Neo4jService;
 
@@ -31,8 +33,8 @@ public class Neo4jController {
         return this.neo4jService.getInternalRelationship(file);
     }
     @GetMapping("/doubanNetWork")
-    public Neo4j getDoubanNetWork(int type,int k,int id) throws Exception {
-        return this.neo4jService.getDoubanNode(type,k,id);
+    public ResponseEntity<Neo4j> getDoubanNetWork(int type, int k, int id) throws Exception {
+        return new ResponseEntity<>(this.neo4jService.getDoubanNode(type,k,id), HttpStatus.OK);
     }
 
 }

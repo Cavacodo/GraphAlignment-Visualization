@@ -5,6 +5,8 @@ import Neo4j from '../views/Neo4j.vue'
 import DeepSeek from '../views/DeepSeek.vue'
 import groundTruth from '../views/groundTruth.vue'
 import UserSettings from '../views/UserSettings.vue'
+import editBackend from '../views/editBackend.vue'
+import error from '../views/error.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -18,39 +20,48 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/table',
-      name: 'Table',
-      component: Table,
-      meta: {
-        requiresAuth: true
-      },
-    },{
       path: '/neo4j',
       name: 'Neo4j',
       component: Neo4j,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       },
     },{
       path: '/deepseek',
         name: 'DeepSeek',
         component: DeepSeek,
         meta: {
-          requiresAuth: false
+          requiresAuth: true
         }
     },{
       path: '/groundTruth',
       name: 'groundTruth',
       component: groundTruth,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },{
       path: '/userSettings',
       name: 'userSettings',
       component: UserSettings,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
+      }
+    },{
+      path: '/editBackend',
+      name: 'editBackend',
+      component: editBackend,
+      meta: {
+        requiresAuth: true,
+        roles : ['admin']
+      }
+    },{
+      path: '/error',
+      name: 'error',
+      component: error,
+      meta: {
+        requiresAuth: false,
+        roles : ['admin','user']
       }
     }
   ]
@@ -58,12 +69,28 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  const isAuthenticated = localStorage.getItem('token');
-  if (requiresAuth && !isAuthenticated) {
-    // 如果当前路由需要认证且用户未登录，重定向到登录页面
-    next({ name: 'Login' });
+  const token = localStorage.getItem('token');
+  const userStr = localStorage.getItem('user');
+  const role = localStorage.getItem('role') // 假设你在登录后存储了用户信息（包含 role）
+
+  if (requiresAuth) {
+    if (!token || !userStr) {
+      // 未登录
+      next({ name: 'error' });
+      return;
+    }
+
+    const allowedRoles = to.meta.roles;
+
+    if (allowedRoles && !allowedRoles.includes(role)) {
+      // 用户没有访问此页面的权限
+      alert("您没有权限访问该页面！");
+      next({ name: 'error' }); // 阻止跳转
+    } else {
+      next(); // 有权限，放行
+    }
   } else {
-    next(); // 否则继续导航
+    next(); // 不需要认证的页面，直接放行
   }
 });
 

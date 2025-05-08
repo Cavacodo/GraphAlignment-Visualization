@@ -187,11 +187,11 @@ const handleLogin = async () => {
 
     console.log('登录响应:', response.data)
 
-    if (response.data.code === 200) {  // 假设后端返回 code 200 表示成功
-      // 登录成功，可以存储token或用户信息
-      localStorage.setItem('token', response.data.token)  // 如果后端返回token
-      localStorage.setItem('user', JSON.stringify(response.data.user))  // 存储用户信息
-      router.push('/neo4j')  // 确保你有一个名为 home 的路由
+    if (response.data.code === 200) {
+      localStorage.setItem('token', response.data.data.token)  // 如果后端返回token
+      localStorage.setItem('user', response.data.data.account);
+      localStorage.setItem('role', response.data.data.role);  // 存储用户信息
+      router.push('/groundTruth')  // 确保你有一个名为 home 的路由
     } else {
       errorMessage.value = response.data.msg || '登录失败'
       alert(errorMessage.value);

@@ -1,35 +1,34 @@
 package xjtu.pojo.utils;
 
-import cn.hutool.core.date.DateUnit;
-import cn.hutool.core.date.DateUtil;
-import cn.hutool.json.JSONObject;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.stereotype.Component;
 
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 
 public class TokenUtil {
-    private final static String ENCRYPT_KEY = "shabishe";
-    private final static int EXPIRE_TIME = 10080;
-    private final static String ISSUER = "Me ";
+    private final static byte[] ENCRYPT_KEY = "e_key".getBytes(StandardCharsets.UTF_8);;
+    private final static int EXPIRE_TIME = 60 * 24;
+    private final static String ISSUER = "admin";
     // 生成token
-    public static String createToken(JSONObject jsonObject) {
-        return JWT.create()
-                .withSubject(jsonObject.toString())
-                .withIssuer(ISSUER)
-                .withExpiresAt(DateUtil.offsetMinute(new Date(),EXPIRE_TIME))
-                .withClaim("test","123")
-                .sign(Algorithm.HMAC256(ENCRYPT_KEY));
+    public static String createToken(String username, String role) {
+        return Jwts.builder()
+                .setSubject(username)
+                .setIssuer(ISSUER)
+                .setExpiration(Date.from(Instant.now().plus(Duration.ofMinutes(EXPIRE_TIME))))
+                .claim("role", role)
+                .signWith(SignatureAlgorithm.HS256, ENCRYPT_KEY)
+                .compact();
     }
-    public static boolean verifyToken(String token) {
-        try {
-            JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(ENCRYPT_KEY)).withIssuer(ISSUER).build();
-            jwtVerifier.verify(token);
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
+    public static Claims parserToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(ENCRYPT_KEY)
+                .parseClaimsJws(token)
+                .getBody();
     }
 }

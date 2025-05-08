@@ -3,6 +3,7 @@ package xjtu.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xjtu.dao.RoleDao;
+import xjtu.dao.RoleDictDao;
 import xjtu.pojo.Role;
 import xjtu.service.RoleService;
 
@@ -13,14 +14,18 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     RoleDao roleDao;
 
+    @Autowired
+    RoleDictDao roleDictDao;
+
     @Override
     public List<Role> listRole() {
         return roleDao.listRole();
     }
 
     @Override
-    public Role findRoleByAccount(String account) {
-        return roleDao.findRoleByAccount(account);
+    public String findRoleByAccount(String account) {
+        Role roleByAccount = roleDao.findRoleByAccount(account);
+        return this.roleDictDao.getRoleNameById(roleByAccount.getRole());
     }
 
     //返回1表示添加成功，0表示添加失败

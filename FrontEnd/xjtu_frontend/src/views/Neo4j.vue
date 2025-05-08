@@ -26,7 +26,8 @@
 import SideBar from '../components/SideBar.vue';
 import * as echarts from 'echarts';
 import axios from 'axios';
-import { formatter } from 'element-plus';
+import { Grid } from 'ant-design-vue';
+import { Bottom } from '@element-plus/icons-vue';
 export default {
   components: {
     SideBar,
@@ -52,15 +53,36 @@ export default {
     },
     initAccuracyChart() {
       this.accuracy = echarts.init(this.$refs.accuracy);
+      const alg = ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'];
+      let yAxisArray = {
+        'IsoRank': [],
+        'REGAL': [],
+        'DeepLink': [],
+        'BigAlign': [],
+        'FINAL': [],
+        'GAlign': [],
+        'GTCAlign': [],
+      };
       let xAxisArray = [];
-      let yAxisArray = [];
-      axios.post('http://localhost:8080/outcome/getOutcomeByType?type=Accuracy').then(response => {
+      axios.post('http://localhost:8080/outcome/getOutcomeByType', {
+        type: 'Accuracy',
+      },{
+        headers : {
+          Authorization : 'Bearer ' + localStorage.getItem('token'),
+        },
+        withCredentials : true,
+      }).then(response => {
         const len = response.data.length;
         for (let i = 0; i < len; i++) {
           xAxisArray.push(i + 1);
         }
+        for (let i = 0; i < alg.length; i++) {
+          for (let j = 0; j < len; j++) {
+            yAxisArray[alg[i]].push(null);
+          }
+        }
         for (let i = 0; i < len; i++) {
-          yAxisArray.push(response.data[i]['evaluation']);
+          yAxisArray[response.data[i]['type']][i] = response.data[i]['evaluation'];
         }
         const option = {
           tooltip: {
@@ -75,6 +97,29 @@ export default {
               Args: ${item.args}<br/>
               Accuracy: ${item.evaluation}
               `;
+            },
+            axisPointer: {
+              type: 'cross',
+              label: {
+                backgroundColor: '#6a7985'
+              }
+
+            }
+
+          },
+          legend: {
+            data: ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'],
+            top: '10%',
+            left: 'center'
+          },
+          grid: {
+            top: '20%',   // 设置网格的上边距
+            containLabel: true, // 确保标签不被裁剪
+            botton: '0%'
+          },
+          toolbox: {
+            feature: {
+              saveAsImage: {}
             }
           },
           title: {
@@ -83,13 +128,61 @@ export default {
           xAxis: {
             data: xAxisArray
           },
-          yAxis: {},
+          yAxis: {
+            type : 'value',
+            min : 0,
+            max : 1
+          },
           series: [
             {
-              data: yAxisArray,
+              name: 'IsoRank',
+              data: yAxisArray['IsoRank'],
               type: 'line',
-              areaStyle: {}
-            }
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'REGAL',
+              data: yAxisArray['REGAL'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'DeepLink',
+              data: yAxisArray['DeepLink'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'BigAlign',
+              data: yAxisArray['BigAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'FINAL',
+              data: yAxisArray['FINAL'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'GAlign',
+              data: yAxisArray['GAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'GTCAlign',
+              data: yAxisArray['GTCAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
           ]
         };
         this.accuracy.setOption(option);
@@ -97,15 +190,37 @@ export default {
     },
     initMapChart() {
       this.map = echarts.init(this.$refs.map);
+      const alg = ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'];
+      let yAxisArray = {
+        'IsoRank': [],
+        'REGAL': [],
+        'DeepLink': [],
+        'BigAlign': [],
+        'FINAL': [],
+        'GAlign': [],
+        'GTCAlign': [],
+      };
       let xAxisArray = [];
-      let yAxisArray = [];
-      axios.post('http://localhost:8080/outcome/getOutcomeByType?type=MAP').then(response => {
+      axios.post('http://localhost:8080/outcome/getOutcomeByType', {
+        type: 'MAP',
+        },{
+          headers : {
+            Authorization : 'Bearer ' + localStorage.getItem('token'),
+          },
+          withCredentials : true,
+        }
+      ).then(response => {
         const len = response.data.length;
         for (let i = 0; i < len; i++) {
           xAxisArray.push(i + 1);
         }
+        for (let i = 0; i < alg.length; i++) {
+          for (let j = 0; j < len; j++) {
+            yAxisArray[alg[i]].push(null);
+          }
+        }
         for (let i = 0; i < len; i++) {
-          yAxisArray.push(response.data[i]['evaluation']);
+          yAxisArray[response.data[i]['type']][i] = response.data[i]['evaluation'];
         }
         const option = {
           tooltip: {
@@ -120,6 +235,29 @@ export default {
               Args: ${item.args}<br/>
               MAP: ${item.evaluation}
               `;
+            },
+            axisPointer: {
+              type: 'cross',
+              label: {
+                backgroundColor: '#6a7985'
+              }
+
+            }
+
+          },
+          legend: {
+            data: ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'],
+            top: '10%',
+            left: 'center'
+          },
+          grid: {
+            top: '20%',   // 设置网格的上边距
+            containLabel: true, // 确保标签不被裁剪
+            botton: '0%'
+          },
+          toolbox: {
+            feature: {
+              saveAsImage: {}
             }
           },
           title: {
@@ -128,13 +266,61 @@ export default {
           xAxis: {
             data: xAxisArray
           },
-          yAxis: {},
+          yAxis: {
+            type : 'value',
+            min : 0,
+            max : 1
+          },
           series: [
             {
-              data: yAxisArray,
+              name: 'IsoRank',
+              data: yAxisArray['IsoRank'],
               type: 'line',
-              areaStyle: {}
-            }
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'REGAL',
+              data: yAxisArray['REGAL'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'DeepLink',
+              data: yAxisArray['DeepLink'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'BigAlign',
+              data: yAxisArray['BigAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'FINAL',
+              data: yAxisArray['FINAL'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'GAlign',
+              data: yAxisArray['GAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'GTCAlign',
+              data: yAxisArray['GTCAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
           ]
         };
         this.map.setOption(option);
@@ -142,15 +328,36 @@ export default {
     },
     initPrecision5Chart() {
       this.precision5 = echarts.init(this.$refs.precision5);
+      const alg = ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'];
+      let yAxisArray = {
+        'IsoRank': [],
+        'REGAL': [],
+        'DeepLink': [],
+        'BigAlign': [],
+        'FINAL': [],
+        'GAlign': [],
+        'GTCAlign': [],
+      };
       let xAxisArray = [];
-      let yAxisArray = [];
-      axios.post('http://localhost:8080/outcome/getOutcomeByType?type=Precision_5').then(response => {
+      axios.post('http://localhost:8080/outcome/getOutcomeByType', {
+        type: 'Precision_5',
+        },{
+          headers : {
+            Authorization : 'Bearer ' + localStorage.getItem('token'),
+          },
+          withCredentials : true,
+      }).then(response => {
         const len = response.data.length;
         for (let i = 0; i < len; i++) {
           xAxisArray.push(i + 1);
         }
+        for (let i = 0; i < alg.length; i++) {
+          for (let j = 0; j < len; j++) {
+            yAxisArray[alg[i]].push(null);
+          }
+        }
         for (let i = 0; i < len; i++) {
-          yAxisArray.push(response.data[i]['evaluation']);
+          yAxisArray[response.data[i]['type']][i] = response.data[i]['evaluation'];
         }
         const option = {
           tooltip: {
@@ -165,6 +372,29 @@ export default {
               Args: ${item.args}<br/>
               Precision@5: ${item.evaluation}
               `;
+            },
+            axisPointer: {
+              type: 'cross',
+              label: {
+                backgroundColor: '#6a7985'
+              }
+
+            }
+
+          },
+          legend: {
+            data: ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'],
+            top : '10%',
+            left : 'center'
+          },
+          grid: {
+            top: '20%',   // 设置网格的上边距
+            containLabel: true, // 确保标签不被裁剪
+            botton : '0%'
+          },
+          toolbox: {
+            feature: {
+              saveAsImage: {}
             }
           },
           title: {
@@ -173,13 +403,61 @@ export default {
           xAxis: {
             data: xAxisArray
           },
-          yAxis: {},
+          yAxis: {
+            type : 'value',
+            min : 0,
+            max : 1
+          },
           series: [
             {
-              data: yAxisArray,
+              name: 'IsoRank',
+              data: yAxisArray['IsoRank'],
               type: 'line',
-              areaStyle: {}
-            }
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'REGAL',
+              data: yAxisArray['REGAL'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'DeepLink',
+              data: yAxisArray['DeepLink'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'BigAlign',
+              data: yAxisArray['BigAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'FINAL',
+              data: yAxisArray['FINAL'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'GAlign',
+              data: yAxisArray['GAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'GTCAlign',
+              data: yAxisArray['GTCAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
           ]
         };
         this.precision5.setOption(option);
@@ -187,15 +465,36 @@ export default {
     },
     initPrecision10Chart() {
       this.precision10 = echarts.init(this.$refs.precision10);
+      const alg = ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'];
+      let yAxisArray = {
+        'IsoRank': [],
+        'REGAL': [],
+        'DeepLink': [],
+        'BigAlign': [],
+        'FINAL': [],
+        'GAlign': [],
+        'GTCAlign': [],
+      };
       let xAxisArray = [];
-      let yAxisArray = [];
-      axios.post('http://localhost:8080/outcome/getOutcomeByType?type=Precision_10').then(response => {
+      axios.post('http://localhost:8080/outcome/getOutcomeByType', {
+        type: 'Precision_10',
+        },{
+          headers : {
+            Authorization : 'Bearer ' + localStorage.getItem('token'),
+          },
+          withCredentials : true,
+      }).then(response => {
         const len = response.data.length;
         for (let i = 0; i < len; i++) {
           xAxisArray.push(i + 1);
         }
+        for (let i = 0; i < alg.length; i++) {
+          for (let j = 0; j < len; j++) {
+            yAxisArray[alg[i]].push(null);
+          }
+        }
         for (let i = 0; i < len; i++) {
-          yAxisArray.push(response.data[i]['evaluation']);
+          yAxisArray[response.data[i]['type']][i] = response.data[i]['evaluation'];
         }
         const option = {
           tooltip: {
@@ -210,6 +509,29 @@ export default {
               Args: ${item.args}<br/>
               Precision@10: ${item.evaluation}
               `;
+            },
+            axisPointer: {
+              type: 'cross',
+              label: {
+                backgroundColor: '#6a7985'
+              }
+
+            }
+
+          },
+          legend: {
+            data: ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'],
+            top : '10%',
+            left : 'center'
+          },
+          grid: {
+            top: '20%',   // 设置网格的上边距
+            containLabel: true, // 确保标签不被裁剪
+            botton : '0%'
+          },
+          toolbox: {
+            feature: {
+              saveAsImage: {}
             }
           },
           title: {
@@ -218,13 +540,61 @@ export default {
           xAxis: {
             data: xAxisArray
           },
-          yAxis: {},
+          yAxis: {
+            type : 'value',
+            min : 0,
+            max : 1
+          },
           series: [
             {
-              data: yAxisArray,
+              name: 'IsoRank',
+              data: yAxisArray['IsoRank'],
               type: 'line',
-              areaStyle: {}
-            }
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'REGAL',
+              data: yAxisArray['REGAL'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'DeepLink',
+              data: yAxisArray['DeepLink'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'BigAlign',
+              data: yAxisArray['BigAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'FINAL',
+              data: yAxisArray['FINAL'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'GAlign',
+              data: yAxisArray['GAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
+            {
+              name: 'GTCAlign',
+              data: yAxisArray['GTCAlign'],
+              type: 'line',
+              areaStyle: {},
+              connectNulls: true
+            },
           ]
         };
         this.precision10.setOption(option);

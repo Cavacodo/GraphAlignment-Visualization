@@ -29,13 +29,24 @@
           <div class="text">用户设置</div>
         </div>
       </div>
+      <div class="new-chat" :class="{ active: $route.name === 'editBackend' }" @click="navigateTo('editBackend')" v-if="role === 'admin'">
+        <div class="el-icon-plus">
+          <DatabaseOutlined class="user-svg" />
+          <div class="text">后端数据编辑</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { LineChartOutlined, RadarChartOutlined, SearchOutlined, DotChartOutlined, UserOutlined } from '@ant-design/icons-vue';
+import { LineChartOutlined, RadarChartOutlined, SearchOutlined, DotChartOutlined, UserOutlined,DatabaseOutlined} from '@ant-design/icons-vue';
 export default {
+  data() {
+    return{
+      role : localStorage.getItem('role'),
+    }
+  },
   name: "Sidebar",
   components: {
     LineChartOutlined,
@@ -43,7 +54,7 @@ export default {
     SearchOutlined,
     DotChartOutlined,
     UserOutlined,
-  
+    DatabaseOutlined
   },
   methods: {
     navigateTo(page) {
