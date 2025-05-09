@@ -117,4 +117,20 @@ public class UserController {
         if(ans == 1) return new ResponseEntity<>("修改成功", HttpStatus.ACCEPTED);
         return new ResponseEntity<>("修改失败", HttpStatus.BAD_REQUEST);
     }
+
+    @PostMapping("/changeUserEmail")
+    @ResponseBody
+    public ResponseEntity<String> changeUserEmail(@RequestBody Map<String, String> payload){
+        String email = payload.get("old_email");
+        String verifyCode = payload.get("vcode");
+        String new_email = payload.get("new_email");
+        if(this.userService.checkEmailDuplicate(new_email) == 0) return new ResponseEntity<>("邮箱已被使用",HttpStatus.BAD_REQUEST);
+        int uid = this.userService.findUserByEmail(email);
+        if(verifyCode.equalsIgnoreCase(this.userService.getRedisVerifyCode(email))){
+            this.userService.updateEmailById(uid,new_email);
+            return new ResponseEntity<>("修改成功", HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("修改失败", HttpStatus.BAD_REQUEST);
+    }
+
 }

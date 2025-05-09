@@ -5,7 +5,7 @@
       <h1>算法可视化平台</h1>
     </div>
     <div class="container">
-      <div class="new-chat" :class="{ active: $route.name === 'groundTruth' }" @click="navigateTo('groundTruth')">
+      <div class="new-chat" :class="{ active: $route.name === 'Panel' }" @click="navigateTo('Panel')">
         <div class="el-icon-plus">
           <DotChartOutlined class="groundtruth-svg" />
           <div class="text">调参可视化</div>
@@ -17,7 +17,7 @@
           <div class="text">DeepSeek</div>
         </div>
       </div>
-      <div class="new-chat" :class="{ active: $route.name === 'Neo4j' }" @click="navigateTo('Neo4j')">
+      <div class="new-chat" :class="{ active: $route.name === 'OutCome' }" @click="navigateTo('OutCome')">
         <div class="el-icon-plus">
           <RadarChartOutlined class="neo4j-svg" />
           <div class="text">结果对比</div>

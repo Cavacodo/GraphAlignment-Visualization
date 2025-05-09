@@ -8,10 +8,24 @@
     <select id="getLatest" resultType="xjtu.pojo.Outcome">
         select * from outcome where evaluation is NULL;
     </select>
+    <select id="listOutCome" resultType="xjtu.pojo.Outcome">
+        select * from outcome;
+    </select>
+    <select id="getOutComeByCondition" resultType="xjtu.pojo.Outcome">
+        select * from outcome where ${col} = #{key};
+    </select>
     <insert id="addOutcome">
         insert into outcome(type,args,evaluation) values(#{type},#{args},#{evaluation});
     </insert>
     <update id="addEvaluationById">
         update outcome set evaluation = #{evaluation} where id = #{id};
+    </update>
+    <delete id="removeOutcomeById">
+        delete
+        from outcome
+        where id=#{id};
+    </delete>
+    <update id="updateOutcomeById">
+        update outcome set evaluation = #{outcome.evaluation},type=#{outcome.type},args=#{outcome.args} type= where id = #{id};
     </update>
 </mapper>

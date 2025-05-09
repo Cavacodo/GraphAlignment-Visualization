@@ -8,10 +8,21 @@
     <select id="findRoleByAccount" parameterType="java.lang.String" resultType="xjtu.pojo.Role">
         select * from role where account = #{account};
     </select>
+    <select id="getRoleByCondition" resultType="xjtu.pojo.Role">
+        select * from role where ${col} = #{key};
+    </select>
     <insert id="addRole">
         insert into role(account) values(#{account});
     </insert>
     <update id="changeUserPrivilege">
+        update role set role = #{role} where account = #{account};
+    </update>
+    <delete id="removeRoleById">
+        delete
+        from role
+        where id=#{id};
+    </delete>
+    <update id="updateRoleByAccount">
         update role set role = #{role} where account = #{account};
     </update>
 </mapper>

@@ -58,6 +58,31 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int updateEmailById(int id, String email) {
+        return this.userDao.updateEmailById(id,email);
+    }
+
+    @Override
+    public List<User> listAll() {
+        return this.userDao.listAll();
+    }
+
+    @Override
+    public List<User> findUserByCondition(String col, String key) {
+        return this.userDao.findUserByCondition(col, key);
+    }
+
+    @Override
+    public int removeUserById(int id) {
+        return this.userDao.removeUserById(id);
+    }
+
+    @Override
+    public int updateUserByAccount(User user, String account) {
+        return this.userDao.updateUserByAccount(user,account);
+    }
+
+    @Override
     public int checkEmailDuplicate(String email) {
         User res = userDao.checkEmailDuplicate(email);
         if(res == null) return 1;

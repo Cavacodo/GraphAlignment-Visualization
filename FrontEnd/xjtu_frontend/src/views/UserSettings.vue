@@ -16,7 +16,7 @@
               </el-form-item>
 
               <el-form-item label="绑定邮箱">
-                <el-input v-model="userInfo.email" disabled/>
+                <el-input v-model="userInfo.email" disabled />
               </el-form-item>
 
               <el-form-item label="用户权限">
@@ -24,9 +24,28 @@
               </el-form-item>
             </el-form>
             <!-- 修改后的 span 样式 -->
+            <span class="section-title">修改绑定邮箱</span>
+            <el-form :model="emailForm" ref="emailFormRef" label-position="left" :rules="emailRules" class="email-form">
+              <el-form-item label="邮箱验证">
+                <div style="display: flex; gap: 10px; width: 100%;">
+                  <el-input v-model="emailForm.verifyCode" placeholder="请输入验证码" />
+                  <el-button @click="sendVerifyCode" :disabled="emailForm.verifyCodeSent">发送</el-button>
+                </div>
+
+              </el-form-item>
+              <el-form-item label="输入新邮箱" prop="newEmail">
+                <div style="display: flex; gap: 10px; width: 100%;">
+                  <el-input v-model="emailForm.newEmail" placeholder="请输入新邮箱" :disabled="!emailForm.verifyCodeSent" />
+                  <el-button @click="confirmEmail">确认</el-button>
+                </div>
+
+              </el-form-item>
+            </el-form>
+
             <span class="section-title">修改密码</span>
             <!-- 密码修改 -->
-            <el-form :model="passwordForm" :rules="passwordRules" ref="passwordFormRef" label-position="left" class="password-form">
+            <el-form :model="passwordForm" :rules="passwordRules" ref="passwordFormRef" label-position="left"
+              class="password-form">
               <el-form-item label="输入旧密码" prop="oldPassword">
                 <el-input v-model="passwordForm.oldPassword" type="password" />
               </el-form-item>
@@ -55,6 +74,7 @@
 </template>
 
 <script>
+import { withConfirm } from 'ant-design-vue/es/modal/confirm'
 import Sidebar from '../components/SideBar.vue'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
@@ -75,6 +95,13 @@ export default {
         newPassword: '',
         confirmPassword: '',
       },
+      emailForm: {
+        verifyCode: '',
+        newEmail: '',
+        verifyCodeSent: false,
+      },
+      countdown: 60,
+
       passwordRules: {
         oldPassword: [{ required: true, message: '请输入旧密码', trigger: 'blur' }],
         newPassword: [{ required: true, message: '请输入新密码', trigger: 'blur' }],
@@ -92,7 +119,17 @@ export default {
           },
         ],
       },
-      router : useRouter()
+      emailRules: {
+        newEmail: [
+          { required: true, message: '请输入新邮箱', trigger: 'blur' },
+          {
+            type: 'email',
+            message: '请输入正确的邮箱格式',
+            trigger: ['blur', 'change'],
+          }
+        ]
+      },
+      router: useRouter()
     }
   },
   mounted() {
@@ -116,9 +153,6 @@ export default {
     submitPasswordChange() {
       this.$refs.passwordFormRef.validate(valid => {
         if (valid) {
-          console.log(localStorage.getItem('user'))
-          console.log(this.passwordForm.oldPassword)
-          console.log(this.passwordForm.newPassword)
           axios.post('http://localhost:8080/user/changeUserPwd', {
             account: localStorage.getItem('user'),
             oldpwd: this.passwordForm.oldPassword,
@@ -139,10 +173,54 @@ export default {
         }
       })
     },
+    sendVerifyCode() {
+      axios.post('http://localhost:8080/sendEmail', {
+        email: this.userInfo.email,
+      },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }).then((response) => {
+          if (response.status === 202) {  // 假设后端返回 code 200 表示成功
+            alert('邮件已发送，请查收')
+            this.emailForm.verifyCodeSent = true
+          } else if (response.status === 208) {
+            alert("验证码已发送，请误重复点击")
+          }
+          else {
+            errorMessage.value = response.data.msg || '操作失败'
+            alert(errorMessage.value);
+          }
+        })
+    },
+    confirmEmail() {
+      axios.post('http://localhost:8080/user/changeUserEmail',
+        {
+          old_email: this.userInfo.email,
+          vcode: this.emailForm.verifyCode,
+          new_email: this.emailForm.newEmail
+        }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }
+      ).then(response => {
+        if (response.status === 202) {
+          alert('修改成功')
+          this.emailForm.verifyCodeSent = false
+          this.emailForm.email = ''
+          this.emailForm.verifyCode = ''
+          this.router.push('/login')
+        } else {
+          alert('修改失败');
+        }
+      })
+    },
     // 新增登出方法
     logout() {
       localStorage.clear();
-      this.router.push({ name: 'Login' })
+      this.router.push('/login')
     }
   }
 }
@@ -184,12 +262,14 @@ export default {
   width: 400px;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* 调整间距，使内容更紧凑 */
+  gap: 15px;
+  /* 调整间距，使内容更紧凑 */
 }
 
 .el-form-item {
   width: 100%;
-  text-align: left; /* 确保表单项内容左对齐 */
+  text-align: left;
+  /* 确保表单项内容左对齐 */
 }
 
 /* 新增样式：调整 span 字体大小并左对齐 */
@@ -197,6 +277,7 @@ export default {
   font-size: 24px;
   display: inline-block;
   text-align: left;
-  margin-bottom: 10px; /* 添加底部间距 */
+  margin-bottom: 10px;
+  /* 添加底部间距 */
 }
 </style>

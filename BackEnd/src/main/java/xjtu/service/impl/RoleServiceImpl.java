@@ -46,4 +46,19 @@ public class RoleServiceImpl implements RoleService {
         if(findRoleByAccount(account) == null) return 0;
         return roleDao.changeUserPrivilege(account, role);
     }
+
+    @Override
+    public List<Role> getRoleByCondition(String col, String key) {
+        return this.roleDao.getRoleByCondition(col, key);
+    }
+
+    @Override
+    public int removeRoleById(int id) {
+        return this.roleDao.removeRoleById(id);
+    }
+
+    @Override
+    public int updateRoleByAccount(Role role, String account) {
+        return this.roleDao.updateRoleByAccount(role, account);
+    }
 }

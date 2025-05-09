@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "@tsparticles/vue3": "^3.0.1",
     "ant-design-vue": "^4.2.6",
     "axios": "^1.7.9",
     "echarts": "^5.6.0",
@@ -26,6 +27,7 @@
     "neovis.js": "^2.1.0",
     "openai": "^4.85.3",
     "path-browserify": "^1.0.1",
+    "tsparticles": "^3.8.1",
     "typeit": "^8.8.7",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
@@ -45,6 +47,7 @@
     "typescript": "~5.6.3",
     "vite": "^6.0.5",
     "vite-plugin-vue-devtools": "^7.6.8",
+    "vue-particles": "^1.0.9",
     "vue-tsc": "^2.1.10"
   }
 }

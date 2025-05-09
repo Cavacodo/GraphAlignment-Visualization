@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Table from '../views/Table.vue'
-import Neo4j from '../views/Neo4j.vue'
+import OutCome from '../views/OutCome.vue'
 import DeepSeek from '../views/DeepSeek.vue'
-import groundTruth from '../views/groundTruth.vue'
+import Panel from '../views/Panel.vue'
 import UserSettings from '../views/UserSettings.vue'
 import editBackend from '../views/editBackend.vue'
 import error from '../views/error.vue'
@@ -20,9 +20,9 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/neo4j',
-      name: 'Neo4j',
-      component: Neo4j,
+      path: '/OutCome',
+      name: 'OutCome',
+      component: OutCome,
       meta: {
         requiresAuth: true
       },
@@ -34,9 +34,9 @@ const router = createRouter({
           requiresAuth: true
         }
     },{
-      path: '/groundTruth',
-      name: 'groundTruth',
-      component: groundTruth,
+      path: '/Panel',
+      name: 'Panel',
+      component: Panel,
       meta: {
         requiresAuth: true
       }

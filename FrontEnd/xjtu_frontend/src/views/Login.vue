@@ -1,133 +1,76 @@
 <template>
   <div class="login-container">
+
     <div class="login-box">
       <h2 v-if="!showForgotPassword && !showRegister">用户登录</h2>
       <h2 v-if="showRegister">注册账号</h2>
-      
+
       <div class="form-group" v-if="!showForgotPassword && !showRegister">
-        <input
-          type="text"
-          v-model="username"
-          placeholder="请输入用户名"
-          class="form-input"
-        >
+        <input type="text" v-model="username" placeholder="请输入用户名" class="form-input">
       </div>
-      
+
       <div class="form-group" v-if="!showForgotPassword && !showRegister">
-        <input
-          type="password"
-          v-model="password"
-          placeholder="请输入密码"
-          class="form-input"
-        >
+        <input type="password" v-model="password" placeholder="请输入密码" class="form-input">
       </div>
-      
+
       <div class="form-group" v-if="showRegister">
-        <input
-          type="text"
-          v-model="newUsername"
-          placeholder="请输入新用户名"
-          class="form-input"
-        >
+        <input type="text" v-model="newUsername" placeholder="请输入新用户名" class="form-input">
       </div>
-      
+
       <div class="form-group" v-if="showRegister">
-        <input
-          type="password"
-          v-model="newPassword"
-          placeholder="请输入新密码"
-          class="form-input"
-        >
+        <input type="password" v-model="newPassword" placeholder="请输入新密码" class="form-input">
       </div>
-      
+
       <div class="form-group" v-if="showRegister">
-        <input
-          type="email"
-          v-model="email"
-          placeholder="请输入注册邮箱"
-          class="form-input"
-        >
+        <input type="email" v-model="email" placeholder="请输入注册邮箱" class="form-input">
       </div>
 
       <div class="form-group" v-if="showRegister">
         <div class="inline-form">
-          <input
-            type="text"
-            v-model="verifyCode"
-            placeholder="请输入验证码"
-            class="form-input inline-input"
-          > 
-          <el-button 
-            type="primary" 
-            @click="handleSendVerifyCode" 
-            :disabled="countdown > 0"
-          >
+          <input type="text" v-model="verifyCode" placeholder="请输入验证码" class="form-input inline-input">
+          <el-button type="primary" @click="handleSendVerifyCode" :disabled="countdown > 0">
             {{ countdown > 0 ? `${countdown}秒后重试` : '发送验证码' }}
           </el-button>
         </div>
       </div>
-      
+
       <div v-if="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
-      
+
       <button @click="handleLogin" class="login-button" v-if="!showForgotPassword && !showRegister">
         登录
       </button>
-      
+
       <button @click="handleRegister" class="login-button" v-if="showRegister">
         注册
       </button>
-      
+
       <div class="additional-links">
         <a href="#" @click.prevent="toggleForgotPassword" v-if="!showForgotPassword && !showRegister">忘记密码？</a>
         <a href="#" @click.prevent="toggleRegister" v-if="!showForgotPassword && !showRegister">注册账号</a>
         <a href="#" @click.prevent="toggleRegister" v-if="showRegister">返回登录</a>
       </div>
-      
+
       <!-- 忘记密码表单 -->
       <div v-if="showForgotPassword" class="forgot-password-form">
         <h2>忘记密码</h2>
         <div class="form-group">
-          <input
-            type="email"
-            v-model="email"
-            placeholder="请输入注册邮箱"
-            class="form-input"
-          >
+          <input type="email" v-model="email" placeholder="请输入注册邮箱" class="form-input">
         </div>
         <div class="form-group">
-          <input
-            type="text"
-            v-model="FirstPassword"
-            placeholder="请输入新密码"
-            class="form-input"
-          ></input>
+          <input type="text" v-model="FirstPassword" placeholder="请输入新密码" class="form-input"></input>
         </div>
         <div class="form-group">
-          <input
-            type="text"
-            v-model="SecondPassword"
-            placeholder="再次输入密码"
-            class="form-input"
-          ></input> 
+          <input type="text" v-model="SecondPassword" placeholder="再次输入密码" class="form-input"></input>
         </div>
         <div class="form-group">
           <div class="inline-form">
-          <input
-            type="text"
-            v-model="verifyCode"
-            placeholder="请输入验证码"
-            class="form-input inline-input"
-          > 
-          <el-button 
-            type="primary" 
-            @click="handleSendVerifyCode" 
-            :disabled="countdown > 0"
-          >
-            {{ countdown > 0 ? `${countdown}秒后重试` : '发送验证码' }}
-          </el-button>
-        </div>
+            <input type="text" v-model="verifyCode" placeholder="请输入验证码" class="form-input inline-input">
+            <el-button type="primary" @click="handleSendVerifyCode" :disabled="countdown > 0">
+              {{ countdown > 0 ? `${countdown}秒后重试` : '发送验证码' }}
+            </el-button>
+          </div>
         </div>
         <button @click="handleForgotPassword" class="login-button">
           提交
@@ -172,7 +115,7 @@ const handleLogin = async () => {
       pwd: password.value
     })
 
-    const response = await axios.post('http://localhost:8080/user/login', 
+    const response = await axios.post('http://localhost:8080/user/login',
       {
         account: username.value,
         pwd: password.value
@@ -191,7 +134,7 @@ const handleLogin = async () => {
       localStorage.setItem('token', response.data.data.token)  // 如果后端返回token
       localStorage.setItem('user', response.data.data.account);
       localStorage.setItem('role', response.data.data.role);  // 存储用户信息
-      router.push('/groundTruth')  // 确保你有一个名为 home 的路由
+      router.push('/Panel')  // 确保你有一个名为 home 的路由
     } else {
       errorMessage.value = response.data.msg || '登录失败'
       alert(errorMessage.value);
@@ -217,7 +160,7 @@ const handleRegister = async () => {
       verifyCode: verifyCode.value
     })
 
-    const response = await axios.post('http://localhost:8080/user/register', 
+    const response = await axios.post('http://localhost:8080/user/register',
       {
         username: newUsername.value,
         password: newPassword.value,
@@ -254,21 +197,21 @@ const handleForgotPassword = async () => {
     errorMessage.value = '邮箱不能为空'
     return
   }
-  if(FirstPassword.value !== SecondPassword.value){
+  if (FirstPassword.value !== SecondPassword.value) {
     alert("两次密码不一致")
     return
   }
-  if(FirstPassword.value == null || SecondPassword.value == null || FirstPassword.value == '' || SecondPassword.value == ''){
+  if (FirstPassword.value == null || SecondPassword.value == null || FirstPassword.value == '' || SecondPassword.value == '') {
     alert("密码不能为空")
     return
   }
-  try{
+  try {
     console.log('发送忘记密码请求:', {
       email: email.value,
       password: FirstPassword.value,
       verifyCode: verifyCode.value
     })
-    const response = await axios.post('http://localhost:8080/user/forgetPassword', 
+    const response = await axios.post('http://localhost:8080/user/forgetPassword',
       {
         email: email.value,
         password: FirstPassword.value,
@@ -282,18 +225,18 @@ const handleForgotPassword = async () => {
       },
     )
     console.log(response)
-    if(response.status === 202){
-        alert("修改成功")
-        showForgotPassword.value = false
-        showRegister.value = false
-      }else if(response.status === 400){
-        alert("修改失败,邮箱未注册")
-      }else if(response.status === 208){
-        alert("验证码已过期")
-      }else{
-        alert("验证码已发送，请勿重复点击")
-      }
-  }catch(error){
+    if (response.status === 202) {
+      alert("修改成功")
+      showForgotPassword.value = false
+      showRegister.value = false
+    } else if (response.status === 400) {
+      alert("修改失败,邮箱未注册")
+    } else if (response.status === 208) {
+      alert("验证码已过期")
+    } else {
+      alert("验证码已发送，请勿重复点击")
+    }
+  } catch (error) {
     alert("操作错误")
   }
 }
@@ -312,7 +255,7 @@ const isValidEmail = (email) => {
   return emailRegex.test(email);
 }
 
-const handleSendVerifyCode = async() => {
+const handleSendVerifyCode = async () => {
   if (!isValidEmail(email.value)) {
     alert("请输入有效的邮箱地址")
     return
@@ -322,7 +265,7 @@ const handleSendVerifyCode = async() => {
       email: email.value
     })
 
-    const response = await axios.post('http://localhost:8080/sendEmail', 
+    const response = await axios.post('http://localhost:8080/sendEmail',
       {
         email: email.value
       },
@@ -339,9 +282,9 @@ const handleSendVerifyCode = async() => {
     if (response.status === 202) {  // 假设后端返回 code 200 表示成功
       alert('邮件已发送，请查收')
 
-    }else if(response.status === 208){
+    } else if (response.status === 208) {
       alert("验证码已发送，请误重复点击")
-    } 
+    }
     else {
       errorMessage.value = response.data.msg || '操作失败'
       alert(errorMessage.value);
@@ -394,14 +337,23 @@ body {
   background-position: center;
 }
 
+.login-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
 .login-box {
+  position: relative;
+  z-index: 1; /* 确保在粒子背景之上 */
   width: 100%;
   max-width: 400px;
   padding: 40px;
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  margin: 20px;  /* 添加边距防止在小屏幕上贴边 */
+  margin: 20px;
 }
 
 h2 {

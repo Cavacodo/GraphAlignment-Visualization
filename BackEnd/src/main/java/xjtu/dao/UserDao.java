@@ -19,4 +19,9 @@ public interface UserDao {
     public Integer findUserByEmail(String email);
     public int updatePwdById(int id,String pwd);
     public int updatePwdByAccount(String account,String old,String newpwd);
+    public int updateEmailById(int id,String email);
+    public List<User> listAll();
+    public List<User> findUserByCondition(String col,String key);
+    public int removeUserById(int id);
+    public int updateUserByAccount(User user,String account);
 }

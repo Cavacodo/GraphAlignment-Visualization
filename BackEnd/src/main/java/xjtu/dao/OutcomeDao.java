@@ -13,4 +13,8 @@ public interface OutcomeDao {
     public List<Outcome> getOutcome();
     public int addEvaluationById(String evaluation,Integer id);
     public List<Outcome> getLatest();
+    public List<Outcome> listOutCome();
+    public List<Outcome> getOutComeByCondition(String col,String key);
+    public int removeOutcomeById(Integer id);
+    public int updateOutcomeById(Outcome outcome,Integer id);
 }

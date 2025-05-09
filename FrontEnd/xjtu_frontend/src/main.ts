@@ -3,6 +3,9 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+
+import Particles from "@tsparticles/vue3";
+import { loadSlim } from "@tsparticles/slim";
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 import Antd from 'ant-design-vue'
@@ -19,6 +22,13 @@ const app = createApp(App)
 app.use(ElementPlus)
 
 app.use(router)
+app
+  .use(Particles, {
+    init: async (engine) => {
+      // 加载精简版本
+      await loadSlim(engine);
+    },
+  })
 
 app.use(Antd)
 app.mount('#app')

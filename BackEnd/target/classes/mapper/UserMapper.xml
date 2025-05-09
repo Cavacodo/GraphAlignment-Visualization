@@ -27,6 +27,13 @@
         FROM user
         WHERE account = #{account} AND pwd = #{pwd};
     </select>
+    <select id="listAll" resultType="xjtu.pojo.User">
+        select *
+        from user;
+    </select>
+    <select id="findUserByCondition" resultType="xjtu.pojo.User">
+        select * from user where ${col} = #{key};
+    </select>
     <select id="findUserByEmail" resultType="java.lang.Integer">
         SELECT id FROM user WHERE email = #{email};
     </select>
@@ -39,4 +46,13 @@
     <update id="updatePwdByAccount">
         update user set pwd = #{newpwd} where account = #{account} and pwd = #{old};
     </update>
+    <update id="updateEmailById">
+        update user set email = #{email} where id = #{id};
+    </update>
+    <update id="updateUserByAccount">
+        update user set pwd = #{user.pwd},email = #{user.email} where account = #{account};
+    </update>
+    <delete id="removeUserById">
+        delete from user where id = #{id};
+    </delete>
 </mapper>

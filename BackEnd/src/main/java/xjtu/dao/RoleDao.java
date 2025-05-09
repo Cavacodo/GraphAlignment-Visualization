@@ -13,4 +13,7 @@ public interface RoleDao {
     public Role findRoleByAccount(String account);
     public int addRole(Role role);
     public int changeUserPrivilege(String account, int role);
+    public List<Role> getRoleByCondition(String col, String key);
+    public int removeRoleById(int id);
+    public int updateRoleByAccount(Role role, String account);
 }

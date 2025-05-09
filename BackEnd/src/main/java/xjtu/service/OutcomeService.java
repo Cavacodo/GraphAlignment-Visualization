@@ -10,4 +10,8 @@ public interface OutcomeService {
     Integer getLastestId();
     Integer addEvaluationById(String evaluation,Integer id);
     List<Outcome> getEvaluationIndex(String index);
+    List<Outcome> listOutCome();
+    List<Outcome> getOutComeByCondition(String col,String key);
+    int removeOutcomeById(Integer id);
+    int updateOutcomeById(Outcome outcome,Integer id);
 }

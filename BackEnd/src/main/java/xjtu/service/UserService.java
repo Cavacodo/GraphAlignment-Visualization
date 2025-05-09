@@ -23,4 +23,9 @@ public interface UserService {
     int register(User user, String verifyCode);
     String getRoleById(int id);
     int updatePassword(String account,String old,String newpwd);
+    int updateEmailById(int id,String email);
+    List<User> listAll();
+    List<User> findUserByCondition(String col,String key);
+    int removeUserById(int id);
+    int updateUserByAccount(User user,String account);
 }
