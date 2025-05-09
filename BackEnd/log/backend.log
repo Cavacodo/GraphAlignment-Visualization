@@ -2970,3 +2970,223 @@ java.sql.SQLIntegrityConstraintViolationException: Column 'pwd' cannot be null
 2025-05-09T17:49:27.377+08:00 DEBUG 2520 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
 2025-05-09T17:49:27.377+08:00 DEBUG 2520 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
 2025-05-09T17:49:27.377+08:00 DEBUG 2520 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
+2025-05-09T17:51:06.864+08:00  INFO 2520 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-09T17:51:07.053+08:00  INFO 2520 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-09T17:51:07.084+08:00  INFO 2520 --- [SpringApplicationShutdownHook] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 452471720
+2025-05-09T17:51:07.314+08:00  INFO 2520 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-09T17:51:07.321+08:00  INFO 2520 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-09T17:51:12.010+08:00  INFO 3704 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 3704 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by å¼ å…ˆç”Ÿ in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T17:51:12.011+08:00 DEBUG 3704 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T17:51:12.012+08:00  INFO 3704 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T17:51:12.444+08:00  INFO 3704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T17:51:12.445+08:00  INFO 3704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T17:51:12.459+08:00  INFO 3704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T17:51:12.462+08:00  INFO 3704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T17:51:12.462+08:00  INFO 3704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T17:51:12.465+08:00  INFO 3704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T17:51:12.472+08:00  INFO 3704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T17:51:12.473+08:00  INFO 3704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T17:51:12.482+08:00  INFO 3704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-05-09T17:51:12.826+08:00  INFO 3704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T17:51:12.833+08:00  INFO 3704 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T17:51:12.833+08:00  INFO 3704 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T17:51:12.885+08:00  INFO 3704 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T17:51:12.885+08:00  INFO 3704 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 849 ms
+2025-05-09T17:51:13.661+08:00  INFO 3704 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1981414375 created for server address localhost:7687
+2025-05-09T17:51:13.811+08:00  INFO 3704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T17:51:13.818+08:00  INFO 3704 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.078 seconds (process running for 2.49)
+2025-05-09T17:51:20.316+08:00  INFO 3704 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-09T17:51:20.316+08:00  INFO 3704 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-09T17:51:20.317+08:00  INFO 3704 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-05-09T17:51:21.052+08:00  INFO 3704 --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-09T17:51:21.280+08:00  INFO 3704 --- [http-nio-8080-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68849da
+2025-05-09T17:51:21.281+08:00  INFO 3704 --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-09T17:51:21.293+08:00 DEBUG 3704 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-09T17:51:21.299+08:00 DEBUG 3704 --- [http-nio-8080-exec-4] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-09T17:51:21.351+08:00 DEBUG 3704 --- [http-nio-8080-exec-4] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-09T17:51:21.352+08:00 DEBUG 3704 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-09T17:51:21.353+08:00 DEBUG 3704 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-09T17:51:21.353+08:00 DEBUG 3704 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-09T17:51:21.374+08:00 DEBUG 3704 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
+2025-05-09T17:51:21.374+08:00 DEBUG 3704 --- [http-nio-8080-exec-4] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
+2025-05-09T17:51:21.374+08:00 DEBUG 3704 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
+2025-05-09T17:51:21.386+08:00 DEBUG 3704 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-09T17:51:21.387+08:00 DEBUG 3704 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-09T17:51:21.391+08:00 DEBUG 3704 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
+2025-05-09T17:51:21.881+08:00 DEBUG 3704 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-05-09T17:51:21.882+08:00 DEBUG 3704 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-05-09T17:51:21.884+08:00 DEBUG 3704 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-05-09T18:15:03.766+08:00  INFO 6364 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 6364 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by ÕÅÏÈÉú in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T18:15:03.767+08:00 DEBUG 6364 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T18:15:03.768+08:00  INFO 6364 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T18:15:04.146+08:00  INFO 6364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:15:04.148+08:00  INFO 6364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:15:04.165+08:00  INFO 6364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:15:04.169+08:00  INFO 6364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:15:04.170+08:00  INFO 6364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:15:04.174+08:00  INFO 6364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:15:04.182+08:00  INFO 6364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:15:04.183+08:00  INFO 6364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T18:15:04.192+08:00  INFO 6364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-05-09T18:15:04.547+08:00  INFO 6364 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T18:15:04.556+08:00  INFO 6364 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T18:15:04.558+08:00  INFO 6364 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T18:15:04.605+08:00  INFO 6364 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T18:15:04.606+08:00  INFO 6364 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 811 ms
+2025-05-09T18:15:05.275+08:00  INFO 6364 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1179968371 created for server address localhost:7687
+2025-05-09T18:15:05.407+08:00  WARN 6364 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-05-09T18:15:05.408+08:00  INFO 6364 --- [main] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 1179968371
+2025-05-09T18:15:05.661+08:00  INFO 6364 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-09T18:15:05.671+08:00 ERROR 6364 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-05-09T18:17:19.986+08:00  INFO 2372 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 2372 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by ÕÅÏÈÉú in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T18:17:19.988+08:00 DEBUG 2372 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T18:17:19.989+08:00  INFO 2372 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T18:17:20.433+08:00  INFO 2372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:17:20.434+08:00  INFO 2372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:17:20.452+08:00  INFO 2372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:17:20.455+08:00  INFO 2372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:17:20.456+08:00  INFO 2372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:17:20.459+08:00  INFO 2372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:17:20.467+08:00  INFO 2372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:17:20.468+08:00  INFO 2372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T18:17:20.477+08:00  INFO 2372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-05-09T18:17:20.888+08:00  INFO 2372 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T18:17:20.898+08:00  INFO 2372 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T18:17:20.899+08:00  INFO 2372 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T18:17:20.943+08:00  INFO 2372 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T18:17:20.944+08:00  INFO 2372 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 919 ms
+2025-05-09T18:17:21.706+08:00  INFO 2372 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1179968371 created for server address localhost:7687
+2025-05-09T18:17:21.843+08:00  INFO 2372 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T18:17:21.849+08:00  INFO 2372 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.168 seconds (process running for 2.417)
+2025-05-09T18:17:42.526+08:00  INFO 18632 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 18632 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by ÕÅÏÈÉú in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T18:17:42.528+08:00 DEBUG 18632 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T18:17:42.529+08:00  INFO 18632 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T18:17:42.955+08:00  INFO 18632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:17:42.957+08:00  INFO 18632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:17:42.972+08:00  INFO 18632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:17:42.977+08:00  INFO 18632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:17:42.977+08:00  INFO 18632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:17:42.983+08:00  INFO 18632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:17:42.991+08:00  INFO 18632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:17:42.992+08:00  INFO 18632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T18:17:43.002+08:00  INFO 18632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2025-05-09T18:17:43.403+08:00  INFO 18632 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T18:17:43.414+08:00  INFO 18632 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T18:17:43.414+08:00  INFO 18632 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T18:17:43.464+08:00  INFO 18632 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T18:17:43.465+08:00  INFO 18632 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 905 ms
+2025-05-09T18:17:44.197+08:00  INFO 18632 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 2042744055 created for server address localhost:7687
+2025-05-09T18:17:44.337+08:00  INFO 18632 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T18:17:44.344+08:00  INFO 18632 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.093 seconds (process running for 2.323)
+2025-05-09T18:22:09.198+08:00  INFO 18232 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 18232 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by ÕÅÏÈÉú in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T18:22:09.200+08:00 DEBUG 18232 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T18:22:09.200+08:00  INFO 18232 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T18:22:09.603+08:00  INFO 18232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:22:09.604+08:00  INFO 18232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:22:09.619+08:00  INFO 18232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:22:09.623+08:00  INFO 18232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:22:09.623+08:00  INFO 18232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:22:09.627+08:00  INFO 18232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:22:09.634+08:00  INFO 18232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:22:09.635+08:00  INFO 18232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T18:22:09.644+08:00  INFO 18232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2025-05-09T18:22:10.022+08:00  INFO 18232 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T18:22:10.030+08:00  INFO 18232 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T18:22:10.031+08:00  INFO 18232 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T18:22:10.080+08:00  INFO 18232 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T18:22:10.081+08:00  INFO 18232 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 852 ms
+2025-05-09T18:22:10.805+08:00  INFO 18232 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1179968371 created for server address localhost:7687
+2025-05-09T18:22:10.960+08:00  INFO 18232 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T18:22:10.967+08:00  INFO 18232 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.054 seconds (process running for 2.307)
+2025-05-09T18:23:49.836+08:00  INFO 20008 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 20008 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by ÕÅÏÈÉú in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T18:23:49.836+08:00 DEBUG 20008 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T18:23:49.836+08:00  INFO 20008 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T18:23:50.273+08:00  INFO 20008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:23:50.273+08:00  INFO 20008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:23:50.290+08:00  INFO 20008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:23:50.290+08:00  INFO 20008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:23:50.290+08:00  INFO 20008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:23:50.290+08:00  INFO 20008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:23:50.310+08:00  INFO 20008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:23:50.310+08:00  INFO 20008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T18:23:50.320+08:00  INFO 20008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2025-05-09T18:23:50.700+08:00  INFO 20008 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T18:23:50.700+08:00  INFO 20008 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T18:23:50.700+08:00  INFO 20008 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T18:23:50.749+08:00  INFO 20008 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T18:23:50.749+08:00  INFO 20008 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 874 ms
+2025-05-09T18:23:51.446+08:00  INFO 20008 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 2042744055 created for server address localhost:7687
+2025-05-09T18:23:51.590+08:00  INFO 20008 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T18:23:51.606+08:00  INFO 20008 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.026 seconds (process running for 2.262)
+2025-05-09T18:24:52.805+08:00  INFO 22364 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 22364 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by ÕÅÏÈÉú in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T18:24:52.805+08:00 DEBUG 22364 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T18:24:52.805+08:00  INFO 22364 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T18:24:53.231+08:00  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:24:53.247+08:00  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:24:53.252+08:00  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:24:53.268+08:00  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:24:53.268+08:00  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:24:53.268+08:00  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:24:53.268+08:00  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:24:53.268+08:00  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T18:24:53.283+08:00  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2025-05-09T18:24:53.647+08:00  INFO 22364 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T18:24:53.664+08:00  INFO 22364 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T18:24:53.664+08:00  INFO 22364 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T18:24:53.712+08:00  INFO 22364 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T18:24:53.712+08:00  INFO 22364 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 870 ms
+2025-05-09T18:24:54.353+08:00  INFO 22364 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1631826609 created for server address localhost:7687
+2025-05-09T18:24:54.496+08:00  WARN 22364 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-05-09T18:24:54.496+08:00  INFO 22364 --- [main] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 1631826609
+2025-05-09T18:24:54.772+08:00  INFO 22364 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-09T18:24:54.772+08:00 ERROR 22364 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-05-09T18:26:29.044+08:00  INFO 21832 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 21832 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by ÕÅÏÈÉú in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T18:26:29.045+08:00 DEBUG 21832 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T18:26:29.046+08:00  INFO 21832 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T18:26:29.542+08:00  INFO 21832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:26:29.543+08:00  INFO 21832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:26:29.558+08:00  INFO 21832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:26:29.563+08:00  INFO 21832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:26:29.563+08:00  INFO 21832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:26:29.567+08:00  INFO 21832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:26:29.575+08:00  INFO 21832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:26:29.576+08:00  INFO 21832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T18:26:29.585+08:00  INFO 21832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-05-09T18:26:30.038+08:00  INFO 21832 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T18:26:30.049+08:00  INFO 21832 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T18:26:30.049+08:00  INFO 21832 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T18:26:30.097+08:00  INFO 21832 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T18:26:30.097+08:00  INFO 21832 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1016 ms
+2025-05-09T18:26:30.948+08:00  INFO 21832 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1179968371 created for server address localhost:7687
+2025-05-09T18:26:31.102+08:00  INFO 21832 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T18:26:31.107+08:00  INFO 21832 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.393 seconds (process running for 2.693)

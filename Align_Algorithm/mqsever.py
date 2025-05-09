@@ -38,7 +38,7 @@ def callback(ch, method, properties, body):
         ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
 
 def main():
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host,heartbeat=600))
+    connection = connect_rabbitmq()
     channel = connection.channel()
 
     # 声明交换机和队列（确保与Java端一致）
@@ -97,7 +97,15 @@ def process_data(type,args=''):
     print("Process Done")
     return ans
 
-
+def connect_rabbitmq():
+    """增加RabbitMQ连接重试机制"""
+    while True:
+        try:
+            connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host, heartbeat=600))
+            return connection
+        except pika.exceptions.AMQPConnectionError:
+            print("RabbitMQ not ready, retrying...")
+            time.sleep(5)  # 每隔5秒重试一次
 
 if __name__ == '__main__':
     main()

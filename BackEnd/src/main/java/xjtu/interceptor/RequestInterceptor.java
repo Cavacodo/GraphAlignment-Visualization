@@ -30,7 +30,7 @@ public class RequestInterceptor implements HandlerInterceptor {
                     // 令牌的解析这里一定的try起来,因为它解析错误的令牌时,会报错
                     Claims claims = tokenUtil.parserToken(token);
                     String roles = (String) claims.get("roles");
-                    System.err.println("roles==" + roles);
+                    System.out.println("roles==" + roles);
 
                     if (roles != null && "admin".equals(roles)) {
                         request.setAttribute("admin", token);
