@@ -29,14 +29,23 @@ public class RequestInterceptor implements HandlerInterceptor {
                 try {
                     // 令牌的解析这里一定的try起来,因为它解析错误的令牌时,会报错
                     Claims claims = tokenUtil.parserToken(token);
-                    String roles = (String) claims.get("roles");
-                    System.out.println("roles==" + roles);
+                    String roles = (String) claims.get("role");
+                    String url = request.getRequestURI();
 
                     if (roles != null && "admin".equals(roles)) {
                         request.setAttribute("admin", token);
                     }
                     if (roles != null && "user".equals(roles)) {
                         request.setAttribute("user", token);
+                    }
+                    if(url.startsWith("/all")){
+                        if(roles.equals("admin")){
+                            request.setAttribute("admin", token);
+                            return true;
+                        }else{
+                            response.setStatus(403);
+                            return false;
+                        }
                     }
                     return true;
                 } catch (Exception e) {

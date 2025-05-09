@@ -9,7 +9,7 @@ import xjtu.service.UserService;
 @SpringBootTest
 class BackEndApplicationTests {
 
-	String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ6bWprayIsImlzcyI6ImFkbWluIiwiZXhwIjoxNzQ3MjkwMjUwLCJyb2xlIjoidXNlciJ9.LaYmRmnR6HsgXp6Gkte27HWT0QnhXAEFRu-VFzUqXTM";
+	String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ6bWprayIsImlzcyI6ImFkbWluIiwiZXhwIjoxNzQ2ODg2NjQ0LCJyb2xlIjoidXNlciJ9.4V79S1_29M_QkpkSsF_pWEjgMqwf5tO6ILjXcisdF9Y";
 
 	@Autowired
 	UserService  userService;

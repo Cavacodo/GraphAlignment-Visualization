@@ -3190,3 +3190,406 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2025-05-09T18:26:30.948+08:00  INFO 21832 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1179968371 created for server address localhost:7687
 2025-05-09T18:26:31.102+08:00  INFO 21832 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2025-05-09T18:26:31.107+08:00  INFO 21832 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.393 seconds (process running for 2.693)
+2025-05-09T18:31:21.448+08:00  INFO 20080 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 20080 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by ÕÅÏÈÉú in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T18:31:21.449+08:00 DEBUG 20080 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T18:31:21.450+08:00  INFO 20080 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T18:31:21.874+08:00  INFO 20080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:31:21.876+08:00  INFO 20080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:31:21.895+08:00  INFO 20080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:31:21.900+08:00  INFO 20080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:31:21.900+08:00  INFO 20080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T18:31:21.904+08:00  INFO 20080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T18:31:21.914+08:00  INFO 20080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T18:31:21.916+08:00  INFO 20080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T18:31:21.925+08:00  INFO 20080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-05-09T18:31:22.370+08:00  INFO 20080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T18:31:22.378+08:00  INFO 20080 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T18:31:22.378+08:00  INFO 20080 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T18:31:22.426+08:00  INFO 20080 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T18:31:22.427+08:00  INFO 20080 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 944 ms
+2025-05-09T18:31:23.149+08:00  INFO 20080 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1179968371 created for server address localhost:7687
+2025-05-09T18:31:23.279+08:00  INFO 20080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T18:31:23.286+08:00  INFO 20080 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.122 seconds (process running for 2.38)
+2025-05-09T18:31:48.809+08:00  INFO 20080 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-09T18:31:48.809+08:00  INFO 20080 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-09T18:31:48.811+08:00  INFO 20080 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-05-09T18:31:48.878+08:00  INFO 20080 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-09T18:31:49.097+08:00  INFO 20080 --- [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1220610d
+2025-05-09T18:31:49.098+08:00  INFO 20080 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-09T18:31:49.104+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-05-09T18:31:49.123+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-05-09T18:31:49.145+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-05-09T18:31:49.151+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-05-09T18:31:49.152+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
+2025-05-09T18:31:49.154+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-05-09T18:31:49.155+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
+2025-05-09T18:31:49.156+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: zmjkk(String)
+2025-05-09T18:31:49.158+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
+2025-05-09T18:31:49.159+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
+2025-05-09T18:31:49.159+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 1(Integer)
+2025-05-09T18:31:49.162+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
+2025-05-09T18:31:52.977+08:00 DEBUG 20080 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-09T18:31:52.977+08:00 DEBUG 20080 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-09T18:31:52.977+08:00 DEBUG 20080 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-09T18:31:52.977+08:00 DEBUG 20080 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-09T18:31:52.978+08:00 DEBUG 20080 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-09T18:31:52.978+08:00 DEBUG 20080 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-09T18:31:52.978+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-09T18:31:52.978+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-09T18:31:52.987+08:00 DEBUG 20080 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
+2025-05-09T18:31:52.988+08:00 DEBUG 20080 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
+2025-05-09T18:31:52.988+08:00 DEBUG 20080 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
+2025-05-09T18:31:52.988+08:00 DEBUG 20080 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 27
+2025-05-09T18:31:53.245+08:00 DEBUG 20080 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-05-09T18:31:53.246+08:00 DEBUG 20080 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-05-09T18:31:53.247+08:00 DEBUG 20080 --- [http-nio-8080-exec-4] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-05-09T22:15:28.785+08:00  INFO 3248 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 3248 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by ÕÅÏÈÉú in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T22:15:28.787+08:00 DEBUG 3248 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T22:15:28.788+08:00  INFO 3248 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T22:15:29.314+08:00  INFO 3248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:15:29.316+08:00  INFO 3248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:15:29.336+08:00  INFO 3248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:15:29.341+08:00  INFO 3248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:15:29.342+08:00  INFO 3248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:15:29.347+08:00  INFO 3248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:15:29.357+08:00  INFO 3248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:15:29.357+08:00  INFO 3248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T22:15:29.370+08:00  INFO 3248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-05-09T22:15:29.892+08:00  INFO 3248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T22:15:29.904+08:00  INFO 3248 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T22:15:29.905+08:00  INFO 3248 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T22:15:29.967+08:00  INFO 3248 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T22:15:29.968+08:00  INFO 3248 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1147 ms
+2025-05-09T22:15:30.971+08:00  INFO 3248 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1631826609 created for server address localhost:7687
+2025-05-09T22:15:31.159+08:00  INFO 3248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T22:15:31.172+08:00  INFO 3248 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.741 seconds (process running for 3.058)
+2025-05-09T22:15:42.368+08:00  INFO 3248 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-09T22:15:42.369+08:00  INFO 3248 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-09T22:15:42.370+08:00  INFO 3248 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-05-09T22:15:42.490+08:00  INFO 3248 --- [http-nio-8080-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-09T22:15:42.762+08:00  INFO 3248 --- [http-nio-8080-exec-10] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70cd2fe9
+2025-05-09T22:15:42.763+08:00  INFO 3248 --- [http-nio-8080-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-09T22:15:42.769+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-05-09T22:15:42.798+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-05-09T22:15:42.823+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-05-09T22:15:42.830+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-05-09T22:15:42.830+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
+2025-05-09T22:15:42.833+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-05-09T22:15:42.833+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
+2025-05-09T22:15:42.834+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: zmjkk(String)
+2025-05-09T22:15:42.835+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
+2025-05-09T22:15:42.836+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
+2025-05-09T22:15:42.836+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 1(Integer)
+2025-05-09T22:15:42.838+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
+2025-05-09T22:16:50.654+08:00 ERROR 3248 --- [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: ÁîÅÆ²»´æÔÚ] with root cause
+
+java.lang.RuntimeException: ÁîÅÆ²»´æÔÚ
+	at xjtu.interceptor.RequestInterceptor.preHandle(RequestInterceptor.java:52) ~[classes/:na]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1083) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-05-09T22:17:22.591+08:00 DEBUG 3248 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-05-09T22:17:22.592+08:00 DEBUG 3248 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-05-09T22:17:22.594+08:00 DEBUG 3248 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-05-09T22:17:24.454+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-05-09T22:17:24.455+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
+2025-05-09T22:17:24.459+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-05-09T22:17:24.462+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-05-09T22:17:24.464+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
+2025-05-09T22:17:24.468+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-05-09T22:17:24.472+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
+2025-05-09T22:17:24.473+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: zmjkk(String)
+2025-05-09T22:17:24.479+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
+2025-05-09T22:17:24.480+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
+2025-05-09T22:17:24.481+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 1(Integer)
+2025-05-09T22:17:24.483+08:00 DEBUG 3248 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
+2025-05-09T22:17:44.219+08:00 ERROR 3248 --- [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: ÁîÅÆ²»´æÔÚ] with root cause
+
+java.lang.RuntimeException: ÁîÅÆ²»´æÔÚ
+	at xjtu.interceptor.RequestInterceptor.preHandle(RequestInterceptor.java:52) ~[classes/:na]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1083) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-05-09T22:18:31.672+08:00  INFO 3828 --- [main] xjtu.BackEndApplicationTests             : Starting BackEndApplicationTests using Java 17.0.12 with PID 3828 (started by å¼ å…ˆç”Ÿ in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T22:18:31.674+08:00 DEBUG 3828 --- [main] xjtu.BackEndApplicationTests             : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T22:18:31.674+08:00  INFO 3828 --- [main] xjtu.BackEndApplicationTests             : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T22:18:32.468+08:00  INFO 3828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:18:32.471+08:00  INFO 3828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:18:32.497+08:00  INFO 3828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:18:32.506+08:00  INFO 3828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:18:32.507+08:00  INFO 3828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:18:32.512+08:00  INFO 3828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:18:32.525+08:00  INFO 3828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:18:32.527+08:00  INFO 3828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T22:18:32.551+08:00  INFO 3828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2025-05-09T22:18:35.205+08:00  INFO 3828 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 2071551415 created for server address localhost:7687
+2025-05-09T22:18:35.634+08:00  INFO 3828 --- [main] xjtu.BackEndApplicationTests             : Started BackEndApplicationTests in 4.274 seconds (process running for 5.359)
+2025-05-09T22:18:36.449+08:00  INFO 3828 --- [SpringApplicationShutdownHook] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 2071551415
+2025-05-09T22:18:57.633+08:00  INFO 3248 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-09T22:18:57.677+08:00  INFO 3248 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-09T22:18:57.691+08:00  INFO 3248 --- [SpringApplicationShutdownHook] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 1631826609
+2025-05-09T22:18:57.975+08:00  INFO 3248 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-09T22:18:58.010+08:00  INFO 3248 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-09T22:19:05.538+08:00  INFO 1712 --- [main] xjtu.BackEndApplicationTests             : Starting BackEndApplicationTests using Java 17.0.12 with PID 1712 (started by å¼ å…ˆç”Ÿ in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T22:19:05.538+08:00 DEBUG 1712 --- [main] xjtu.BackEndApplicationTests             : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T22:19:05.538+08:00  INFO 1712 --- [main] xjtu.BackEndApplicationTests             : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T22:19:06.357+08:00  INFO 1712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:19:06.357+08:00  INFO 1712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:19:06.388+08:00  INFO 1712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:19:06.388+08:00  INFO 1712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:19:06.388+08:00  INFO 1712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:19:06.388+08:00  INFO 1712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:19:06.404+08:00  INFO 1712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:19:06.404+08:00  INFO 1712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T22:19:06.435+08:00  INFO 1712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2025-05-09T22:19:09.084+08:00  INFO 1712 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1814943883 created for server address localhost:7687
+2025-05-09T22:19:09.535+08:00  INFO 1712 --- [main] xjtu.BackEndApplicationTests             : Started BackEndApplicationTests in 4.315 seconds (process running for 5.36)
+2025-05-09T22:19:09.551+08:00  INFO 1712 --- [SpringApplicationShutdownHook] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 1814943883
+2025-05-09T22:19:13.619+08:00  INFO 20724 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 20724 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by å¼ å…ˆç”Ÿ in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T22:19:13.620+08:00 DEBUG 20724 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T22:19:13.621+08:00  INFO 20724 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T22:19:14.128+08:00  INFO 20724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:19:14.130+08:00  INFO 20724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:19:14.142+08:00  INFO 20724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:19:14.146+08:00  INFO 20724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:19:14.146+08:00  INFO 20724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:19:14.152+08:00  INFO 20724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:19:14.161+08:00  INFO 20724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:19:14.162+08:00  INFO 20724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T22:19:14.172+08:00  INFO 20724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2025-05-09T22:19:14.560+08:00  INFO 20724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T22:19:14.571+08:00  INFO 20724 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T22:19:14.572+08:00  INFO 20724 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T22:19:14.631+08:00  INFO 20724 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T22:19:14.632+08:00  INFO 20724 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 982 ms
+2025-05-09T22:19:15.501+08:00  INFO 20724 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1669860329 created for server address localhost:7687
+2025-05-09T22:19:15.689+08:00  INFO 20724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T22:19:15.697+08:00  INFO 20724 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.38 seconds (process running for 2.815)
+2025-05-09T22:19:28.446+08:00  INFO 20724 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-09T22:19:28.447+08:00  INFO 20724 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-09T22:19:28.448+08:00  INFO 20724 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-05-09T22:19:28.500+08:00 ERROR 20724 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: ä»¤ç‰Œä¸å­˜åœ¨] with root cause
+
+java.lang.RuntimeException: ä»¤ç‰Œä¸å­˜åœ¨
+	at xjtu.interceptor.RequestInterceptor.preHandle(RequestInterceptor.java:52) ~[classes/:na]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1083) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-05-09T22:19:38.133+08:00  INFO 20724 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-09T22:19:38.185+08:00  INFO 20724 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-09T22:19:38.192+08:00  INFO 20724 --- [SpringApplicationShutdownHook] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 1669860329
+2025-05-09T22:19:41.960+08:00  INFO 6656 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 6656 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by å¼ å…ˆç”Ÿ in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T22:19:41.962+08:00 DEBUG 6656 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T22:19:41.963+08:00  INFO 6656 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T22:19:42.505+08:00  INFO 6656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:19:42.507+08:00  INFO 6656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:19:42.520+08:00  INFO 6656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:19:42.525+08:00  INFO 6656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:19:42.525+08:00  INFO 6656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:19:42.531+08:00  INFO 6656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:19:42.539+08:00  INFO 6656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:19:42.540+08:00  INFO 6656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T22:19:42.550+08:00  INFO 6656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-05-09T22:19:43.858+08:00  INFO 6656 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T22:19:43.879+08:00  INFO 6656 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T22:19:43.879+08:00  INFO 6656 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T22:19:43.980+08:00  INFO 6656 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T22:19:43.981+08:00  INFO 6656 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1986 ms
+2025-05-09T22:19:46.339+08:00  INFO 6656 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 452471720 created for server address localhost:7687
+2025-05-09T22:19:46.741+08:00  INFO 6656 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T22:19:46.761+08:00  INFO 6656 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 5.135 seconds (process running for 5.991)
+2025-05-09T22:19:50.762+08:00  INFO 6656 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-09T22:19:50.762+08:00  INFO 6656 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-09T22:19:50.763+08:00  INFO 6656 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-05-09T22:20:30.544+08:00 ERROR 6656 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: ä»¤ç‰Œä¸å­˜åœ¨] with root cause
+
+java.lang.RuntimeException: ä»¤ç‰Œä¸å­˜åœ¨
+	at xjtu.interceptor.RequestInterceptor.preHandle(RequestInterceptor.java:52) ~[classes/:na]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1083) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-05-09T22:20:30.574+08:00  INFO 6656 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-09T22:20:30.630+08:00  INFO 6656 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-09T22:20:30.639+08:00  INFO 6656 --- [SpringApplicationShutdownHook] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 452471720
+2025-05-09T22:20:36.301+08:00  INFO 22224 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 22224 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by å¼ å…ˆç”Ÿ in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-09T22:20:36.303+08:00 DEBUG 22224 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-09T22:20:36.304+08:00  INFO 22224 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-09T22:20:36.839+08:00  INFO 22224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:20:36.841+08:00  INFO 22224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:20:36.853+08:00  INFO 22224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:20:36.858+08:00  INFO 22224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:20:36.858+08:00  INFO 22224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-09T22:20:36.863+08:00  INFO 22224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Neo4j repository interfaces.
+2025-05-09T22:20:36.870+08:00  INFO 22224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-09T22:20:36.871+08:00  INFO 22224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-09T22:20:36.881+08:00  INFO 22224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-05-09T22:20:38.055+08:00  INFO 22224 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-09T22:20:38.074+08:00  INFO 22224 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-09T22:20:38.074+08:00  INFO 22224 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-09T22:20:38.163+08:00  INFO 22224 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-09T22:20:38.164+08:00  INFO 22224 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1832 ms
+2025-05-09T22:20:40.365+08:00  INFO 22224 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1883027286 created for server address localhost:7687
+2025-05-09T22:20:40.795+08:00  INFO 22224 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-09T22:20:40.811+08:00  INFO 22224 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 4.844 seconds (process running for 5.399)
+2025-05-09T22:20:45.921+08:00  INFO 22224 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-09T22:20:45.922+08:00  INFO 22224 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-09T22:20:45.922+08:00  INFO 22224 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-05-09T22:21:01.733+08:00  INFO 22224 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-09T22:21:01.781+08:00  INFO 22224 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-09T22:21:01.789+08:00  INFO 22224 --- [SpringApplicationShutdownHook] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 1883027286
