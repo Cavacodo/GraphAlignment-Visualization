@@ -1,7 +1,7 @@
 # GraphAlignment-Visualization
 Graph Alignment Visualization Based on Social Network
 
-##### This is a project for the course "Graph Algorithms" at the University of Xi'an Jiaotong University.
+#### This is a project for the course "Graph Algorithms" at the University of Xi'an Jiaotong University.
  
 ## To Run this Project, you need to install the following dependencies:
 
