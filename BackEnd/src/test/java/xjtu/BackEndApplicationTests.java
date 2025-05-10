@@ -3,7 +3,9 @@ package xjtu;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import xjtu.pojo.Experiment;
 import xjtu.pojo.utils.TokenUtil;
+import xjtu.service.ExperimentService;
 import xjtu.service.UserService;
 
 @SpringBootTest
@@ -13,6 +15,8 @@ class BackEndApplicationTests {
 
 	@Autowired
 	UserService  userService;
+	@Autowired
+	ExperimentService experimentService;
 	@Test
 	void testToken() {
 		System.out.println(TokenUtil.parserToken(token));
@@ -20,7 +24,7 @@ class BackEndApplicationTests {
 
 	@Test
 	void testUserService() {
-		System.out.println(userService.listAll());
+		System.out.println(experimentService.listAll());
 	}
 
 	@Test

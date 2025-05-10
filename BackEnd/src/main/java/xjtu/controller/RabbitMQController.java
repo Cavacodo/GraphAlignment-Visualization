@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import xjtu.pojo.Experiment;
 import xjtu.pojo.Outcome;
+import xjtu.service.ExperimentService;
 import xjtu.service.OutcomeService;
 import xjtu.service.RabbitMQProducerService;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,15 +40,19 @@ public class RabbitMQController {
 
     @Autowired
     private OutcomeService outcomeService;
+    @Autowired
+    ExperimentService experimentService;
 
 
     @PostMapping("/send")
     public ResponseEntity<String> sendJsonMessage(@RequestBody JSONObject jsonData) {
         rabbitMQProducerService.sendJsonMessage(jsonData);
         System.out.println(jsonData);
-        System.out.println(jsonData);
         this.outcomeService.addOutcome(new Outcome(0,jsonData.getString("type"),jsonData.getString("args"),null));
-
+        String user = jsonData.getString("user");
+        LocalDateTime date = LocalDateTime.now();
+        int outcome_id = this.outcomeService.getLastestId();
+        this.experimentService.addExperiment(new Experiment(0,user,outcome_id,date));
         return new ResponseEntity<>("send success", HttpStatus.OK);
     }
     @GetMapping("/getPythonResult")

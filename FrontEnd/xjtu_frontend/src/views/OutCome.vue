@@ -65,6 +65,7 @@ export default {
       };
       let xAxisArray = [];
       axios.post('http://localhost:8080/outcome/getOutcomeByType', {
+        user: localStorage.getItem('user'),
         type: 'Accuracy',
       },{
         headers : {
@@ -203,6 +204,7 @@ export default {
       let xAxisArray = [];
       axios.post('http://localhost:8080/outcome/getOutcomeByType', {
         type: 'MAP',
+        user: localStorage.getItem('user'),
         },{
           headers : {
             Authorization : 'Bearer ' + localStorage.getItem('token'),
@@ -341,6 +343,7 @@ export default {
       let xAxisArray = [];
       axios.post('http://localhost:8080/outcome/getOutcomeByType', {
         type: 'Precision_5',
+        user: localStorage.getItem('user'),
         },{
           headers : {
             Authorization : 'Bearer ' + localStorage.getItem('token'),
@@ -478,6 +481,7 @@ export default {
       let xAxisArray = [];
       axios.post('http://localhost:8080/outcome/getOutcomeByType', {
         type: 'Precision_10',
+        user: localStorage.getItem('user'),
         },{
           headers : {
             Authorization : 'Bearer ' + localStorage.getItem('token'),

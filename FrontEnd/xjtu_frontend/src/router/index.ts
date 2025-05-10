@@ -7,6 +7,7 @@ import Panel from '../views/Panel.vue'
 import UserSettings from '../views/UserSettings.vue'
 import editBackend from '../views/editBackend.vue'
 import error from '../views/error.vue'
+import editOutcome from '../views/editOutcome.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -61,6 +62,14 @@ const router = createRouter({
       component: error,
       meta: {
         requiresAuth: false,
+        roles : ['admin','user']
+      }
+    },{
+      path : '/editOutcome',
+      name: 'editOutcome',
+      component: editOutcome,
+      meta: {
+        requiresAuth: true,
         roles : ['admin','user']
       }
     }

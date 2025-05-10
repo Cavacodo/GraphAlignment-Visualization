@@ -20,10 +20,12 @@
             <!-- 固定操作列 -->
             <el-table-column label="Operations" fixed="right" width="150">
               <template #default="scope">
-                <el-button link type="primary" size="small" @click="handleClick(scope.row.id)" :disabled="scope.row.account === 'admin'">
+                <el-button link type="primary" size="small" @click="handleClick(scope.row.id)"
+                  :disabled="scope.row.account === 'admin'">
                   Edit
                 </el-button>
-                <el-button link type="danger" size="small" @Click="handleDelete(scope.row.id)" :disabled="scope.row.account === 'admin'">Delete</el-button>
+                <el-button link type="danger" size="small" @Click="handleDelete(scope.row.id)"
+                  :disabled="scope.row.account === 'admin'">Delete</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -162,6 +164,31 @@ export default {
             label: 'all'
           }
         ]
+      }, {
+        value: 'experiment',
+        label: 'experiment',
+        children: [
+          {
+            value: 'id',
+            label: 'id'
+          },
+          {
+            value: 'user_account',
+            label: 'user_account'
+          },
+          {
+            value: 'outcome_id',
+            label: 'outcome_id'
+          },
+          {
+            value: 'date',
+            label: 'date'
+          },
+          {
+            value: 'all',
+            label: 'all'
+          }
+        ]
       }
       ]    // 根据数据自动生成
     };
@@ -179,6 +206,7 @@ export default {
         }
       }).then((response) => {
         this.fullData = response.data; // 保存所有数据
+        console.log(response)
         this.total = this.fullData.length; // 更新总数
         if (tableName == 'user' || tableName == 'role') this.pageSize = 18;
         else if (tableName == 'outcome') this.pageSize = 6;
@@ -230,7 +258,7 @@ export default {
       console.log(this.editForm);
       let params = {
         ...this.editForm,
-        table : this.value[0],
+        table: this.value[0],
       };
       axios.post('http://localhost:8080/all/update',
         params,
@@ -243,7 +271,7 @@ export default {
         if (response.status === 200) {
           alert('修改成功');
           this.fetchData('user');  // 修改后重新获取
-         this.dialogVisible = false;
+          this.dialogVisible = false;
         }
       })
     },

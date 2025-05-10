@@ -3,13 +3,16 @@ package xjtu.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import xjtu.pojo.Experiment;
 import xjtu.pojo.Outcome;
 import xjtu.pojo.Role;
 import xjtu.pojo.User;
+import xjtu.service.ExperimentService;
 import xjtu.service.OutcomeService;
 import xjtu.service.RoleService;
 import xjtu.service.UserService;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Controller
@@ -21,6 +24,8 @@ public class AdminController {
     RoleService roleService;
     @Autowired
     OutcomeService outcomeService;
+    @Autowired
+    ExperimentService experimentService;
 
     @GetMapping("/list")
     @ResponseBody
@@ -36,6 +41,10 @@ public class AdminController {
             }else if(table.equalsIgnoreCase("role")){
                 if(col.equalsIgnoreCase("all")) return this.roleService.listRole();
                 return this.roleService.getRoleByCondition(col,key);
+            }else if(table.equalsIgnoreCase("experiment")){
+                if(col.equalsIgnoreCase("all"))
+                    return this.experimentService.listAll();
+                return this.experimentService.getExpByCondition(col,key);
             }
         }
         return null;
@@ -55,6 +64,8 @@ public class AdminController {
             return this.outcomeService.removeOutcomeById(id);
         } else if ("role".equalsIgnoreCase(table)) {
             return this.roleService.removeRoleById(id);
+        }else if("experiment".equalsIgnoreCase(table)){
+            return this.experimentService.removeExperimentById(id);
         }
         return 0;
     }
@@ -80,6 +91,12 @@ public class AdminController {
             String type = (String) params.get("type");
             Outcome outcome = new Outcome(id,type,args,evaluation);
             return this.outcomeService.updateOutcomeById(outcome,id);
+        }else if(table.equalsIgnoreCase("experiment")){
+            Integer id = (Integer) params.get("id");
+            String account = (String) params.get("user_account");
+            Integer outcome_id = (Integer) params.get("outcome_id");
+            LocalDateTime date = (LocalDateTime) params.get("date");
+            return this.experimentService.updateExperimentById(new Experiment(id,account,outcome_id,date),id);
         }
         return 0;
     }

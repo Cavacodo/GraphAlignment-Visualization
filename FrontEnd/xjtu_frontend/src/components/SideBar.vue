@@ -23,6 +23,12 @@
           <div class="text">结果对比</div>
         </div>
       </div>
+      <div class="new-chat" :class="{ active: $route.name === 'editOutcome' }" @click="navigateTo('editOutcome')">
+        <div class="el-icon-plus">
+          <TableOutlined class="user-svg" />
+          <div class="text">试验结果编辑</div>
+        </div>
+      </div>
       <div class="new-chat" :class="{ active: $route.name === 'userSettings' }" @click="navigateTo('userSettings')">
         <div class="el-icon-plus">
           <UserOutlined class="user-svg" />
@@ -40,7 +46,7 @@
 </template>
 
 <script>
-import { LineChartOutlined, RadarChartOutlined, SearchOutlined, DotChartOutlined, UserOutlined,DatabaseOutlined} from '@ant-design/icons-vue';
+import { LineChartOutlined, RadarChartOutlined, SearchOutlined, DotChartOutlined, UserOutlined,DatabaseOutlined,TableOutlined} from '@ant-design/icons-vue';
 export default {
   data() {
     return{
@@ -54,7 +60,8 @@ export default {
     SearchOutlined,
     DotChartOutlined,
     UserOutlined,
-    DatabaseOutlined
+    DatabaseOutlined,
+    TableOutlined,
   },
   methods: {
     navigateTo(page) {

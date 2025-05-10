@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xjtu.dao.ExperimentDao">
+    <select id="listExperiment" resultType="xjtu.pojo.Experiment">
+        select *
+        from experiment;
+    </select>
+    <select id="getExperimentByUser" resultType="xjtu.pojo.Experiment">
+        select  * from experiment  where user_account = #{user_account};
+    </select>
+    <insert id="addExperiment">
+        insert into experiment(user_account,outcome_id,date) values(#{user_account},#{outcome_id},#{date});
+    </insert>
+    <delete id="removeExperimentByOutcomeId">
+        delete
+        from experiment
+        where outcome_id=#{outcome_id};
+    </delete>
+    <select id="getExpByCondition" resultType="xjtu.pojo.Experiment">
+        select * from experiment where ${col} = #{key};
+    </select>
+    <delete id="removeExperimentById">
+        delete from experiment where id=#{id};
+    </delete>
+    <update id="updateExperimentById">
+        update experiment set user_account=#{user_account},outcome_id=#{outcome_id},time=#{date} where id=#{id};
+    </update>
+</mapper>

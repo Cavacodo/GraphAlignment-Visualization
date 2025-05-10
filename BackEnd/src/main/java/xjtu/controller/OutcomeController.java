@@ -17,6 +17,6 @@ public class OutcomeController {
     @PostMapping("/getOutcomeByType")
     public List<Outcome> getOutcomeByType(@RequestBody Map<String,String> map)
     {
-        return outcomeService.getEvaluationIndex(map.get("type"));
+        return outcomeService.getEvaluationIndex(map.get("type"),map.get("user"));
     }
 }

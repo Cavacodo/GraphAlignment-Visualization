@@ -3,7 +3,9 @@ package xjtu.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xjtu.dao.OutcomeDao;
+import xjtu.pojo.Experiment;
 import xjtu.pojo.Outcome;
+import xjtu.service.ExperimentService;
 import xjtu.service.OutcomeService;
 
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ import java.util.List;
 public class OutcomeServiceImpl implements OutcomeService {
     @Autowired
     private OutcomeDao outcomeDao;
+    @Autowired
+    private ExperimentService experimentService;
     @Override
     public int addOutcome(Outcome outcome) {
         return this.outcomeDao.addOutcome(outcome);
@@ -37,8 +41,8 @@ public class OutcomeServiceImpl implements OutcomeService {
     }
 
     @Override
-    public List<Outcome> getEvaluationIndex(String index){
-        List<Outcome> outcomes  = this.outcomeDao.getOutcome();
+    public List<Outcome> getEvaluationIndex(String index,String user){
+        List<Outcome> outcomes  = this.experimentService.getExperimentByUser(user);
         List<Outcome> ans = new ArrayList<>();
         for(Outcome outcome : outcomes){
             String evaluation = outcome.getEvaluation();

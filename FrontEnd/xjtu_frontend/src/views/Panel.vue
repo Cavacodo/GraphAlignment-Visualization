@@ -269,7 +269,8 @@ export default {
     sendInfo(result) {
       axios.post('http://localhost:8080/api/send', {
         type: this.selectedAlgorithm,
-        args: result
+        args: result,
+        user : localStorage.getItem('user'),
       },
       {
         withCredentials: true,
