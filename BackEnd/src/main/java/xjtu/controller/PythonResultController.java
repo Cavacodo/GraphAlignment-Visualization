@@ -30,11 +30,13 @@ public class PythonResultController {
         
         String type = (String) res.get("type");
         String acc = (String) res.get("acc");
+        String dataset = (String) res.get("dataset");
         List<Object> m = (List<Object>) res.get("m");
         if(type == null || acc == null || m == null) return new ResponseEntity<>("res is null", HttpStatus.BAD_REQUEST);
         redisTemplate.opsForValue().set("type",type);
         redisTemplate.opsForValue().set("acc",acc);
         redisTemplate.opsForValue().set("m",m.toString());
+        redisTemplate.opsForValue().set("dataset",dataset);
         return new ResponseEntity<>("done", HttpStatus.OK);
     }
 }

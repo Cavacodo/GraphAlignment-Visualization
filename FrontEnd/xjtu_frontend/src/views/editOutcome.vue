@@ -10,6 +10,7 @@
           <div class="header-select">
             <span class="blank"></span>
             <el-cascader v-model="value" :options="options" @change="handleChange" />
+            <el-cascader v-model="value2" :options="datasets" @change="handleChange" />
             <el-button @click="searchSubmit">搜索</el-button>
           </div>
           <el-table :data="tableData" style="width: 100%">
@@ -62,7 +63,8 @@ export default {
       tableColumns: [],
       editForm: [],
       deletingId: '',
-      value: ['user'],
+      value: [],
+      value2: [],
       currentPage: 1,      // 当前页码
       pageSize: 7,        // 每页条数
       total: 0,
@@ -93,7 +95,16 @@ export default {
         label: 'GTCAlign'
       }
 
-      ]    // 根据数据自动生成
+      ],
+      datasets: [{
+        value : 'douban',
+        label: 'douban'
+      }, {
+        value: 'ppi',
+        label : 'ppi'
+      }
+
+      ]   // 根据数据自动生成
     };
   },
   methods: {
@@ -129,7 +140,7 @@ export default {
     },
     submitDelete() {
       console.log(this.deletingId)
-      console.log(this.value[0])
+      console.log(this.value2[0])
       axios.post(
         'http://localhost:8080/exp/removeExpByOutcomeId',
         { id: this.deletingId }, // 这是请求体
@@ -155,12 +166,25 @@ export default {
       this.deletedialogVisible = true;
       this.deletingId = id;
     },
+
     searchSubmit() {
-      let type = this.value[0];
-      this.fullData = this.originalData.filter(item => item['type'] === type);
-      this.total = this.fullData.length;  // ✅ 设置总条数
-      this.currentPage = 1;
-      this.updateTableData();
+      let alg = this.value[0];
+      let dataset = this.value2[0]
+      axios.get('http://localhost:8080/exp/getExpByAccount',{
+        params: {
+          account: localStorage.getItem('user'),
+          alg: alg,
+          dataset : dataset
+        },headers:{
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }).then(res => { 
+          this.fullData = res.data;
+          this.total = this.fullData.length;  // ✅ 设置总条数
+          this.currentPage = 1;
+          this.updateTableData();
+      })
+      
     },
 
   },

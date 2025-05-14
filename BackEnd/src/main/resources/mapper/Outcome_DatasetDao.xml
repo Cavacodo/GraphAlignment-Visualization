@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xjtu.dao.Outcome_DatasetDao">
+    <select id="listAll" resultType="xjtu.pojo.Outcome_Dataset">
+        select * from outcome_dataset;
+    </select>
+    <select id="getDatasetByOutcomeId" resultType="java.lang.Integer">
+        select dataset_type from outcome_dataset where outcome_id = #{id};
+    </select>
+    <select id="getOutcomeIdByDataset" resultType="java.lang.Integer">
+        select outcome_id from outcome_dataset where dataset_type = #{dataset};
+    </select>
+    <delete id="removeById">
+        delete
+        from outcome_id
+        where id = #{id};
+    </delete>
+    <insert id="addOutcome_Dataset">
+        insert into outcome_dataset(outcome_id,dataset_type) values(#{outcome_id},#{dataset_type});
+    </insert>
+</mapper>

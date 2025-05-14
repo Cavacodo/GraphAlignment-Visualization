@@ -16,8 +16,8 @@ public class ExperimentController {
     ExperimentService experimentService;
     @GetMapping("/getExpByAccount")
     @ResponseBody
-    public List<Outcome> getExpByAccount(String account) {
-        return experimentService.getExperimentByUser(account);
+    public List<Outcome> getExpByAccount(String account,String alg,String dataset) {
+        return experimentService.getExperimentByUser(account,alg,dataset);
     }
 
     @PostMapping("/removeExpByOutcomeId")
@@ -25,4 +25,5 @@ public class ExperimentController {
     public int removeExpByOutcomeId(@RequestBody Map<String,String> map) {
         return experimentService.removeExperimentByOutcomeId(Integer.parseInt(map.get("id")));
     }
+
 }

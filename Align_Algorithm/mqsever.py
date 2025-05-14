@@ -5,6 +5,7 @@ from http.client import responses
 import pika
 import json
 import requests
+from sympy.codegen.ast import continue_
 
 # RabbitMQ连接配置
 rabbitmq_host = 'localhost'  # 根据实际情况修改
@@ -19,14 +20,16 @@ def callback(ch, method, properties, body):
         # 解析JSON格式的消息体
         message = json.loads(body.decode('utf-8'))
         print(f"Received message: {message}")
+        dataset = message['dataset']
         res = message['type']
         args = message['args']
+        data = message['dataset']
         if res in GCNA:
-            response = requests.post(url, json=process_data(res,args))
+            response = requests.post(url, json=process_data(res,args,data))
         elif res == 'GTCAlign':
-            response = requests.post(url, json=process_data('GTCAlign',args))
+            response = requests.post(url, json=process_data('GTCAlign',args,data))
         elif res == 'GAlign':
-            response = requests.post(url, json=process_data('GAlign',args))
+            response = requests.post(url, json=process_data('GAlign',args,data))
         else:
             print(f"Invalid type: {res}")
         print(response.text)
@@ -59,7 +62,7 @@ def main():
         channel.stop_consuming()
     finally:
         connection.close()
-def process_data(type,args=''):
+def process_data(type,args='',data=''):
     print("Processing...")
     command = None
     GCNA = ['IsoRank','BigAlign','FINAL','DeepLink','REGAL']
@@ -71,13 +74,16 @@ def process_data(type,args=''):
     elif type == 'GTCAlign':
         os.chdir('D:\GraphAlignment-Visualization\Align_Algorithm\GTCAlign')
     if type in GCNA:
-        command = 'python -u network_alignment.py ' + type + ' ' + args
+        if data == 'ppi': command = 'python -u network_alignment.py ' + '--data ppi '+ type + ' ' + args
+        else: command = 'python -u network_alignment.py ' + type + ' ' + args
         print(command)
     elif type == 'GAlign':
         command = 'python -u network_alignment.py GAlign' + ' ' +  args
     elif type == 'GTCAlign':
-        command = 'python -u main.py' + ' ' + args
+        if data != 'ppi' : command = 'python -u main.py' + ' ' + args
+        else: command = 'python -u main.py' + ' --data ppi ' + args
     else: return None
+
     with os.popen(command) as pipe:
         output = pipe.read()
     with open('m.txt','r',encoding='utf-8') as f:
@@ -109,3 +115,4 @@ def connect_rabbitmq():
 
 if __name__ == '__main__':
     main()
+

@@ -41,8 +41,10 @@ public class OutcomeServiceImpl implements OutcomeService {
     }
 
     @Override
-    public List<Outcome> getEvaluationIndex(String index,String user){
-        List<Outcome> outcomes  = this.experimentService.getExperimentByUser(user);
+    public List<Outcome> getEvaluationIndex(String index,String user,String dataset){
+        List<Outcome> outcomes;
+        if(dataset == null)  outcomes  = this.experimentService.getExperimentByUser(user,null,"douban");
+        else outcomes = this.experimentService.getExperimentByUser(user,null,dataset);
         List<Outcome> ans = new ArrayList<>();
         for(Outcome outcome : outcomes){
             String evaluation = outcome.getEvaluation();

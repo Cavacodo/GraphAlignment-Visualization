@@ -189,6 +189,27 @@ export default {
             label: 'all'
           }
         ]
+      },{
+        value : 'outcome_dataset',
+        label : 'outcome_dataset',
+        children: [
+          {
+            value: 'id',
+            label: 'id'
+          },
+          {
+            value: 'outcome_id',
+            label: 'outcome_id'
+          },
+          {
+            value: 'dataset_type',
+            label: 'dataset_type'
+          },
+          {
+            value : 'all',
+            label : 'all'
+          },
+        ]
       }
       ]    // 根据数据自动生成
     };

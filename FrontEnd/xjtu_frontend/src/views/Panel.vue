@@ -12,6 +12,11 @@
           <div ref="chart" class="chart-container"></div>
           <div class="select-bar">
             <!-- 类型选择器 -->
+            <a-select v-model:value="SelecteDataset" placeholder="选择数据集" style="width: 120px" class="cascade!rounded-button">
+              <a-select-option v-for="dataset in datasets" :key="dataset" :value="dataset">
+                {{ dataset }}
+              </a-select-option>
+            </a-select>
             <a-select v-model:value="selectedType" placeholder='选择类型' style="width: 120px"
               class="cascade!rounded-button">
               <a-select-option v-for="type in types" :key="type" :value="type">
@@ -182,9 +187,12 @@ export default {
       selectedType: null,
       selectedAlgorithm: null,
       selectedKValue: null,
+      SelecteDataset : null,
       nodeId: '',
       types: ['网络1', '网络2'],
+      datasets : ['douban', 'ppi'],
       algorithms: ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign', 'GroundTruth'],
+      algorithms2 : ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GTCAlign', 'GroundTruth'],
       kValues: [1, 2, 3, 4, 5],
       params: {},
       isDisabled: true,
@@ -192,6 +200,13 @@ export default {
     };
   },
   watch: {
+    SelecteDataset(newDataset) {
+      if (newDataset === 'ppi') {
+        this.algorithms = this.algorithms.filter(algorithm => algorithm !== 'GAlign');
+      } else {
+        this.algorithms = this.algorithms;
+      }
+    },
     selectedType() {
       this.checkIntegrity();
     },
@@ -208,7 +223,7 @@ export default {
   },
   mounted() {
     this.initNeo4j().then(() => {
-      this.fetchDataFromBackend(0, 3, 5, false, []);
+      this.fetchDataFromBackend("douban",0, 3, 5, false, []);
     });
   },
 
@@ -235,6 +250,7 @@ export default {
       this.isDisabled = true;
       let m_ = null;
       const type_ = this.selectedType === '网络1' ? 0 : 1;
+      const dataset = this.SelecteDataset;
       this.clearGraphData();
       if (this.selectedAlgorithm != 'GroundTruth') {
         const result = this.args[this.selectedAlgorithm]
@@ -255,19 +271,20 @@ export default {
           m_ = response.data.m;
         }).then(() => {
           this.chartTitle = this.selectedAlgorithm;
-          this.fetchDataFromBackend(type_, this.selectedKValue, this.nodeId, true, m_);
+          this.fetchDataFromBackend(dataset, type_, this.selectedKValue, this.nodeId, true, m_);
         }).finally(() => {
           this.loading = false;
           this.isDisabled = false;
         });
       } else {
-        this.fetchDataFromBackend(type_, this.selectedKValue, this.nodeId, false, []);
+        this.fetchDataFromBackend(dataset,type_, this.selectedKValue, this.nodeId, false, []);
         this.loading = false;
       }
       this.clearArgs();
     },
     sendInfo(result) {
       axios.post('http://localhost:8080/api/send', {
+        dataset : this.SelecteDataset == '' ? 'douban' : this.SelecteDataset,
         type: this.selectedAlgorithm,
         args: result,
         user : localStorage.getItem('user'),
@@ -384,9 +401,10 @@ export default {
       this.alignmentNode = [];
       this.alignmentLink = [];
     },
-    fetchDataFromBackend(type, k, id, isLinked, newAlign) {
+    fetchDataFromBackend(dataset,type, k, id, isLinked, newAlign) {
       axios.get('http://localhost:8080/neo4j/doubanNetWork', {
         params: {
+          dataset : dataset,
           type: type,
           k: k,
           id: id
@@ -551,9 +569,15 @@ export default {
 }
 
 .select-bar {
-  display: inline-block;
-  position: absolute;
+  display: flex;
+  justify-content: flex-end; /* 水平靠右 */
+  align-items: flex-start;   /* 垂直靠上 */
+  flex-wrap: nowrap;         /* 不换行 */
+  gap: 0;                    /* 移除间隙 */
+  padding: 0;                /* 移除内边距 */
+  margin: 0;                 /* 移除外边距 */
 }
+
 
 .evaluation-container {
   margin-top: 10px;

@@ -10,6 +10,12 @@
         </el-card>
         <el-card class="card map">
           <div ref="map" style="width: 100%; height: 100%"></div>
+          <el-button 
+              icon="el-icon-refresh" 
+              style="position: absolute; top: 10px; right: 10px; margin: 5px;"
+              @click="refreshMap">
+              {{text}}
+            </el-button>
         </el-card>
         <el-card class="card precision_5">
           <div ref="precision5" style="width: 100%; height: 100%"></div>
@@ -38,7 +44,8 @@ export default {
       map: null,
       precision5: null,
       precision10: null,
-
+      text : '切换ppi',
+      dataset : 'douban'
     };
   },
   mounted() {
@@ -46,6 +53,11 @@ export default {
   },
   methods: {
     initCharts() {
+      if(this.accuracy != null) this.accuracy.dispose();
+      if(this.map != null) this.map.dispose();
+      if(this.precision5 != null) this.precision5.dispose();
+      if(this.precision10 != null) this.precision10.dispose();
+      console.log(this.dataset)
       this.initAccuracyChart();
       this.initMapChart();
       this.initPrecision5Chart();
@@ -67,12 +79,14 @@ export default {
       axios.post('http://localhost:8080/outcome/getOutcomeByType', {
         user: localStorage.getItem('user'),
         type: 'Accuracy',
+        dataset : this.dataset
       },{
         headers : {
           Authorization : 'Bearer ' + localStorage.getItem('token'),
         },
         withCredentials : true,
       }).then(response => {
+        console.log(response.data);
         const len = response.data.length;
         for (let i = 0; i < len; i++) {
           xAxisArray.push(i + 1);
@@ -205,6 +219,7 @@ export default {
       axios.post('http://localhost:8080/outcome/getOutcomeByType', {
         type: 'MAP',
         user: localStorage.getItem('user'),
+        dataset : this.dataset
         },{
           headers : {
             Authorization : 'Bearer ' + localStorage.getItem('token'),
@@ -328,6 +343,17 @@ export default {
         this.map.setOption(option);
       })
     },
+    refreshMap(){
+      if(this.text == '切换ppi'){
+        this.text = '切换douban';
+        this.dataset = 'ppi'
+      }
+      else{
+        this.text = '切换ppi';
+        this.dataset = 'douban'
+      }
+      this.initCharts()
+    },
     initPrecision5Chart() {
       this.precision5 = echarts.init(this.$refs.precision5);
       const alg = ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign'];
@@ -344,6 +370,7 @@ export default {
       axios.post('http://localhost:8080/outcome/getOutcomeByType', {
         type: 'Precision_5',
         user: localStorage.getItem('user'),
+        dataset : this.dataset
         },{
           headers : {
             Authorization : 'Bearer ' + localStorage.getItem('token'),
@@ -482,6 +509,7 @@ export default {
       axios.post('http://localhost:8080/outcome/getOutcomeByType', {
         type: 'Precision_10',
         user: localStorage.getItem('user'),
+        dataset : this.dataset
         },{
           headers : {
             Authorization : 'Bearer ' + localStorage.getItem('token'),

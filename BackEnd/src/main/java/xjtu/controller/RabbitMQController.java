@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import xjtu.pojo.Experiment;
 import xjtu.pojo.Outcome;
+import xjtu.pojo.Outcome_Dataset;
 import xjtu.service.ExperimentService;
 import xjtu.service.OutcomeService;
+import xjtu.service.Outcome_DatasetService;
 import xjtu.service.RabbitMQProducerService;
 
 import java.time.LocalDateTime;
@@ -43,6 +45,9 @@ public class RabbitMQController {
     @Autowired
     ExperimentService experimentService;
 
+    @Autowired
+    Outcome_DatasetService outcomeDatasetService;
+
 
     @PostMapping("/send")
     public ResponseEntity<String> sendJsonMessage(@RequestBody JSONObject jsonData) {
@@ -53,12 +58,14 @@ public class RabbitMQController {
         LocalDateTime date = LocalDateTime.now();
         int outcome_id = this.outcomeService.getLastestId();
         this.experimentService.addExperiment(new Experiment(0,user,outcome_id,date));
+        int dataset = jsonData.getString("dataset").equals("douban") ? 1 : 2;
+        this.outcomeDatasetService.addOutcome_Dataset(new Outcome_Dataset(0,outcome_id,dataset));
         return new ResponseEntity<>("send success", HttpStatus.OK);
     }
     @GetMapping("/getPythonResult")
     public ResponseEntity<Map<String,Object>> getPythonResult(){
         Map<String,Object> map = new HashMap<>();
-        while (!redisTemplate.hasKey("type") || !redisTemplate.hasKey("acc") || !redisTemplate.hasKey("m")) ;
+        while (!redisTemplate.hasKey("type") || !redisTemplate.hasKey("acc") || !redisTemplate.hasKey("m") || !redisTemplate.hasKey("dataset")) ;
         String acc = (String) redisTemplate.opsForValue().get("acc");
         Map<String,String> tmap = new HashMap<>();
         String[] acc_s = acc.split(",");
@@ -66,9 +73,11 @@ public class RabbitMQController {
             String[] s_s = s.split(":");
             tmap.put(s_s[0],s_s[1]);
         }
+        map.put("dataset",redisTemplate.opsForValue().get("dataset"));
         map.put("type",redisTemplate.opsForValue().get("type"));
         map.put("acc",tmap);
         map.put("m",convertString2Array((String) redisTemplate.opsForValue().get("m")));
+        redisTemplate.delete("dataset");
         redisTemplate.delete("type");
         redisTemplate.delete("acc");
         redisTemplate.delete("m");

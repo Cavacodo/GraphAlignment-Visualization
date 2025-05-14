@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ExperimentService {
     List<Outcome> listExperiment();
-    List<Outcome> getExperimentByUser(String account);
+    List<Outcome> getExperimentByUser(String account,String alg,String dataset);
     int addExperiment(Experiment experiment);
     int removeExperimentByOutcomeId(Integer id);
     List<Experiment> listAll();

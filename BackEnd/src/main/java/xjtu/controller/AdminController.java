@@ -3,14 +3,8 @@ package xjtu.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import xjtu.pojo.Experiment;
-import xjtu.pojo.Outcome;
-import xjtu.pojo.Role;
-import xjtu.pojo.User;
-import xjtu.service.ExperimentService;
-import xjtu.service.OutcomeService;
-import xjtu.service.RoleService;
-import xjtu.service.UserService;
+import xjtu.pojo.*;
+import xjtu.service.*;
 
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -26,6 +20,8 @@ public class AdminController {
     OutcomeService outcomeService;
     @Autowired
     ExperimentService experimentService;
+    @Autowired
+    Outcome_DatasetService outcomeDatasetService;
 
     @GetMapping("/list")
     @ResponseBody
@@ -45,6 +41,9 @@ public class AdminController {
                 if(col.equalsIgnoreCase("all"))
                     return this.experimentService.listAll();
                 return this.experimentService.getExpByCondition(col,key);
+            }else if(table.equalsIgnoreCase("outcome_dataset")){
+                if(col.equalsIgnoreCase("all"))
+                    return this.outcomeDatasetService.listAll();
             }
         }
         return null;
@@ -66,6 +65,8 @@ public class AdminController {
             return this.roleService.removeRoleById(id);
         }else if("experiment".equalsIgnoreCase(table)){
             return this.experimentService.removeExperimentById(id);
+        }else if("outcome_dataset".equalsIgnoreCase(table)){
+            return this.outcomeDatasetService.removeById(id);
         }
         return 0;
     }
@@ -97,6 +98,11 @@ public class AdminController {
             Integer outcome_id = (Integer) params.get("outcome_id");
             LocalDateTime date = (LocalDateTime) params.get("date");
             return this.experimentService.updateExperimentById(new Experiment(id,account,outcome_id,date),id);
+        }else if(table.equalsIgnoreCase("outcome_dataset")){
+            Integer id = (Integer) params.get("id");
+            Integer outcome_id = (Integer) params.get("outcome_id");
+            Integer dataset_id = (Integer) params.get("dataset_id");
+            return this.outcomeDatasetService.updateById(new Outcome_Dataset(id,outcome_id,dataset_id),id);
         }
         return 0;
     }
