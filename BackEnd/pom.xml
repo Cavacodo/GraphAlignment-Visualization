@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>xjtu</groupId>
-	<artifactId>BackEnd</artifactId>
+	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>BackEnd</name>
 	<description>BackEnd</description>

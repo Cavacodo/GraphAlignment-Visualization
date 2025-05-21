@@ -6,7 +6,7 @@
         <element id="directory" name="META-INF">
           <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/jar/META-INF/MANIFEST.MF" />
         </element>
-        <element id="module-output" name="BackEnd" />
+        <element id="module-output" name="backend" />
       </element>
       <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt:0.9.1" />
       <element id="library" level="project" name="Maven: io.lettuce:lettuce-core:6.4.1.RELEASE" />

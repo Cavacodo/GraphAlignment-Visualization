@@ -89,9 +89,9 @@ router.beforeEach((to, from, next) => {
       return;
     }
 
-    const allowedRoles = to.meta.roles;
+    const allowedRoles = to.meta.roles as string[];
 
-    if (allowedRoles && !allowedRoles.includes(role)) {
+    if (allowedRoles && !allowedRoles.includes(role!)) {
       // 用户没有访问此页面的权限
       alert("您没有权限访问该页面！");
       next({ name: 'error' }); // 阻止跳转

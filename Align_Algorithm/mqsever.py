@@ -62,17 +62,19 @@ def main():
         channel.stop_consuming()
     finally:
         connection.close()
+
 def process_data(type,args='',data=''):
     print("Processing...")
     command = None
     GCNA = ['IsoRank','BigAlign','FINAL','DeepLink','REGAL']
     m = []
+    # TODO这里记得使用绝对路径
     if type in GCNA:
-        os.chdir('D:\GraphAlignment-Visualization\Align_Algorithm\GCNA_Origin\GCNA')
+        os.chdir('.\GCNA_Origin\GCNA')
     elif type == 'GAlign':
-        os.chdir('D:\GraphAlignment-Visualization\Align_Algorithm\GAlign')
+        os.chdir('.\GAlign')
     elif type == 'GTCAlign':
-        os.chdir('D:\GraphAlignment-Visualization\Align_Algorithm\GTCAlign')
+        os.chdir('.\GTCAlign')
     if type in GCNA:
         if data == 'ppi': command = 'python -u network_alignment.py ' + '--data ppi '+ type + ' ' + args
         else: command = 'python -u network_alignment.py ' + type + ' ' + args

@@ -1,386 +1,383 @@
-2025-05-16T12:38:20.138+08:00  INFO 10140 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 10140 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by å¼ å…ˆç”Ÿ in D:\GraphAlignment-Visualization\BackEnd)
-2025-05-16T12:38:20.142+08:00 DEBUG 10140 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-05-16T12:38:20.143+08:00  INFO 10140 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
-2025-05-16T12:38:20.668+08:00  INFO 10140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-05-16T12:38:20.670+08:00  INFO 10140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
-2025-05-16T12:38:20.685+08:00  INFO 10140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Neo4j repository interfaces.
-2025-05-16T12:38:20.690+08:00  INFO 10140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-05-16T12:38:20.690+08:00  INFO 10140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
-2025-05-16T12:38:20.696+08:00  INFO 10140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Neo4j repository interfaces.
-2025-05-16T12:38:20.703+08:00  INFO 10140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-05-16T12:38:20.704+08:00  INFO 10140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2025-05-16T12:38:20.718+08:00  INFO 10140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
-2025-05-16T12:38:21.126+08:00  INFO 10140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-05-16T12:38:21.134+08:00  INFO 10140 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-05-16T12:38:21.135+08:00  INFO 10140 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-05-16T12:38:21.192+08:00  INFO 10140 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-05-16T12:38:21.192+08:00  INFO 10140 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1015 ms
-2025-05-16T12:38:22.136+08:00  INFO 10140 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 1743032972 created for server address localhost:7687
-2025-05-16T12:38:22.354+08:00  INFO 10140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-05-16T12:38:22.365+08:00  INFO 10140 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.57 seconds (process running for 3.045)
-2025-05-16T12:38:24.437+08:00  INFO 10140 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-05-16T12:38:24.437+08:00  INFO 10140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-05-16T12:38:24.439+08:00  INFO 10140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-05-16T12:38:24.509+08:00  INFO 10140 --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-05-16T12:38:24.710+08:00  INFO 10140 --- [http-nio-8080-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@8ce6a61
-2025-05-16T12:38:24.712+08:00  INFO 10140 --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-05-16T12:38:24.718+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T12:38:24.735+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
-2025-05-16T12:38:24.762+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T12:38:24.768+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
-2025-05-16T12:38:24.768+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
-2025-05-16T12:38:24.786+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : <==      Total: 1
-2025-05-16T12:38:24.786+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
-2025-05-16T12:38:24.787+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: zmjkk(String)
-2025-05-16T12:38:24.788+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
-2025-05-16T12:38:24.788+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
-2025-05-16T12:38:24.788+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 1(Integer)
-2025-05-16T12:38:24.790+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
-2025-05-16T13:38:48.785+08:00  INFO 10140 --- [http-nio-8080-exec-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2025-05-16T13:38:48.873+08:00  INFO 10140 --- [http-nio-8080-exec-1] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#353b0719:0/SimpleConnection@79512bc2 [delegate=amqp://guest@127.0.0.1:5672/, localPort=10255]
-2025-05-16T13:38:49.016+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.addOutcome           : ==>  Preparing: insert into outcome(type,args,evaluation) values(?,?,?);
-2025-05-16T13:38:49.021+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.addOutcome           : ==> Parameters: GAlign(String), (String), null
-2025-05-16T13:38:49.040+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.addOutcome           : <==    Updates: 1
-2025-05-16T13:38:49.041+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getLatest            : ==>  Preparing: select * from outcome where evaluation is NULL;
-2025-05-16T13:38:49.041+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getLatest            : ==> Parameters: 
-2025-05-16T13:38:49.045+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getLatest            : <==      Total: 1
-2025-05-16T13:38:49.046+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.ExperimentDao.addExperiment     : ==>  Preparing: insert into experiment(user_account,outcome_id,date) values(?,?,?);
-2025-05-16T13:38:49.047+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.ExperimentDao.addExperiment     : ==> Parameters: zmjkk(String), 75(Integer), 2025-05-16T13:38:49.040173400(LocalDateTime)
-2025-05-16T13:38:49.057+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.ExperimentDao.addExperiment     : <==    Updates: 1
-2025-05-16T13:38:49.058+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.addOutcome_Dataset                 : ==>  Preparing: insert into outcome_dataset(outcome_id,dataset_type) values(?,?);
-2025-05-16T13:38:49.058+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.addOutcome_Dataset                 : ==> Parameters: 75(Integer), 1(Integer)
-2025-05-16T13:38:49.063+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.addOutcome_Dataset                 : <==    Updates: 1
-2025-05-16T13:39:43.401+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getLatest            : ==>  Preparing: select * from outcome where evaluation is NULL;
-2025-05-16T13:39:43.402+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getLatest            : ==> Parameters: 
-2025-05-16T13:39:43.403+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getLatest            : <==      Total: 1
-2025-05-16T13:39:43.404+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.addEvaluationById    : ==>  Preparing: update outcome set evaluation = ? where id = ?;
-2025-05-16T13:39:43.404+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.addEvaluationById    : ==> Parameters: { 'Precision_10'= ' 0.7594',  'AUC'= ' 0.9895',  'Running time'= ' 45.732532024383545',  'Precision_5'= ' 0.6753',  'MAP'= ' 0.5436', 'Accuracy'= ' 0.4365'}(String), 75(Integer)
-2025-05-16T13:39:43.413+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.addEvaluationById    : <==    Updates: 1
-2025-05-16T13:45:59.846+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T13:45:59.846+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T13:45:59.846+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T13:45:59.846+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T13:45:59.847+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T13:45:59.847+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T13:45:59.847+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T13:45:59.847+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T13:45:59.858+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T13:45:59.858+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T13:45:59.860+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T13:45:59.860+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T13:45:59.861+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T13:45:59.861+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T13:45:59.861+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T13:45:59.861+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T13:45:59.861+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T13:45:59.861+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T13:45:59.865+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T13:45:59.865+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T13:45:59.875+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T13:45:59.875+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T13:45:59.875+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T13:45:59.875+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T13:45:59.876+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T13:45:59.876+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T13:45:59.877+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T13:45:59.877+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T13:45:59.877+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T13:45:59.877+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T13:45:59.877+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T13:45:59.878+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T13:45:59.879+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T13:45:59.881+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T13:45:59.883+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T13:45:59.883+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:08:55.339+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:08:55.339+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:08:55.340+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:08:55.339+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:08:55.339+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:08:55.341+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:08:55.341+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:08:55.341+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:08:55.346+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:08:55.347+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:08:55.348+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:08:55.348+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:08:55.348+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:08:55.348+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:08:55.348+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:08:55.349+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:08:55.349+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:08:55.349+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:08:55.349+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:08:55.349+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:08:55.350+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:08:55.350+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:08:55.350+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:08:55.350+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:08:55.351+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:08:55.351+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:09:02.385+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:02.385+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:02.386+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:02.386+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:02.386+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:02.386+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:02.386+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:02.386+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:02.388+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:02.388+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:02.388+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:02.389+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:02.389+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:02.389+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:02.390+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:02.390+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:02.390+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:09:02.390+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:09:02.390+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:09:02.390+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:09:02.391+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:09:02.391+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:09:02.391+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:09:02.391+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:02.391+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:02.391+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:09:02.391+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:02.391+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 2(Integer)
-2025-05-16T14:09:02.391+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 2(Integer)
-2025-05-16T14:09:02.392+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:02.392+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 2(Integer)
-2025-05-16T14:09:02.392+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 2(Integer)
-2025-05-16T14:09:02.392+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : <==      Total: 6
-2025-05-16T14:09:02.392+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : <==      Total: 6
-2025-05-16T14:09:02.392+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.d.O.getOutcomeIdByDataset              : <==      Total: 6
-2025-05-16T14:09:02.394+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.d.O.getOutcomeIdByDataset              : <==      Total: 6
-2025-05-16T14:09:04.922+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:04.922+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:04.922+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:04.923+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:04.923+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:04.924+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:04.924+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:04.925+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:04.927+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:04.927+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:04.927+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:04.928+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:04.928+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:04.928+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:04.928+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:04.928+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:09:04.928+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:09:04.929+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:04.928+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:09:04.929+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: zmjkk(String)
-2025-05-16T14:09:04.930+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:09:04.931+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:09:04.931+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:09:04.931+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 18
-2025-05-16T14:09:04.931+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:04.931+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:04.931+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:04.931+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:09:04.932+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:09:04.931+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:09:04.933+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:04.933+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:09:04.933+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:09:04.934+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:09:04.934+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:09:04.934+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:09:12.973+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T14:09:12.974+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
-2025-05-16T14:09:12.978+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T14:09:12.978+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
-2025-05-16T14:09:12.979+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : ==> Parameters: admin(String), 123(String)
-2025-05-16T14:09:12.984+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.UserDao.login                   : <==      Total: 1
-2025-05-16T14:09:12.985+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
-2025-05-16T14:09:12.985+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: admin(String)
-2025-05-16T14:09:12.986+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
-2025-05-16T14:09:12.987+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
-2025-05-16T14:09:12.988+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 0(Integer)
-2025-05-16T14:09:12.989+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
-2025-05-16T14:09:14.155+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:14.155+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:14.157+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:14.157+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:14.158+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
-2025-05-16T14:09:14.159+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 9
-2025-05-16T14:09:14.670+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T14:09:14.671+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
-2025-05-16T14:09:14.672+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T14:09:15.516+08:00 DEBUG 10140 --- [http-nio-8080-exec-4] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:15.516+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:15.516+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:15.517+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:15.517+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:09:15.517+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:15.517+08:00 DEBUG 10140 --- [http-nio-8080-exec-4] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:15.517+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:09:15.520+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:15.520+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:15.520+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:15.521+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:15.521+08:00 DEBUG 10140 --- [http-nio-8080-exec-4] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:09:15.521+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:15.521+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
-2025-05-16T14:09:15.521+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:15.521+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
-2025-05-16T14:09:15.521+08:00 DEBUG 10140 --- [http-nio-8080-exec-4] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:09:15.521+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
-2025-05-16T14:09:15.522+08:00 DEBUG 10140 --- [http-nio-8080-exec-4] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 9
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 9
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-4] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 9
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 9
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-4] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:09:15.524+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:09:15.525+08:00 DEBUG 10140 --- [http-nio-8080-exec-4] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:09:15.525+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:09:15.525+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:09:15.525+08:00 DEBUG 10140 --- [http-nio-8080-exec-4] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:09:15.525+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:33:55.670+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:33:55.671+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:33:55.673+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:33:55.674+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:33:55.674+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
-2025-05-16T14:33:55.675+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 9
-2025-05-16T14:53:14.937+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:53:14.937+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:53:14.937+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:53:14.938+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:53:14.938+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:53:14.938+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:53:14.939+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
-2025-05-16T14:53:14.939+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
-2025-05-16T14:53:14.941+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:53:14.941+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:53:14.942+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:53:14.942+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:53:14.942+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:53:14.942+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
-2025-05-16T14:53:14.942+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:53:14.942+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
-2025-05-16T14:53:14.942+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
-2025-05-16T14:53:14.942+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 57
-2025-05-16T14:53:14.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 9
-2025-05-16T14:53:14.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 9
-2025-05-16T14:53:14.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 9
-2025-05-16T14:53:14.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:53:14.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:53:14.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:53:14.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T14:53:14.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:53:14.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:53:14.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:53:14.944+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
-2025-05-16T14:53:14.945+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:53:14.945+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:53:14.945+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:53:14.946+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 9
-2025-05-16T14:53:14.947+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
-2025-05-16T14:53:14.947+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
-2025-05-16T14:53:14.949+08:00 DEBUG 10140 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : <==      Total: 8
-2025-05-16T14:53:15.546+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T14:53:15.547+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
-2025-05-16T14:53:15.549+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T15:15:27.887+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T15:15:27.887+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
-2025-05-16T15:15:27.888+08:00 DEBUG 10140 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T15:16:06.002+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T15:16:06.002+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
-2025-05-16T15:16:06.003+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T15:16:09.781+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T15:16:09.781+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
-2025-05-16T15:16:09.782+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T15:16:09.782+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
-2025-05-16T15:16:09.783+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
-2025-05-16T15:16:09.783+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : <==      Total: 1
-2025-05-16T15:16:09.784+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
-2025-05-16T15:16:09.784+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: zmjkk(String)
-2025-05-16T15:16:09.785+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
-2025-05-16T15:16:09.786+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
-2025-05-16T15:16:09.786+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 1(Integer)
-2025-05-16T15:16:09.787+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
-2025-05-16T15:16:10.663+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T15:16:10.663+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
-2025-05-16T15:16:10.664+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T15:31:36.164+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T15:31:36.164+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
-2025-05-16T15:31:36.166+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T15:31:36.167+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
-2025-05-16T15:31:36.167+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : ==> Parameters: admin(String), 123(String)
-2025-05-16T15:31:36.168+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.UserDao.login                   : <==      Total: 1
-2025-05-16T15:31:36.169+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
-2025-05-16T15:31:36.169+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: admin(String)
-2025-05-16T15:31:36.171+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
-2025-05-16T15:31:36.171+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
-2025-05-16T15:31:36.172+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 0(Integer)
-2025-05-16T15:31:36.173+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
-2025-05-16T15:31:39.010+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from user;
-2025-05-16T15:31:39.012+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : ==> Parameters: 
-2025-05-16T15:31:39.014+08:00 DEBUG 10140 --- [http-nio-8080-exec-7] xjtu.dao.UserDao.listUser                : <==      Total: 13
-2025-05-16T15:31:45.377+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.listOutCome          : ==>  Preparing: select * from outcome;
-2025-05-16T15:31:45.378+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.listOutCome          : ==> Parameters: 
-2025-05-16T15:31:45.382+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.OutcomeDao.listOutCome          : <==      Total: 57
-2025-05-16T15:36:23.009+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T15:36:23.009+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: zmjkk(String)
-2025-05-16T15:36:23.011+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T15:36:23.013+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
-2025-05-16T15:36:23.013+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==> Parameters: zmjkk(String), 123(String)
-2025-05-16T15:36:23.015+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : <==      Total: 1
-2025-05-16T15:36:23.015+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
-2025-05-16T15:36:23.016+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: zmjkk(String)
-2025-05-16T15:36:23.018+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
-2025-05-16T15:36:23.019+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
-2025-05-16T15:36:23.019+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 1(Integer)
-2025-05-16T15:36:23.020+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
-2025-05-16T15:49:06.062+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
-2025-05-16T15:49:06.063+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
-2025-05-16T15:49:06.065+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
-2025-05-16T15:49:06.065+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
-2025-05-16T15:49:06.066+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==> Parameters: admin(String), 123(String)
-2025-05-16T15:49:06.067+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : <==      Total: 1
-2025-05-16T15:49:06.067+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
-2025-05-16T15:49:06.067+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: admin(String)
-2025-05-16T15:49:06.068+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
-2025-05-16T15:49:06.068+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
-2025-05-16T15:49:06.069+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 0(Integer)
-2025-05-16T15:49:06.070+08:00 DEBUG 10140 --- [http-nio-8080-exec-6] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
-2025-05-16T15:49:07.015+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from user;
-2025-05-16T15:49:07.015+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.listUser                : ==> Parameters: 
-2025-05-16T15:49:07.016+08:00 DEBUG 10140 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.listUser                : <==      Total: 13
-2025-05-16T15:49:37.942+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExpByCondition    : ==>  Preparing: select * from experiment where user_account = ?;
-2025-05-16T15:49:37.942+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExpByCondition    : ==> Parameters: (String)
-2025-05-16T15:49:37.943+08:00 DEBUG 10140 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExpByCondition    : <==      Total: 0
-2025-05-16T15:49:40.482+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.ExperimentDao.listExperiment    : ==>  Preparing: select * from experiment;
-2025-05-16T15:49:40.483+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.ExperimentDao.listExperiment    : ==> Parameters: 
-2025-05-16T15:49:40.484+08:00 DEBUG 10140 --- [http-nio-8080-exec-1] xjtu.dao.ExperimentDao.listExperiment    : <==      Total: 27
-2025-05-16T15:49:49.277+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.Outcome_DatasetDao.listAll      : ==>  Preparing: select * from outcome_dataset;
-2025-05-16T15:49:49.278+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.Outcome_DatasetDao.listAll      : ==> Parameters: 
-2025-05-16T15:49:49.279+08:00 DEBUG 10140 --- [http-nio-8080-exec-2] xjtu.dao.Outcome_DatasetDao.listAll      : <==      Total: 14
-2025-05-16T15:59:28.105+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : ==>  Preparing: select * from user;
-2025-05-16T15:59:28.105+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : ==> Parameters: 
-2025-05-16T15:59:28.106+08:00 DEBUG 10140 --- [http-nio-8080-exec-9] xjtu.dao.UserDao.listUser                : <==      Total: 13
-2025-05-16T17:55:23.319+08:00  WARN 10140 --- [AMQP Connection 127.0.0.1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
-2025-05-16T17:55:23.336+08:00  INFO 10140 --- [lettuce-nioEventLoop-5-1] o.n.d.i.l.core.protocol.CommandHandler   : null Unexpected exception during request: java.net.SocketException: Connection reset
-2025-05-16T17:55:23.412+08:00  INFO 10140 --- [lettuce-eventExecutorLoop-1-1] o.n.d.i.l.c.protocol.ConnectionWatchdog  : Reconnecting, last destination was localhost/127.0.0.1:6379
-2025-05-16T17:55:23.447+08:00  WARN 10140 --- [lettuce-nioEventLoop-5-2] o.n.d.i.l.c.protocol.ConnectionWatchdog  : Cannot reconnect to [localhost/<unresolved>:6379]: Connection refused: no further information: localhost/127.0.0.1:6379
+2025-05-20T12:58:53.468+08:00  INFO 29124 --- [main] xjtu.BackEndApplication                  : Starting BackEndApplication using Java 17.0.12 with PID 29124 (D:\GraphAlignment-Visualization\BackEnd\target\classes started by å¼ å…ˆç”Ÿ in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-20T12:58:53.471+08:00 DEBUG 29124 --- [main] xjtu.BackEndApplication                  : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-20T12:58:53.472+08:00  INFO 29124 --- [main] xjtu.BackEndApplication                  : No active profile set, falling back to 1 default profile: "default"
+2025-05-20T12:58:53.978+08:00  INFO 29124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-20T12:58:53.980+08:00  INFO 29124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-20T12:58:53.998+08:00  INFO 29124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Neo4j repository interfaces.
+2025-05-20T12:58:54.002+08:00  INFO 29124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-20T12:58:54.002+08:00  INFO 29124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-20T12:58:54.013+08:00  INFO 29124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Neo4j repository interfaces.
+2025-05-20T12:58:54.020+08:00  INFO 29124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-20T12:58:54.021+08:00  INFO 29124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-20T12:58:54.031+08:00  INFO 29124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-05-20T12:58:54.440+08:00  INFO 29124 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-20T12:58:54.451+08:00  INFO 29124 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-20T12:58:54.451+08:00  INFO 29124 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-05-20T12:58:54.515+08:00  INFO 29124 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-20T12:58:54.516+08:00  INFO 29124 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1009 ms
+2025-05-20T12:58:55.485+08:00  INFO 29124 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 906637574 created for server address localhost:7687
+2025-05-20T12:58:55.669+08:00  INFO 29124 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-20T12:58:55.677+08:00  INFO 29124 --- [main] xjtu.BackEndApplication                  : Started BackEndApplication in 2.583 seconds (process running for 3.089)
+2025-05-20T12:58:55.870+08:00  INFO 29124 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-20T12:58:55.870+08:00  INFO 29124 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-20T12:58:55.871+08:00  INFO 29124 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-05-20T12:58:55.941+08:00  INFO 29124 --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-20T12:58:56.184+08:00  INFO 29124 --- [http-nio-8080-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5e203d22
+2025-05-20T12:58:56.185+08:00  INFO 29124 --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-20T12:58:56.191+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-05-20T12:58:56.210+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
+2025-05-20T12:58:56.247+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-05-20T12:58:56.253+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-05-20T12:58:56.254+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : ==> Parameters: admin(String), 123(String)
+2025-05-20T12:58:56.260+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-05-20T12:58:56.261+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
+2025-05-20T12:58:56.261+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: admin(String)
+2025-05-20T12:58:56.264+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
+2025-05-20T12:58:56.265+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
+2025-05-20T12:58:56.265+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 0(Integer)
+2025-05-20T12:58:56.268+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
+2025-05-20T12:59:06.229+08:00  INFO 29124 --- [http-nio-8080-exec-9] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2025-05-20T12:59:06.268+08:00  INFO 29124 --- [http-nio-8080-exec-9] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#27dfd12b:0/SimpleConnection@fc4d9d9 [delegate=amqp://guest@127.0.0.1:5672/, localPort=14711]
+2025-05-20T12:59:06.331+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.addOutcome           : ==>  Preparing: insert into outcome(type,args,evaluation) values(?,?,?);
+2025-05-20T12:59:06.333+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.addOutcome           : ==> Parameters: IsoRank(String), (String), null
+2025-05-20T12:59:06.365+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.addOutcome           : <==    Updates: 1
+2025-05-20T12:59:06.368+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getLatest            : ==>  Preparing: select * from outcome where evaluation is NULL;
+2025-05-20T12:59:06.368+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getLatest            : ==> Parameters: 
+2025-05-20T12:59:06.371+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getLatest            : <==      Total: 1
+2025-05-20T12:59:06.371+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.ExperimentDao.addExperiment     : ==>  Preparing: insert into experiment(user_account,outcome_id,date) values(?,?,?);
+2025-05-20T12:59:06.371+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.ExperimentDao.addExperiment     : ==> Parameters: admin(String), 77(Integer), 2025-05-20T12:59:06.367391(LocalDateTime)
+2025-05-20T12:59:06.381+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.ExperimentDao.addExperiment     : <==    Updates: 1
+2025-05-20T12:59:06.382+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] x.d.O.addOutcome_Dataset                 : ==>  Preparing: insert into outcome_dataset(outcome_id,dataset_type) values(?,?);
+2025-05-20T12:59:06.382+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] x.d.O.addOutcome_Dataset                 : ==> Parameters: 77(Integer), 1(Integer)
+2025-05-20T12:59:06.385+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] x.d.O.addOutcome_Dataset                 : <==    Updates: 1
+2025-05-20T12:59:06.539+08:00 ERROR 29124 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis] with root cause
+
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946) ~[na:na]
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-05-20T12:59:29.403+08:00 ERROR 29124 --- [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis] with root cause
+
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946) ~[na:na]
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-05-20T13:00:16.275+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.addOutcome           : ==>  Preparing: insert into outcome(type,args,evaluation) values(?,?,?);
+2025-05-20T13:00:16.275+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.addOutcome           : ==> Parameters: GTCAlign(String), (String), null
+2025-05-20T13:00:16.278+08:00 ERROR 29124 --- [http-nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis] with root cause
+
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946) ~[na:na]
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-05-20T13:00:16.280+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.addOutcome           : <==    Updates: 1
+2025-05-20T13:00:16.280+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getLatest            : ==>  Preparing: select * from outcome where evaluation is NULL;
+2025-05-20T13:00:16.280+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getLatest            : ==> Parameters: 
+2025-05-20T13:00:16.282+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.OutcomeDao.getLatest            : <==      Total: 2
+2025-05-20T13:00:16.283+08:00 ERROR 29124 --- [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "xjtu.service.OutcomeService.getLastestId()" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "xjtu.service.OutcomeService.getLastestId()" is null
+	at xjtu.controller.RabbitMQController.sendJsonMessage(RabbitMQController.java:59) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-05-20T13:00:19.913+08:00 DEBUG 29124 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.addOutcome           : ==>  Preparing: insert into outcome(type,args,evaluation) values(?,?,?);
+2025-05-20T13:00:19.913+08:00 DEBUG 29124 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.addOutcome           : ==> Parameters: GTCAlign(String), (String), null
+2025-05-20T13:00:19.916+08:00 ERROR 29124 --- [http-nio-8080-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis] with root cause
+
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946) ~[na:na]
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.116.Final.jar:4.1.116.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-05-20T13:00:19.919+08:00 DEBUG 29124 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.addOutcome           : <==    Updates: 1
+2025-05-20T13:00:19.919+08:00 DEBUG 29124 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.getLatest            : ==>  Preparing: select * from outcome where evaluation is NULL;
+2025-05-20T13:00:19.919+08:00 DEBUG 29124 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.getLatest            : ==> Parameters: 
+2025-05-20T13:00:19.920+08:00 DEBUG 29124 --- [http-nio-8080-exec-2] xjtu.dao.OutcomeDao.getLatest            : <==      Total: 3
+2025-05-20T13:00:19.921+08:00 ERROR 29124 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "xjtu.service.OutcomeService.getLastestId()" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "xjtu.service.OutcomeService.getLastestId()" is null
+	at xjtu.controller.RabbitMQController.sendJsonMessage(RabbitMQController.java:59) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.1.jar:6.2.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.1.jar:6.2.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-05-20T13:43:34.722+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-20T13:43:34.721+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-20T13:43:34.721+08:00 DEBUG 29124 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-20T13:43:34.721+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-20T13:43:34.726+08:00 DEBUG 29124 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-20T13:43:34.726+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-20T13:43:34.726+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-20T13:43:34.726+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-20T13:43:34.748+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 58
+2025-05-20T13:43:34.749+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 58
+2025-05-20T13:43:34.749+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 58
+2025-05-20T13:43:34.751+08:00 DEBUG 29124 --- [http-nio-8080-exec-5] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 58
+2025-05-20T13:43:34.751+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
+2025-05-20T13:43:34.751+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
+2025-05-20T13:43:34.751+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
+2025-05-20T13:43:34.752+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
+2025-05-20T13:43:34.752+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
+2025-05-20T13:43:34.752+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
+2025-05-20T13:43:34.753+08:00 DEBUG 29124 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
+2025-05-20T13:43:34.753+08:00 DEBUG 29124 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
+2025-05-20T13:43:34.767+08:00 DEBUG 29124 --- [http-nio-8080-exec-5] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 11
+2025-05-20T13:43:34.767+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 11
+2025-05-20T13:43:34.767+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 11
+2025-05-20T13:43:34.767+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 11
+2025-05-20T13:43:34.767+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
+2025-05-20T13:43:34.767+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
+2025-05-20T13:43:34.767+08:00 DEBUG 29124 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
+2025-05-20T13:43:34.767+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
+2025-05-20T13:43:34.768+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
+2025-05-20T13:43:34.768+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
+2025-05-20T13:43:34.768+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
+2025-05-20T13:43:34.768+08:00 DEBUG 29124 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
+2025-05-20T13:43:34.770+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : <==      Total: 9
+2025-05-20T13:43:34.770+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : <==      Total: 9
+2025-05-20T13:43:34.770+08:00 DEBUG 29124 --- [http-nio-8080-exec-5] x.d.O.getOutcomeIdByDataset              : <==      Total: 9
+2025-05-20T13:43:34.771+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : <==      Total: 9
+2025-05-20T13:43:41.396+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-05-20T13:43:41.399+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
+2025-05-20T13:43:41.403+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-05-20T13:43:41.404+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-05-20T13:43:41.404+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.login                   : ==> Parameters: admin(String), 123(String)
+2025-05-20T13:43:41.406+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-05-20T13:43:41.407+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
+2025-05-20T13:43:41.408+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: admin(String)
+2025-05-20T13:43:41.409+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
+2025-05-20T13:43:41.409+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
+2025-05-20T13:43:41.409+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 0(Integer)
+2025-05-20T13:43:41.411+08:00 DEBUG 29124 --- [http-nio-8080-exec-8] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
+2025-05-20T13:43:59.591+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-20T13:43:59.592+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-20T13:43:59.594+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 58
+2025-05-20T13:43:59.595+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
+2025-05-20T13:43:59.595+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
+2025-05-20T13:43:59.596+08:00 DEBUG 29124 --- [http-nio-8080-exec-9] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 11
+2025-05-20T13:44:01.293+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-20T13:44:01.293+08:00 DEBUG 29124 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-20T13:44:01.293+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-20T13:44:01.293+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==>  Preparing: select * from outcome where evaluation != '';
+2025-05-20T13:44:01.293+08:00 DEBUG 29124 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-20T13:44:01.293+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-20T13:44:01.297+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-20T13:44:01.297+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : ==> Parameters: 
+2025-05-20T13:44:01.300+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 58
+2025-05-20T13:44:01.300+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 58
+2025-05-20T13:44:01.301+08:00 DEBUG 29124 --- [http-nio-8080-exec-1] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 58
+2025-05-20T13:44:01.300+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] xjtu.dao.OutcomeDao.getOutcome           : <==      Total: 58
+2025-05-20T13:44:01.301+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
+2025-05-20T13:44:01.301+08:00 DEBUG 29124 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
+2025-05-20T13:44:01.301+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
+2025-05-20T13:44:01.301+08:00 DEBUG 29124 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
+2025-05-20T13:44:01.301+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
+2025-05-20T13:44:01.301+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==>  Preparing: select * from experiment where user_account = ?;
+2025-05-20T13:44:01.301+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : ==> Parameters: admin(String)
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-1] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 11
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 11
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 11
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.dao.ExperimentDao.getExperimentByUser  : <==      Total: 11
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
+2025-05-20T13:44:01.302+08:00 DEBUG 29124 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : ==>  Preparing: select outcome_id from outcome_dataset where dataset_type = ?;
+2025-05-20T13:44:01.305+08:00 DEBUG 29124 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
+2025-05-20T13:44:01.305+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : ==> Parameters: 1(Integer)
+2025-05-20T13:44:01.305+08:00 DEBUG 29124 --- [http-nio-8080-exec-3] x.d.O.getOutcomeIdByDataset              : <==      Total: 9
+2025-05-20T13:44:01.306+08:00 DEBUG 29124 --- [http-nio-8080-exec-7] x.d.O.getOutcomeIdByDataset              : <==      Total: 9
+2025-05-20T13:44:01.306+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] x.d.O.getOutcomeIdByDataset              : <==      Total: 9
+2025-05-20T13:44:01.306+08:00 DEBUG 29124 --- [http-nio-8080-exec-1] x.d.O.getOutcomeIdByDataset              : <==      Total: 9
+2025-05-20T13:46:08.124+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-05-20T13:46:08.125+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
+2025-05-20T13:46:08.127+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-05-20T13:46:08.128+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-05-20T13:46:08.128+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : ==> Parameters: admin(String), 123(String)
+2025-05-20T13:46:08.129+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-05-20T13:46:08.129+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
+2025-05-20T13:46:08.129+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: admin(String)
+2025-05-20T13:46:08.130+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
+2025-05-20T13:46:08.130+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
+2025-05-20T13:46:08.130+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 0(Integer)
+2025-05-20T13:46:08.131+08:00 DEBUG 29124 --- [http-nio-8080-exec-10] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
+2025-05-20T13:47:47.262+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==>  Preparing: SELECT * FROM user WHERE account = ?;
+2025-05-20T13:47:47.262+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : ==> Parameters: admin(String)
+2025-05-20T13:47:47.263+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.findUserByAccount       : <==      Total: 1
+2025-05-20T13:47:47.263+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==>  Preparing: SELECT COUNT(*) AS count FROM user WHERE account = ? AND pwd = ?;
+2025-05-20T13:47:47.263+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : ==> Parameters: admin(String), 123(String)
+2025-05-20T13:47:47.265+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.UserDao.login                   : <==      Total: 1
+2025-05-20T13:47:47.266+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.RoleDao.findRoleByAccount       : ==>  Preparing: select * from role where account = ?;
+2025-05-20T13:47:47.266+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.RoleDao.findRoleByAccount       : ==> Parameters: admin(String)
+2025-05-20T13:47:47.266+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.RoleDao.findRoleByAccount       : <==      Total: 1
+2025-05-20T13:47:47.266+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.RoleDictDao.getRoleNameById     : ==>  Preparing: select role_name from role_dict where role = ?;
+2025-05-20T13:47:47.266+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.RoleDictDao.getRoleNameById     : ==> Parameters: 0(Integer)
+2025-05-20T13:47:47.267+08:00 DEBUG 29124 --- [http-nio-8080-exec-6] xjtu.dao.RoleDictDao.getRoleNameById     : <==      Total: 1
+2025-05-20T13:49:41.866+08:00  INFO 16676 --- [main] xjtu.BackEndApplicationTests             : Starting BackEndApplicationTests using Java 17.0.12 with PID 16676 (started by ÕÅÏÈÉú in D:\GraphAlignment-Visualization\BackEnd)
+2025-05-20T13:49:41.870+08:00 DEBUG 16676 --- [main] xjtu.BackEndApplicationTests             : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-20T13:49:41.871+08:00  INFO 16676 --- [main] xjtu.BackEndApplicationTests             : No active profile set, falling back to 1 default profile: "default"
+2025-05-20T13:49:42.985+08:00  INFO 16676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-20T13:49:42.987+08:00  INFO 16676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-20T13:49:43.021+08:00  INFO 16676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 0 Neo4j repository interfaces.
+2025-05-20T13:49:43.027+08:00  INFO 16676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-20T13:49:43.028+08:00  INFO 16676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Neo4j repositories in DEFAULT mode.
+2025-05-20T13:49:43.035+08:00  INFO 16676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Neo4j repository interfaces.
+2025-05-20T13:49:43.056+08:00  INFO 16676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-20T13:49:43.058+08:00  INFO 16676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-20T13:49:43.074+08:00  INFO 16676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2025-05-20T13:49:46.526+08:00  INFO 16676 --- [main] o.neo4j.driver.internal.DriverFactory    : Direct driver instance 888540137 created for server address localhost:7687
+2025-05-20T13:49:47.111+08:00  INFO 16676 --- [main] xjtu.BackEndApplicationTests             : Started BackEndApplicationTests in 5.64 seconds (process running for 6.539)
+2025-05-20T13:49:48.089+08:00  INFO 16676 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-20T13:49:48.342+08:00  INFO 16676 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@514c6ca0
+2025-05-20T13:49:48.345+08:00  INFO 16676 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-20T13:49:48.350+08:00 DEBUG 16676 --- [main] xjtu.dao.ExperimentDao.listExperiment    : ==>  Preparing: select * from experiment;
+2025-05-20T13:49:48.372+08:00 DEBUG 16676 --- [main] xjtu.dao.ExperimentDao.listExperiment    : ==> Parameters: 
+2025-05-20T13:49:48.398+08:00 DEBUG 16676 --- [main] xjtu.dao.ExperimentDao.listExperiment    : <==      Total: 29
+2025-05-20T13:49:48.422+08:00 DEBUG 16676 --- [main] xjtu.dao.UserDao.removeUserById          : ==>  Preparing: delete from user where id = ?;
+2025-05-20T13:49:48.424+08:00 DEBUG 16676 --- [main] xjtu.dao.UserDao.removeUserById          : ==> Parameters: 10(Integer)
+2025-05-20T13:49:48.437+08:00 DEBUG 16676 --- [main] xjtu.dao.UserDao.removeUserById          : <==    Updates: 0
+2025-05-20T13:49:48.509+08:00  INFO 16676 --- [SpringApplicationShutdownHook] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 888540137
+2025-05-20T13:49:48.736+08:00  INFO 16676 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-20T13:49:48.795+08:00  INFO 16676 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-20T13:51:36.306+08:00  INFO 29124 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete

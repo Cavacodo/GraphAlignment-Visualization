@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 @RestController
-@RequestMapping("/graph")
+@RequestMapping("/neo4j")
 public class Neo4jController {
     @Autowired
     private Neo4jService neo4jService;

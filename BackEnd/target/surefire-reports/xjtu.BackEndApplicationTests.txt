@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------
+Test set: xjtu.BackEndApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 7.379 s <<< FAILURE! -- in xjtu.BackEndApplicationTests
+xjtu.BackEndApplicationTests.testToken -- Time elapsed: 0.896 s <<< ERROR!
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2025-05-10T22:17:24Z. Current time: 2025-05-20T13:49:48Z, a difference of 833544045 milliseconds.  Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:385)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:481)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:541)
+	at xjtu.pojo.utils.TokenUtil.parserToken(TokenUtil.java:31)
+	at xjtu.BackEndApplicationTests.testToken(BackEndApplicationTests.java:22)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
