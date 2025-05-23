@@ -12,7 +12,8 @@
           <div ref="chart" class="chart-container"></div>
           <div class="select-bar">
             <!-- 类型选择器 -->
-            <a-select v-model:value="SelecteDataset" placeholder="选择数据集" style="width: 120px" class="cascade!rounded-button">
+            <a-select v-model:value="SelecteDataset" placeholder="选择数据集" style="width: 120px"
+              class="cascade!rounded-button">
               <a-select-option v-for="dataset in datasets" :key="dataset" :value="dataset">
                 {{ dataset }}
               </a-select-option>
@@ -108,6 +109,8 @@ export default {
         nodes: [],
         links: []
       },
+
+
       backendData: [],// 新增属性用于存储后端返回的二维数组
       sourceNode: [],
       targetNode: [],
@@ -187,12 +190,12 @@ export default {
       selectedType: null,
       selectedAlgorithm: null,
       selectedKValue: null,
-      SelecteDataset : null,
+      SelecteDataset: null,
       nodeId: '',
       types: ['网络1', '网络2'],
-      datasets : ['douban', 'ppi'],
+      datasets: ['douban', 'ppi'],
       algorithms: ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GAlign', 'GTCAlign', 'GroundTruth'],
-      algorithms2 : ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GTCAlign', 'GroundTruth'],
+      algorithms2: ['IsoRank', 'REGAL', 'DeepLink', 'BigAlign', 'FINAL', 'GTCAlign', 'GroundTruth'],
       kValues: [1, 2, 3, 4, 5],
       params: {},
       isDisabled: true,
@@ -221,9 +224,11 @@ export default {
       this.checkIntegrity();
     },
   },
+
+
   mounted() {
     this.initNeo4j().then(() => {
-      this.fetchDataFromBackend("douban",0, 3, 5, false, []);
+      this.fetchDataFromBackend("douban", 0, 3, 5, false, []);
     });
   },
 
@@ -258,8 +263,8 @@ export default {
           .map(item => `--${item.label} ${item.value}`).join(' ');
         this.sendInfo(result);
         axios.get('http://localhost:8080/api/getPythonResult', {
-          headers:{
-            Authorization : 'Bearer ' + localStorage.getItem('token'),
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
           },
           withCredentials: true,
         }).then(response => {
@@ -277,24 +282,24 @@ export default {
           this.isDisabled = false;
         });
       } else {
-        this.fetchDataFromBackend(dataset,type_, this.selectedKValue, this.nodeId, false, []);
+        this.fetchDataFromBackend(dataset, type_, this.selectedKValue, this.nodeId, false, []);
         this.loading = false;
       }
       this.clearArgs();
     },
     sendInfo(result) {
       axios.post('http://localhost:8080/api/send', {
-        dataset : this.SelecteDataset == '' ? 'douban' : this.SelecteDataset,
+        dataset: this.SelecteDataset == '' ? 'douban' : this.SelecteDataset,
         type: this.selectedAlgorithm,
         args: result,
-        user : localStorage.getItem('user'),
+        user: localStorage.getItem('user'),
       },
-      {
-        withCredentials: true,
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token')
-        }
-      })
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          }
+        })
     },
     initNeo4j() {
       const driver = neo4j.driver('bolt://localhost:7687', neo4j.auth.basic('neo4j', 'neo4jpassword'));
@@ -401,123 +406,188 @@ export default {
       this.alignmentNode = [];
       this.alignmentLink = [];
     },
-    fetchDataFromBackend(dataset,type, k, id, isLinked, newAlign) {
+    fetchDataFromBackend(dataset, type, k, id, isLinked, newAlign) {
       axios.get('http://localhost:8080/neo4j/doubanNetWork', {
-        params: {
-          dataset : dataset,
-          type: type,
-          k: k,
-          id: id
-        }, headers: {
+        params: { dataset, type, k, id },
+        headers: {
           Authorization: `Bearer ` + localStorage.getItem('token'),
         },
-        withCredentials:true,
-      }) // 替换为实际的后端 API 地址
-        .then(response => {
-          this.backendData = response.data;
-          this.sourceNode = this.backendData.src_node;
-          this.targetNode = this.backendData.target_node;
-          var prefix1 = type === 0 ? '网络1 ' : '网络2 ';
-          var prefix2 = type === 0 ? '网络2 ' : '网络1 ';
-          for (var i = 0; i < this.backendData.src.length; i++) {
-            this.alignmentLink.push({
-              source: prefix1 + this.backendData.src[i][0],
-              target: prefix1 + this.backendData.src[i][1],
-              label: "internal",
-              lineStyle: {
-                opacity: 0.5,
-                width: 2,
-                curveness: 0
+        withCredentials: true,
+      }).then(response => {
+        this.backendData = response.data;
+        this.sourceNode = this.backendData.src_node;
+        this.targetNode = this.backendData.target_node;
+        const prefix1 = type === 0 ? '网络1 ' : '网络2 ';
+        const prefix2 = type === 0 ? '网络2 ' : '网络1 ';
+
+        // 内部边
+        for (const [from, to] of this.backendData.src) {
+          this.alignmentLink.push({
+            source: prefix1 + from,
+            target: prefix1 + to,
+            label: "internal",
+            lineStyle: { opacity: 0.5, width: 2, curveness: 0 }
+          });
+        }
+        for (const [from, to] of this.backendData.target) {
+          this.alignmentLink.push({
+            source: prefix2 + from,
+            target: prefix2 + to,
+            label: "internal",
+            lineStyle: { opacity: 0.5, width: 2, curveness: 0 }
+          });
+        }
+
+        // 对齐边
+        if (isLinked) {
+          this.backendData.align = newAlign;
+        }
+        for (const pair of this.backendData.align) {
+          this.alignmentLink.push({
+            source: prefix1 + pair[1 - type],
+            target: prefix2 + pair[type],
+            label: "align",
+            lineStyle: { opacity: 0.3,type: 'dashed', width: 2, curveness: 0 }
+          });
+        }
+
+        const computeForceLayout = (nodes, edges, center, radius = 130, iterations = 300) => {
+          const k = 0; // 弹簧理想长度
+          const repulsion = 1000; // 排斥力系数
+          const damping = 0.6; // 阻尼系数，防止振荡
+
+          // 初始化：随机分布在圆内
+          const result = nodes.map(id => {
+            const theta = Math.random() * 2 * Math.PI;
+            const r = Math.sqrt(Math.random()) * radius; // 均匀分布在圆内
+            return {
+              rawId: id,
+              x: r * Math.cos(theta),
+              y: r * Math.sin(theta),
+              vx: 0,
+              vy: 0,
+              fx: 0,
+              fy: 0
+            };
+          });
+
+          for (let iter = 0; iter < iterations; iter++) {
+            // 重置力
+            for (const n of result) {
+              n.fx = 0;
+              n.fy = 0;
+            }
+
+            // 计算排斥力
+            for (let i = 0; i < result.length; i++) {
+              for (let j = i + 1; j < result.length; j++) {
+                const n1 = result[i], n2 = result[j];
+                const dx = n1.x - n2.x;
+                const dy = n1.y - n2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy) + 0.01;
+                const force = repulsion / (dist * dist);
+                const fx = force * dx / dist;
+                const fy = force * dy / dist;
+                n1.fx += fx; n1.fy += fy;
+                n2.fx -= fx; n2.fy -= fy;
               }
-            });
-          }
-          for (var i = 0; i < this.backendData.target.length; i++) {
-            this.alignmentLink.push({
-              source: prefix2 + this.backendData.target[i][0],
-              target: prefix2 + this.backendData.target[i][1],
-              label: "internal",
-              lineStyle: {
-                opacity: 0.5,
-                width: 2,
-                curveness: 0
+            }
+
+            // 计算吸引力（边）
+            for (const [a, b] of edges) {
+              const n1 = result.find(n => n.rawId === a);
+              const n2 = result.find(n => n.rawId === b);
+              if (!n1 || !n2) continue;
+              const dx = n1.x - n2.x;
+              const dy = n1.y - n2.y;
+              const dist = Math.sqrt(dx * dx + dy * dy) + 0.01;
+              const force = (dist - k) * 0.1;
+              const fx = force * dx / dist;
+              const fy = force * dy / dist;
+              n1.fx -= fx; n1.fy -= fy;
+              n2.fx += fx; n2.fy += fy;
+            }
+
+            // 更新速度和位置，加入阻尼，限制最大移动量
+            for (const n of result) {
+              n.vx = (n.vx + n.fx) * damping;
+              n.vy = (n.vy + n.fy) * damping;
+
+              // 限制单步最大移动，避免震荡过大
+              n.vx = Math.max(-10, Math.min(10, n.vx));
+              n.vy = Math.max(-10, Math.min(10, n.vy));
+
+              n.x += n.vx;
+              n.y += n.vy;
+
+              // 限制节点不超出圆范围
+              const distToOrigin = Math.sqrt(n.x * n.x + n.y * n.y);
+              if (distToOrigin > radius) {
+                const scale = radius / distToOrigin;
+                n.x *= scale;
+                n.y *= scale;
+                // 同时减缓速度避免节点反弹
+                n.vx *= 0.5;
+                n.vy *= 0.5;
               }
-            });
-          }
-          if (isLinked) {
-            this.backendData.align = newAlign;
-          }
-          for (var i = 0; i < this.backendData.align.length; i++) {
-            this.alignmentLink.push({
-              source: prefix1 + this.backendData.align[i][1 - type],
-              target: prefix2 + this.backendData.align[i][type],
-              label: "align",
-              lineStyle: {
-                opacity: 0,
-                width: 2,
-                curveness: 0
-              }
-            });
-          }
-          var radius = 120;
-          if (type === 0) {
-            for (var i = 0; i < this.sourceNode.length; i++) {
-              const theta = Math.random() * 2 * Math.PI;
-              const r = Math.sqrt(Math.random()) * radius;
-              this.alignmentNode.push({
-                id: "网络1 " + this.sourceNode[i],
-                type: '网络1',
-                name: this.sourceNode[i],
-                x: 300 + r * Math.cos(theta),
-                y: 300 + r * Math.sin(theta),
-              });
-            }
-            for (var j = 0; j < this.targetNode.length; j++) {
-              const theta = Math.random() * 2 * Math.PI;
-              const r = Math.sqrt(Math.random()) * radius;
-              this.alignmentNode.push({
-                id: "网络2 " + this.targetNode[j],
-                type: '网络2',
-                name: this.targetNode[j],
-                x: 700 + r * Math.cos(theta),
-                y: 300 + r * Math.sin(theta),
-              });
-            }
-          } else {
-            for (var i = 0; i < this.targetNode.length; i++) {
-              const theta = Math.random() * 2 * Math.PI;
-              const r = Math.sqrt(Math.random()) * radius;
-              this.alignmentNode.push({
-                id: "网络1 " + this.targetNode[i],
-                type: '网络1',
-                name: this.targetNode[i],
-                x: 300 + r * Math.cos(theta),
-                y: 300 + r * Math.sin(theta),
-              });
-            }
-            for (var j = 0; j < this.sourceNode.length; j++) {
-              const theta = Math.random() * 2 * Math.PI;
-              const r = Math.sqrt(Math.random()) * radius;
-              this.alignmentNode.push({
-                id: "网络2 " + this.sourceNode[j],
-                type: '网络2',
-                name: this.sourceNode[j],
-                x: 700 + r * Math.cos(theta),
-                y: 300 + r * Math.sin(theta),
-              })
             }
           }
-          for (var i = 0; i < this.alignmentNode.length; i++) {
-            var tmp = type === 0 ? '网络1' : '网络2';
-            if (this.alignmentNode[i].type === tmp && this.alignmentNode[i].name == id) {
-              this.alignmentNode[i].type = '中心点';
-            }
+
+          // 平移到圆心
+          for (const n of result) {
+            n.x += center.x;
+            n.y += center.y;
           }
-          this.initChart()
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
+
+          return result;
+        };
+
+
+
+        const layout1 = computeForceLayout(
+          type === 0 ? this.sourceNode : this.targetNode,
+          type === 0 ? this.backendData.src : this.backendData.target,
+          { x: 300, y: 300 }, 130
+        );
+
+        const layout2 = computeForceLayout(
+          type === 0 ? this.targetNode : this.sourceNode,
+          type === 0 ? this.backendData.target : this.backendData.src,
+          { x: 700, y: 300 }, 130
+        );
+
+        for (const node of layout1) {
+          this.alignmentNode.push({
+            id: '网络1 ' + node.rawId,
+            type: '网络1',
+            name: node.rawId,
+            x: node.x,
+            y: node.y
+          });
+        }
+        for (const node of layout2) {
+          this.alignmentNode.push({
+            id: '网络2 ' + node.rawId,
+            type: '网络2',
+            name: node.rawId,
+            x: node.x,
+            y: node.y
+          });
+        }
+
+        for (const node of this.alignmentNode) {
+          const tmp = type === 0 ? '网络1' : '网络2';
+          if (node.type === tmp && node.name == id) {
+            node.type = '中心点';
+          }
+        }
+
+        this.initChart();
+      }).catch(error => {
+        console.error('Error fetching data:', error);
+      });
     },
+
 
   }
 }
@@ -570,12 +640,18 @@ export default {
 
 .select-bar {
   display: flex;
-  justify-content: flex-end; /* 水平靠右 */
-  align-items: flex-start;   /* 垂直靠上 */
-  flex-wrap: nowrap;         /* 不换行 */
-  gap: 0;                    /* 移除间隙 */
-  padding: 0;                /* 移除内边距 */
-  margin: 0;                 /* 移除外边距 */
+  justify-content: flex-end;
+  /* 水平靠右 */
+  align-items: flex-start;
+  /* 垂直靠上 */
+  flex-wrap: nowrap;
+  /* 不换行 */
+  gap: 0;
+  /* 移除间隙 */
+  padding: 0;
+  /* 移除内边距 */
+  margin: 0;
+  /* 移除外边距 */
 }
 
 

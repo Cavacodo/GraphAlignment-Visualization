@@ -84,7 +84,6 @@ public class RabbitMQController {
         Integer id = this.outcomeService.getLastestId();
         if(id == null) return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
         this.outcomeService.addEvaluationById(tmap.toString(),id);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
     public List<List<Integer>> convertString2Array(String s){

@@ -216,7 +216,7 @@ export default {
   },
   methods: {
     fetchData(tableName, colName, searchName) {
-      axios.get('http://127.0.0.1:8080/all/list', {
+      axios.get('http://localhost:8080/all/list', {
         params: {
           table: tableName,
           col: colName,

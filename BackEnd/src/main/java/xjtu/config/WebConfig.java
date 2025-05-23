@@ -17,7 +17,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/user/login/**")
                 .excludePathPatterns("/user/register/**")
                 .excludePathPatterns("/user/forgetPassword/**")
-                .excludePathPatterns("/res/python");
+                .excludePathPatterns("/res/python")
+                .excludePathPatterns("/sendEmail");
     }
 
     @Override
